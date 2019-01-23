@@ -1,0 +1,37 @@
+<scroll-view scroll-y="true" class="bindphone">
+    <view class="first">
+        <view class="pic">
+            <open-data type="userAvatarUrl"></open-data>
+        </view>
+    </view>
+    <view class="bindphone_tel">
+        <input class="tel_input bindInput" name="rName" placeholder="用户名" placeholder-class="tel_place" type="text" bindinput="nameInput"></input>
+    </view>
+    <view class="bindphone_tel">
+        <input class="tel_input" name="rName" placeholder="手机号" placeholder-class="tel_place" type="number" maxlength="11" bindinput="telInput"></input>
+        <view class="tel_btn" bindtap="postMobileNo">{{telBtn}}</view>
+    </view>
+    <view class="bindphone_tel">
+        <input class="tel_input bindInput" name="rName" placeholder="验证码" placeholder-class="tel_place" type="number" maxlength="6" bindinput="codeInput"></input>
+    </view>
+    <view class="bindphone_tel">
+        <picker class="tel_input bindInput" mode="date" value="{{brith}}" start="1900-01-01" end="2020-09-01" bindchange="bindDateChange">
+            <view class="picker" hidden="{{!brith}}">{{brith}}</view>
+            <view class="picker nopicker" hidden="{{brith}}">生日</view>
+        </picker>
+    </view>
+    <view class="bindphone_tel">
+        <picker  class="tel_input bindInput" mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+             <view class="picker">{{region[0]}}-{{region[1]}}-{{region[2]}}</view>
+        </picker>
+    </view>
+
+     <view class="bindphone_tel">
+        <input class="tel_input bindInput" name="rName" placeholder="详细地址" placeholder-class="tel_place" type="text" bindinput="nameInput"></input>
+    </view>
+    
+    <view class="submit" bindtap="bindMobile" wx:if="{{!entmobileBol}}">确  认</view>
+    <view class="submit" bindtap="bindMobile" wx:if="{{entmobileBol}}" style="background-color: #64BDD9;color:#fff;">
+        确  认
+    </view>
+</scroll-view>

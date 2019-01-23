@@ -1,12 +1,35 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
+    "pages/active/active",
+    "pages/webview/webview",
+    "pages/bindphone/bindphone",
+    "pages/map/map",
+    "pages/my/my",
     "pages/logs/logs"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black"
+    "navigationBarTitleText": "长宁时尚活点地图",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#575757",
+    "backgroundColor": "#000000",
+    "selectedColor": "#ffffff",
+    "borderStyle": "white",
+    "list": [{
+        "pagePath": "pages/map/map",
+        "text": "地图"
+      }, {
+        "pagePath": "pages/index/index",
+        "text": "乐活"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的"
+      }
+    ]
   }
 }

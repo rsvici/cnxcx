@@ -4,51 +4,92 @@ const app = getApp()
 
 Page({
   data: {
-    motto: 'Hello World',
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    // 轮播图
+    imgUrlsOne: [
+      'http://www.appsun.com.cn/www/fy/changning/image/lehuo/b1_1.png',
+      'http://www.appsun.com.cn/www/fy/changning/image/lehuo/b1_2.png',
+      'http://www.appsun.com.cn/www/fy/changning/image/lehuo/b1_3.png',
+      'http://www.appsun.com.cn/www/fy/changning/image/lehuo/b1_4.png',
+      'http://www.appsun.com.cn/www/fy/changning/image/lehuo/b1_5.png',
+      'http://www.appsun.com.cn/www/fy/changning/image/lehuo/b1_6.png',
+      'http://www.appsun.com.cn/www/fy/changning/image/lehuo/b1_7.png',
+    ],
+    imgUrlsTwo: [
+      'http://www.appsun.com.cn/www/fy/changning/image/lehuo/b2_2.png',
+      'http://www.appsun.com.cn/www/fy/changning/image/lehuo/b2_1.png',
+      'http://www.appsun.com.cn/www/fy/changning/image/lehuo/b2_2.png',
+      'http://www.appsun.com.cn/www/fy/changning/image/lehuo/b2_1.png',
+    ],
+    imgUrlsThree: [
+      'http://www.appsun.com.cn/www/fy/changning/imgs/lehuo/space1.png',
+      'http://www.appsun.com.cn/www/fy/changning/imgs/lehuo/space2.png',
+      'http://www.appsun.com.cn/www/fy/changning/imgs/lehuo/space1.png',
+      'http://www.appsun.com.cn/www/fy/changning/imgs/lehuo/space2.png',
+      'http://www.appsun.com.cn/www/fy/changning/imgs/lehuo/space1.png',
+      'http://www.appsun.com.cn/www/fy/changning/imgs/lehuo/space2.png',
+      'http://www.appsun.com.cn/www/fy/changning/imgs/lehuo/space1.png',
+      'http://www.appsun.com.cn/www/fy/changning/imgs/lehuo/space2.png',
+    ],
+    imgUrlsfour: [
+      'http://www.appsun.com.cn/www/fy/changning/imgs/lehuo/game1.png',
+      'http://www.appsun.com.cn/www/fy/changning/imgs/lehuo/game2.png',
+      'http://www.appsun.com.cn/www/fy/changning/imgs/lehuo/game3.png',
+      'http://www.appsun.com.cn/www/fy/changning/imgs/lehuo/game4.png',
+      'http://www.appsun.com.cn/www/fy/changning/imgs/lehuo/game1.png',
+      'http://www.appsun.com.cn/www/fy/changning/imgs/lehuo/game2.png',
+      'http://www.appsun.com.cn/www/fy/changning/imgs/lehuo/game3.png',
+      'http://www.appsun.com.cn/www/fy/changning/imgs/lehuo/game4.png',
+    ],
+    indicatorDots: true, //点
+    autoplay: true, //循环
+    interval: 5000, //等待时间
+    duration: 1000, //切换时间
+    circular: true, //无缝连接
+    // 分类导航
+    navBol: true, //打开更多
+    // 列表
+    navTypeBol: true,
   },
-  //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
+  goTypeList(event) { //去类型列表
+    console.log('类型列表:');
+    console.log(event.currentTarget.dataset.navindex);
   },
-  onLoad: function () {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse){
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
-      })
-    }
-  },
-  getUserInfo: function(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
+  shoiceNavBol() { //关闭打开nav
+    let navBol = this.data.navBol;
     this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
+      navBol: !navBol
     })
-  }
+  },
+  goActiveList() { //去精彩
+    console.log('更多精彩:list');
+  },
+  goSpaceList() {
+    console.log('更多热门:list');
+  },
+  openType() {
+    let navTypeBol = !this.data.navTypeBol;
+    this.setData({
+      navTypeBol
+    })
+  },
+  navTypeChoice(event) {
+    console.log(event.currentTarget.dataset.typeindex);
+    this.setData({
+      navTypeBol: true
+    })
+  },
+  // 跳转webview	
+  goBusiness() {
+    wx.navigateTo({
+      url: `../webview/webview?type=hotbusiness`
+    })
+  },
+  goMap() {
+    wx.navigateTo({
+      url: `../webview/webview?type=map`
+    })
+  },
+
+
+
 })

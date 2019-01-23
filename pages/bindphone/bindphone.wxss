@@ -1,0 +1,76 @@
+.bindphone {
+    background-color: #E5E5E5;
+    height: 100vh;
+}
+
+.bindphone .first {
+    padding-top: 60rpx;
+    margin-bottom: 100rpx;
+    height: 100rpx;
+    width: 750rpx;
+}
+
+.bindphone .first .pic {
+    height: 140rpx;
+    width: 140rpx;
+    border-radius: 70rpx;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.bindphone_tel {
+    width: 600rpx;
+    margin: 0 auto;
+    height: 110rpx;
+}
+.bindphone_tel .nopicker{
+    color: #BABABA;
+}
+
+.bindphone_tel .tel_input {
+    width: 400rpx;
+    font-size: 25rpx;
+    color: #797979;
+    float: left;
+    height: 70rpx;
+    line-height:70rpx;
+    padding-left: 40rpx;
+    border-radius: 10rpx;
+    background-color: #fff;
+    box-sizing: border-box;
+}
+
+.bindphone_tel .bindInput {
+    width: 100%;
+}
+
+.bindphone_tel .tel_place {
+    font-size: 25rpx;
+    color: #BABABA;
+    height: 50rpx;
+    line-height: 50rpx;
+}
+.bindphone_tel .tel_btn {
+    width: 185rpx;
+    height: 70rpx;
+    background-color: #E8D33C;
+    float: right;
+    border-radius: 10rpx;
+    color: #797979;
+    font-size: 20rpx;
+    line-height: 70rpx;
+    text-align: center;
+}
+
+.submit {
+    width: 300rpx;
+    text-align: center;
+    background-color: #9B9B9B;
+    height: 70rpx;
+    line-height: 70rpx;
+    font-size: 28rpx;
+    margin: 0 auto;
+    color: #fff;
+    margin-top:30rpx;
+    border-radius: 10rpx;
+}

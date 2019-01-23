@@ -1,0 +1,218 @@
+/**active.wxss**/
+.active {
+  width: 750rpx;
+  background-color: #f1f1f1;
+  padding-bottom: 4vw;
+  font-size: 22rpx;
+}
+
+
+
+
+.choice {
+  /* margin-top: 80rpx; */
+  background-color: #f5f5f5;
+  position: fixed;
+  top: 0rpx;
+  left: 0rpx;
+  width: 100%;
+  overflow: hidden;
+  z-index: 10;
+  box-sizing: border-box;
+  height: 120rpx;
+}
+
+.choice .choiceTop {
+  height: 60rpx;
+  width: 750rpx;
+  margin: 0 auto;
+  padding-top: 10rpx;
+}
+
+.choice .choiceTop form {
+  width: 50%;
+  background-color: #fff;
+  border-radius: 5px;
+  height: 55rpx;
+  text-align: center;
+  padding-left: 60rpx;
+  margin: 0 auto;
+  position: relative;
+  display: block;
+}
+
+.choice .choiceTop form image {
+  display: block;
+  width: 32rpx;
+  position: absolute;
+  top: 13rpx;
+  left: 70rpx;
+}
+
+.choice .choiceTop form input {
+  display: block;
+  margin-left: 75rpx;
+  height: 55rpx;
+  padding: 0;
+  line-height: 55rpx;
+  caret-color: rgb(170, 20, 20);
+  font-family: PingFangSC-Regular;
+  color: #666;
+  text-align: left;
+}
+
+.choice .choiceTop form input::-webkit-input-placeholder {
+  font-family: PingFangSC-Regular;
+  line-height: 50rpx;
+}
+
+
+.choice .title {
+  width: 100%;
+  height: 10vw;
+  background-image: url('http://www.appsun.com.cn/www/fy/changning/imgs/activelist/list.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 10;
+  background-color: #fff;
+  margin-top: 3rpx;
+}
+
+.choice .title .li {
+  width: 33%;
+  display: inline-block;
+  text-align: center;
+  line-height: 6vw;
+  color: #6A6A6A;
+}
+
+.choice .title .li image {
+  width: 10%;
+  display: inline-block;
+  margin-left: 3%;
+}
+
+.fixtype {
+  position: fixed;
+  top: 120rpx;
+  font-size: 20rpx;
+  width: 100%;
+  padding: 0 20rpx 20rpx;
+  box-sizing: border-box;
+  border-bottom: 1px solid #B1B1B1;
+  background-color: #fff;
+  z-index: 10;
+}
+
+.fixtype .f_li {
+  float: left;
+  width: 20%;
+  text-align: center;
+  margin-top: 20rpx;
+}
+
+.fixtype .f_li text {
+  display: block;
+  width: 76%;
+  border: 1px solid #DBEFFF;
+  border-radius: 10rpx;
+  line-height: 30rpx;
+}
+
+/* 活动列表 */
+.Alist {
+  position: absolute;
+  top: 125rpx;
+  width: 100%;
+}
+
+
+.Alist .Aitem {
+  min-height: 100rpx;
+  width: 94%;
+  margin: 0 auto;
+  padding: 10rpx 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  border-bottom: 1px solid #E6E6E6;
+}
+
+.Alist .Aitem .left {
+  float: left;
+  width: 25%;
+}
+
+.Alist .Aitem .left image {
+  width: 100%;
+  border-radius: 10rpx;
+}
+
+.Alist .Aitem .right {
+  margin-left: 1.5%;
+  padding-top: 10rpx;
+  float: left;
+  width: 70%;
+}
+
+.itemword text,
+.itemTitle text {
+  line-height: 30rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+.itemword2 text {
+  line-height: 30rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.Alist .right .itemTitle text {
+  font-size: 30rpx;
+  line-height: 40rpx;
+  padding-left: 10rpx;
+  font-weight: 700;
+}
+
+.Alist .Aitem .right .Rleft {
+  width: 20%;
+  float: left;
+  padding-top: 20rpx;
+}
+
+.Alist .Aitem .right .Rleft view {
+  height: 40rpx;
+  font-size: 22rpx;
+  text-align: right;
+  font-weight: 700;
+}
+
+.Alist .Aitem .right .Rright {
+  width: 75%;
+  float: left;
+  padding-top: 20rpx;
+  margin-left: 3%;
+}
+
+.Alist .Aitem .right .Rright view {
+  width: 100%;
+  overflow: hidden;
+  height: 40rpx;
+}
+
+.Alist .Aitem .right .Rright view text {
+  font-size: 21rpx;
+  color: #444;
+}
+
+.Alist .Aitem .right .Rright .itemword2 {
+  height: 60rpx;
+}
