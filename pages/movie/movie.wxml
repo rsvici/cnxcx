@@ -1,0 +1,60 @@
+<!-- active.wxml -->
+<view class="active">
+  <!-- 搜索标签 -->
+  <view class="choice">
+    <!-- 搜索 -->
+    <view class="choiceTop">
+      <form>
+        <image src="../../public/imgs/fdj.png" mode="widthFix"></image>
+        <input type="search" placeholder="点击搜索" id="keyword" bindblur="searchGoods" />
+      </form>
+    </view>
+    <!-- nav 标签 -->
+    <view class="title">
+      <view class="ul">
+        <view class="li">热门</view>
+        <view class="li altype" bindtap="openType">
+          类型
+          <image src="../../public/imgs/down.png" alt="" mode="widthFix" />
+        </view>
+        <view class="li">
+          <picker class="tel_input bindInput" mode="date" value="{{brith}}" start="2019-01-01" end="2020-09-01" bindchange="bindDateChange">
+            时间
+            <image src="../../public/imgs/down.png" alt="" mode="widthFix" />
+          </picker>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 类型 -->
+  <view class="fixtype" hidden="{{navTypeBol}}">
+    <view class="f_li">
+      <text bindtap="navTypeChoice" data-typeindex="0">电影</text>
+    </view>
+    <view class="f_li">
+      <text bindtap="navTypeChoice" data-typeindex="1">演唱会</text>
+    </view>
+    <view class="f_li">
+      <text bindtap="navTypeChoice" data-typeindex="2">话剧</text>
+    </view>
+    <view class="f_li">
+      <text>电影</text>
+    </view>
+    <view class="f_li">
+      <text>演唱会</text>
+    </view>
+    <view class="f_li">
+      <text>休闲娱乐</text>
+    </view>
+  </view>
+  <!-- 活动列表 -->
+  <view class="Alist">
+    <view class="Aitem" wx:for="{{navTypeList}}" bindtap="goActiveInfo" data-index="{{index}}">
+      <view class="Aimage">
+        <image src="{{item.fengmian}}" mode="aspectFill"></image>
+      </view>
+      <view class="name showOneline">{{item.title}}</view>
+      <view class="time showOneline">{{item.datetime}}</view>
+    </view>
+  </view>
+</view>

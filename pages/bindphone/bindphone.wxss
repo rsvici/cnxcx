@@ -4,8 +4,8 @@
 }
 
 .bindphone .first {
-    padding-top: 60rpx;
-    margin-bottom: 100rpx;
+    padding-top: 160rpx;
+    margin-bottom: 200rpx;
     height: 100rpx;
     width: 750rpx;
 }
@@ -17,7 +17,18 @@
     margin: 0 auto;
     overflow: hidden;
 }
-
+.bindphone .first .name {
+    height: 90rpx;
+    line-height: 90rpx;
+    width: 140rpx;
+    border-radius: 70rpx;
+    margin: 0 auto;
+    overflow: hidden;
+    text-align: center;
+    font-size: 26rpx;
+    color: #434343;
+  }
+  
 .bindphone_tel {
     width: 600rpx;
     margin: 0 auto;
@@ -53,10 +64,10 @@
 .bindphone_tel .tel_btn {
     width: 185rpx;
     height: 70rpx;
-    background-color: #E8D33C;
+    background-color: #64BEDA;
     float: right;
     border-radius: 10rpx;
-    color: #797979;
+    color: #fff;
     font-size: 20rpx;
     line-height: 70rpx;
     text-align: center;

@@ -1,0 +1,4 @@
+<view class="collect">
+  <image  src="../../public/imgs/nomore.png" mode="widthFix" lazy-load="false" binderror="" bindload="">
+  </image>
+</view>

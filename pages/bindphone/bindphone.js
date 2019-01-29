@@ -7,15 +7,8 @@ Page({
         currentTime: 60, // 初始事件
         rightMobileNo: 0, //获取验证码
         entmobileBol: false, //确定按钮的显示颜色
-        tel: '', //手机号
-        name: '', //用户名
-        brith: '', //出生日期
-        region: ['上海市', '上海市', '长宁区'],
-    },
-    nameInput: function (e) {
-        this.setData({
-            name: e.detail.value
-        });
+        tel: '手机号', //手机号
+        isUpd: false, //是否是修改
     },
     telInput: function (e) {
         this.setData({
@@ -36,47 +29,34 @@ Page({
             })
         }
     },
-    bindDateChange: function (e) {
-        this.setData({
-            brith: e.detail.value
-        });
-    },
-    bindRegionChange: function (e) {
-        this.setData({
-            region: e.detail.value
-        });
-    },
-
     // 获取验证码
     postMobileNo: function () {
-        if (this.data.tel.legth < 11) {
+
+        if (this.data.tel.legth < 11 || (!this.data.tel)) {
             return;
         }
-        var that = this;
-        var postUrl = 'api/MembershipCard/GetVerifyCode';
-        var postData = {
-            Timestamp: '{{$timestamp}}',
-            Args: {
-                'MobileNo': this.data.tel
-            }
-        };
-        postData.Args = JSON.stringify(postData.Args);
-        request.requestPost(postUrl, postData)
-            .then(function (response) {
-                console.log(response.data);
-                if (response.data.Msg == '成功') {
-                    that.timeOutFun();
-                    that.setData({
-                        rightMobileNo: response.data.Result
-                    });
+        if (this.data.telBtn == '请重新获取' || this.data.telBtn == '获取验证码') {
+            var that = this;
+            var postUrl = `login/sendCode?phone=${this.data.tel}`;
+            var postData = {
+                // phone: this.data.tel 
+            };
+            request.requestPost(postUrl, postData)
+                .then(function (response) {
+                    console.log(response.data);
+                    if (response.data.message == '成功') {
+                        that.timeOutFun();
+                        that.setData({
+                            rightMobileNo: response.data.data
+                        });
+                    }
 
-                }
+                }, function (error) {
+                    console.log(error);
+                });
+        }
 
-            }, function (error) {
-                console.log(error);
-            });
     },
-
     // 倒计时60s
     timeOutFun: function () {
         var that = this;
@@ -100,127 +80,69 @@ Page({
         }, 1000);
     },
     bindMobile: function () {
-        console.log(wx.getStorageSync('openId'))
         var code = this.data.code;
+        var that = this;
         var rightMobileNo = this.data.rightMobileNo;
         if (code == rightMobileNo && code.length == 6) {
-            var that = this;
-            var postUrl = 'api/Vip/WxAppBindMobie';
-            var postData = {
-                Timestamp: '{{$timestamp}}',
-                Args: {
-                    'MobileNo': this.data.tel,
-                    'WxAppOpenId': wx.getStorageSync('openId')
-                }
-            };
-
-            postData.Args = JSON.stringify(postData.Args);
-            request.requestPost(postUrl, postData)
-                .then(function (response) {
-                    console.log(response);
-
-                    if (response.data.Msg == "成功") {
-                        var getUrl = 'api/vip/GetVipByWxAppId';
-                        var getData = {
-                            Timestamp: '{{$timestamp}}',
-                            Args: {
-                                "WxAppOpenId": wx.getStorageSync('openId')
+            if (this.data.isUpd) {
+                var postUrl = `login/update`;
+                var postData = {
+                    phone: this.data.tel,
+                    openid: wx.getStorageSync('openId')
+                };
+                request.requestPost(postUrl, postData)
+                    .then(function (response) {
+                        wx.setStorageSync('phone', that.data.tel);
+                        wx.showToast({
+                            title: '修改成功',
+                            icon: 'success',
+                            duration: 1100,
+                            success: function () {
+                                setTimeout(function () {
+                                    wx.switchTab({
+                                        url: '../my/my',
+                                    })
+                                }, 1100)
                             }
-                        };
-                        request.requestGet(getUrl, getData)
-                            .then(function (response) {
-                                console.log(response)
-
-
-                                if (response.data.Result) {
-                                    wx.setStorageSync('VipId', response.data.Result);
+                        })
+                    }, function (error) {
+                        console.log(error);
+                    });
+            } else {
+                var postUrl = `login/registeredUser`;
+                var postData = {
+                    phone: this.data.tel,
+                    openid: wx.getStorageSync('openId')
+                };
+                request.requestPost(postUrl, postData)
+                    .then(function (response) {
+                        wx.setStorageSync('phone', that.data.tel);
+                        wx.showToast({
+                            title: '注册成功',
+                            icon: 'success',
+                            duration: 1500,
+                            success: function () {
+                                setTimeout(function () {
                                     wx.switchTab({
-                                        url: "../my/my"
-                                    });
-                                } else {
-                                    // wx.navigateTo({
-                                    //     url: '../setpwd/setpwd?tel=' + that.data.tel + '&code=' + that.data.code
-                                    // })
-                                    that.registerUser();
-                                    // console.log(response)
-                                }
-                            });
-                    }
-                }, function (error) {
-                    console.log(error);
-                });
-        } else {
-
+                                        url: '../my/my',
+                                    })
+                                }, 1800)
+                            }
+                        })
+                    }, function (error) {
+                        console.log(error);
+                    });
+            }
+        } else {}
+    },
+    onLoad: function (option) {
+        if (option.type === 'upd') {
+            console.log(1)
+            this.setData({
+                tel: wx.getStorageSync('phone'),
+                isUpd: true
+            })
         }
 
-
-    },
-    registerUser: function () {
-        var that = this;
-        var postUrl = 'api/MembershipCard/Resiger';
-        var postData = {
-            Timestamp: '{{$timestamp}}',
-            Args: {
-                'MobileNo': this.data.tel,
-                'Name': this.data.tel,
-                'password': this.data.tel,
-                'HeadPic': '',
-                'WxLoginId': ''
-            }
-        }
-        postData.Args = JSON.stringify(postData.Args);
-        request.requestPost(postUrl, postData)
-            .then(function (response) {
-                console.log(response)
-                if (response.data.Msg == "成功") {
-                    that.newBindMobile()
-                }
-            }, function (error) {
-                console.log(error);
-            });
-    },
-    newBindMobile: function () {
-        var that = this;
-        var postUrl = 'api/Vip/WxAppBindMobie';
-        var postData = {
-            Timestamp: '{{$timestamp}}',
-            Args: {
-                'MobileNo': this.data.tel,
-                'WxAppOpenId': wx.getStorageSync('openId')
-            }
-        };
-        postData.Args = JSON.stringify(postData.Args);
-        request.requestPost(postUrl, postData)
-            .then(function (response) {
-                console.log(response)
-                if (response.data.Msg == "成功") {
-                    var getUrl = 'api/vip/GetVipByWxAppId';
-                    var getData = {
-                        Timestamp: '{{$timestamp}}',
-                        Args: {
-                            "WxAppOpenId": wx.getStorageSync('openId')
-                        }
-                    };
-                    request.requestGet(getUrl, getData)
-                        .then(function (respons) {
-                            console.log(respons);
-                            wx.setStorage({
-                                key: "VipId",
-                                data: respons.data.Result,
-                                success: function (respon) {
-                                    wx.switchTab({
-                                        url: "../my/my"
-                                    });
-                                }
-                            });
-                        });
-                }
-            }, function (error) {
-                console.log(error);
-            });
-
-    },
-    onLoad: function () {
-        // this.getWxUserInfo();
     }
 });

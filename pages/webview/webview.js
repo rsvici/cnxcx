@@ -11,9 +11,7 @@ Page({
     },
 
     onLoad: function (options) {
-        // wx.setNavigationBarTitle({
-        //     title: '我的订单'
-        // });
+
         console.log(options);
         let url = 'https://www.appsun.com.cn/www/fy/changning'
         switch (options.type) {
@@ -23,6 +21,11 @@ Page({
             case 'hotbusiness':
                 url = `${url}/#/hotbusiness?v=${Math.random()}`
                 break;
+            case 'url':
+                url = options.url
+                break;
+            default:
+                url = `${url}/map/?v=${Math.random()}`
         }
 
         this.setData({

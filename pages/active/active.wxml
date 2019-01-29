@@ -1,11 +1,11 @@
 <!-- active.wxml -->
-<view class="active">
+<view class="active" >
   <!-- 搜索标签 -->
   <view class="choice">
     <!-- 搜索 -->
     <view class="choiceTop">
       <form>
-        <image src="http://www.appsun.com.cn/www/fy/changning/imgs/shoplist/fdj.png" mode="widthFix"></image>
+        <image src="../../public/imgs/fdj.png" mode="widthFix"></image>
         <input type="search" placeholder="点击搜索" id="keyword" bindblur="searchGoods" />
       </form>
     </view>
@@ -15,12 +15,12 @@
         <view class="li">热门</view>
         <view class="li altype" bindtap="openType">
           类型
-          <image src="http://www.appsun.com.cn/www/fy/changning/imgs/activelist/down.png" alt="" mode="widthFix" />
+          <image src="../../public/imgs/down.png" alt="" mode="widthFix" />
         </view>
         <view class="li">
           <picker class="tel_input bindInput" mode="date" value="{{brith}}" start="2019-01-01" end="2020-09-01" bindchange="bindDateChange">
             时间
-            <image src="http://www.appsun.com.cn/www/fy/changning/imgs/activelist/down.png" alt="" mode="widthFix" />
+            <image src="../../public/imgs/down.png" alt="" mode="widthFix" />
           </picker>
         </view>
       </view>
@@ -49,13 +49,13 @@
   </view>
   <!-- 活动列表 -->
   <view class="Alist">
-    <view class="Aitem">
+    <view class="Aitem"  wx:for="{{navTypeList}}" bindtap="goActiveInfo" data-index="{{index}}" data-type="drama">
       <view class="left">
-        <image src="../../public/imgs/item.jpg" mode="widthFix"></image>
+        <image src="{{item.fengmian}}" mode="widthFix"></image>
       </view>
       <view class="right">
         <view class="itemTitle">
-          <text>四个春天</text>
+          <text>{{item.title}}</text>
         </view>
         <view class="Rleft">
             <view>
@@ -64,19 +64,45 @@
              <view>
               活动地点
             </view>
-            <view>
+            <!-- <view>
               简介
-            </view>
+            </view> -->
         </view>
         <view class="Rright">
            <view class="itemword">
-            <text>2019.01.04（已上线）</text>
+            <text>{{item.intro}}</text>
           </view>
           <view class="itemword">
-            <text>上海 国家会展中心虹馆</text>
+            <text>{{item.datetime}}</text>
           </view>
-          <view class="itemword2">
-            <text>《四个春天》是一部以真实家庭生活为背景的纪录片。15岁离家，在异乡漂泊多年的导演以自己南方小城里的父母为主角，在四年光阴里，以一己之力记录了他们的美丽日常。在如诗的乐活慢生活图景中，影像缓缓雕刻出一个幸福家庭近二十年的温柔变迁，以及他们如何以自己的方式面对流转的时间、人生的得失起落。</text>
+        </view>
+      </view>
+    </view>
+    <view class="Aitem"  wx:for="{{movieList}}" bindtap="goActiveInfo" data-index="{{index}}" data-type="movie">
+      <view class="left">
+        <image src="{{item.fengmian}}" mode="widthFix"></image>
+      </view>
+      <view class="right">
+        <view class="itemTitle">
+          <text>{{item.title}}</text>
+        </view>
+        <view class="Rleft">
+            <view>
+              上映日期
+            </view>
+             <view>
+              简介
+            </view>
+            <!-- <view>
+              简介
+            </view> -->
+        </view>
+        <view class="Rright">
+           <view class="itemword">
+            <text>{{item.datetime}}</text>
+          </view>
+          <view class="itemword">
+            <text>{{item.seconddetail}}</text>
           </view>
         </view>
       </view>

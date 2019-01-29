@@ -1,21 +1,80 @@
-/**index.wxss**/
-.userinfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+/**my.wxss**/
+.my {
+  background-color: #E5E5E5;
+  height: 100vh;
 }
 
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
+.my .mybg {
+  width: 100%;
+  height: 400rpx;
+  background-color: #fff;
+}
+.my .sign{
+  position: absolute;
+  right: 0;
+  top: 90rpx;
+}
+.my .sign image{
+  width: 140rpx;
+}
+.my .mybg image {
+  height: 239.59rpx;
+  width: 750rpx;
 }
 
-.userinfo-nickname {
-  color: #aaa;
+.my .first {
+  position: absolute;
+  top: 170rpx;
+  width: 750rpx;
 }
 
-.usermotto {
-  margin-top: 200px;
+.my .first .pic {
+  height: 140rpx;
+  width: 140rpx;
+  border-radius: 70rpx;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.my .first .name {
+  height: 90rpx;
+  line-height: 90rpx;
+  width: 140rpx;
+  border-radius: 70rpx;
+  margin: 0 auto;
+  overflow: hidden;
+  text-align: center;
+  font-size: 26rpx;
+  color: #434343;
+}
+
+.my .first .points {
+  position: absolute;
+  left: 190rpx;
+  top: 100rpx;
+  text-align: center;
+}
+
+.my .first .points view,
+.my .first .recomment view {
+  line-height: 30rpx;
+  color: #434343;
+}
+
+.my .first .recomment {
+  position: absolute;
+  right: 190rpx;
+  top: 100rpx;
+  text-align: center;
+}
+
+.my .m_second,
+.my .m_third {
+    margin-top: 5vw;
+}
+
+.my .m_second image,
+.my .m_third image {
+  width: 100%;
+  display: block;
 }

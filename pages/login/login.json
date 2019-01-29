@@ -1,6 +1,3 @@
 {
-  "navigationBarTitleText": "用户注册",
-  "usingComponents": {
-    "i-input": "../../dist/input/index"
-  }
+    "navigationBarTitleText": "用户注册"
 }

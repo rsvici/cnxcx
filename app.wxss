@@ -11,3 +11,18 @@
 view,text,input,image{
   font-size: 22rpx;
 }
+
+.choice .choiceTop form image {
+  height: 32rpx;
+}
+.choice .title .li image {
+  height: 13.40rpx;
+}
+.showOneline{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}

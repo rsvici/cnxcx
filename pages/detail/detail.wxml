@@ -1,0 +1,121 @@
+<!-- detail.wxml -->
+<!-- 电影 -->
+<view class="detail" wx:if="{{showWebType==='movie'}}">
+  <!-- 收藏 -->
+  <view class="shoucang">
+    <view class="nochecked" hidden="{{collectNum}}" bindtap="choiceCollectFun">
+      <image src="http://www.appsun.com.cn/www/fy/changning/imgs/activeinfo/nocheck.png" alt="" mode="widthFix" />
+    </view>
+    <view class="checked" hidden="{{!collectNum}}" bindtap="choiceCollectFun">
+      <image src="http://www.appsun.com.cn/www/fy/changning/imgs/activeinfo/checked.png" alt="" mode="widthFix" />
+    </view>
+  </view>
+  <!-- 第一部分顶部 -->
+  <view class="first">
+    <view class="first_item">
+      <!-- 封面 -->
+      <view class="left">
+        <image src="{{activeDetail.fengmian}}" alt="" mode="widthFix" />
+      </view>
+      <!-- title,date -->
+      <view class="right">
+        <view class="title showOneline">{{activeDetail.title}}</view>
+        <view class="intro">{{activeDetail.intro}}</view>
+        <view class="datetitle">{{activeDetail.datetitle}}</view>
+        <view class="datetime">{{activeDetail.datetime}}</view>
+      </view>
+    </view>
+    <!-- 购票 -->
+    <view class="payprice">
+      <view class="twotitle">在线购票</view>
+      <view class="paypriceImg">
+        <image class="" src="../../public/imgs/next.png" mode="widthFix" lazy-load="false" binderror="" bindload=""></image>
+      </view>
+    </view>
+  </view>
+  <!-- 第二部分简介 -->
+  <view class="second">
+    <view class="twotitle">{{activeDetail.secondtitle}}</view>
+    <view class="seconddetail">{{activeDetail.seconddetail}}</view>
+  </view>
+  <!-- 第三部分演职人员 -->
+  <view class="third">
+    <view class="twotitle">{{activeDetail.thirdtitle}}</view>
+    <swiper class="space_banner" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}" display-multiple-items="4">
+      <block wx:for="{{activeDetail.thirddetail}}" wx:key="item">
+        <swiper-item>
+          <image src="{{item.imgurl}}" mode="widthFix" />
+          <view class="actorName showOneline">{{item.name}}</view>
+          <view class="actorDesc showOneline">{{item.desc}}</view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <!-- 第四部分 预告片段/剧照 -->
+  <view class="fourth">
+    <view class="twotitle">{{activeDetail.fourthtitle}}</view>
+    <view class="newImgVideo">
+      <view class="newVideoFull">
+        <image src="{{item.imgurl}}"  bindload="imageLoad" wx:for="{{activeDetail.imgvideo}}" style="width:{{item.imgwidth}}rpx; height:{{item.imgheight}}rpx;" data-index="{{index}}" data-src="{{item.imgurl}}"   bindtap="imgYu"/>
+      </view>
+    </view>
+  </view>
+  <!-- 第五部分 媒体资讯 -->
+  <!-- <view class="fifth">
+    <view class="twotitle">媒体资讯</view>
+    <view class="fifthdetail">
+        <view class="fifthdetailitem showOneline"  bindtap="goBusiness"  data-url="https://movie.douban.com/awards/goldenhorse/55/" >
+          第55届台北金马影展 金马奖
+        </view>
+        <view class="fifthdetailitem showOneline" bindtap="goBusiness"  data-url="http://www.appsun.com.cn/www/fy/changning/image/detail/movie/0/fengmian.jpg">
+          第55届台北金马影展 金马奖
+        </view>
+        <view class="fifthdetailitem showOneline">
+          第55届台北金马影展 金马奖
+        </view>
+    </view>
+  </view> -->
+</view>
+<!-- 戏剧 -->
+<view class="detail" wx:if="{{showWebType==='drama'||showWebType==='sport'}}">
+  <!-- 收藏 -->
+  <view class="shoucang">
+    <view class="nochecked" hidden="{{collectNum}}" bindtap="choiceCollectFun">
+      <image src="http://www.appsun.com.cn/www/fy/changning/imgs/activeinfo/nocheck.png" alt="" mode="widthFix" />
+    </view>
+    <view class="checked" hidden="{{!collectNum}}" bindtap="choiceCollectFun">
+      <image src="http://www.appsun.com.cn/www/fy/changning/imgs/activeinfo/checked.png" alt="" mode="widthFix" />
+    </view>
+  </view>
+  <!-- 第一部分顶部 -->
+  <view class="first">
+    <view class="first_item">
+      <!-- 封面 -->
+      <view class="left">
+        <image wx:if="{{showWebType==='drama'}}" src="{{activeDetail.fengmian}}" alt="" mode="widthFix" />
+        <image wx:if="{{showWebType==='sport'}}" src="{{activeDetail.fengmian}}" alt="" mode="aspectFill" />
+      </view>
+      <!-- title,date -->
+      <view class="right">
+        <view class="title showOneline">{{activeDetail.title}}</view>
+        <view class="intro">{{activeDetail.intro}}</view>
+        <view class="datetitle">{{activeDetail.datetitle}}</view>
+        <view class="datetime">{{activeDetail.datetime}}</view>
+      </view>
+    </view>
+    <!-- 购票 -->
+    <view class="payprice">
+      <view class="twotitle">在线购票</view>
+      <view class="paypriceImg">
+        <image class="" src="../../public/imgs/next.png" mode="widthFix" lazy-load="false" binderror="" bindload=""></image>
+      </view>
+    </view>
+  </view>
+  <!-- 第二部分简介 -->
+  <view class="second">
+    <view class="twotitle">{{activeDetail.secondtitle}}</view>
+    <view class="seconddetail">
+      <image class="" src="{{item}}" mode="widthFix" lazy-load="false" binderror="" bindload="" wx:for="{{activeDetail.seconddetail}}"></image>
+    </view>
+  </view>
+</view>

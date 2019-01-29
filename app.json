@@ -1,11 +1,16 @@
 {
   "pages": [
+    "pages/login/login",
     "pages/index/index",
-    "pages/active/active",
-    "pages/webview/webview",
     "pages/bindphone/bindphone",
-    "pages/map/map",
+    "pages/collect/collect",
+    "pages/active/active",
     "pages/my/my",
+    "pages/drama/drama",
+    "pages/movie/movie",
+    "pages/detail/detail",
+    "pages/webview/webview",
+    "pages/map/map",
     "pages/logs/logs"
   ],
   "window": {
@@ -16,20 +21,27 @@
   },
   "tabBar": {
     "color": "#575757",
-    "backgroundColor": "#000000",
-    "selectedColor": "#ffffff",
-    "borderStyle": "white",
+    "backgroundColor": "#fff",
+    "selectedColor": "#000",
+    "borderStyle": "#f5f5f5",
     "list": [{
+        "iconPath": "public/imgs/map0.png",
+        "selectedIconPath": "public/imgs/map1.png",
         "pagePath": "pages/map/map",
         "text": "地图"
       }, {
+        "iconPath": "public/imgs/lehuo.png",
+        "selectedIconPath": "public/imgs/lehuo1.png",
         "pagePath": "pages/index/index",
         "text": "乐活"
       },
       {
+        "iconPath": "public/imgs/my.png",
+        "selectedIconPath": "public/imgs/my1.png",
         "pagePath": "pages/my/my",
         "text": "我的"
       }
     ]
-  }
+  },
+  "navigateToMiniProgramAppIdList": ["wxc7a6875e40c89517"]
 }

@@ -1,0 +1,200 @@
+/**detail.wxss**/
+.detail {
+  width: 750rpx;
+  min-height: 100vh;
+  background-color: #F9FEFF;
+  padding-bottom: 4vw;
+  font-size: 22rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+/* 收藏 */
+.detail .shoucang {
+  position: absolute;
+  top:4vw;
+  right: 3vw;
+  width: 10vw;
+  z-index: 10;
+}
+.detail .shoucang image{
+  width: 8vw;
+}
+
+/* 第一部分 */
+.detail .first {
+  height: 360rpx;
+  width: 100%;
+  border-bottom: 1px solid #E8EDEF;
+  overflow: hidden;
+}
+
+/* 封面 */
+.detail .first .left {
+  width: 26%;
+  float: left;
+}
+
+.detail .first .left image {
+  width: 100%;
+  box-shadow: 8rpx 10rpx 15rpx #aaa;
+  border-radius: 10rpx;
+  max-height: 280rpx;
+}
+
+/* title,date  */
+.detail .first .right {
+  width: 70%;
+  float: left;
+  margin-left: 4%;
+}
+
+.detail .first .first_item {
+  height: 290rpx;
+}
+
+.detail .first .right .title {
+  font-size: 30rpx;
+  font-weight: 700;
+  line-height: 60rpx;
+  width: 84%;
+}
+
+.detail .first .right .intro {
+  line-height: 35rpx;
+  width: 90%;
+  margin: 30rpx 0;
+}
+
+.detail .first .right .datetitle {
+  line-height: 80rpx;
+  font-weight: 700;
+  font-size: 25rpx;
+}
+
+.detail .first .right .datetime {
+  line-height: 40rpx;
+  font-size: 24rpx;
+}
+
+/* 二级标题 */
+.twotitle {
+  height: 70rpx;
+  line-height: 65rpx;
+  font-size: 27rpx;
+  font-weight: 700;
+}
+
+/* 购票 */
+.detail .first .payprice {
+  width: 100%;
+  height: 75rpx;
+  position: relative;
+}
+
+.detail .first .payprice .paypriceImg {
+  position: absolute;
+  bottom: 0rpx;
+  right: 20rpx;
+  height: 70rpx;
+  line-height: 65rpx;
+}
+
+.detail .first .payprice .paypriceImg image {
+  width: 18rpx;
+}
+
+/* 第二部分简介 */
+/* 第二部分简介 */
+/* 第二部分简介 */
+.detail .second,
+.detail .third,
+.detail .fourth {
+  padding-bottom: 30rpx;
+  border-bottom: 1px solid #E8EDEF;
+}
+
+.second .seconddetail {
+  line-height: 35rpx;
+  letter-spacing: 2rpx;
+}
+.second .seconddetail image{
+  width: 100%;
+  display:block;
+
+}
+
+/* 第三部分演职人员 */
+/* 第三部分演职人员 */
+/* 第三部分演职人员 */
+.third .space_banner {
+  width: 100%;
+  height: 310rpx;
+}
+
+.third .space_banner swiper-item {
+  padding: 10rpx;
+  text-align: right;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.third .space_banner image {
+  width: 100%;
+  border-radius: 10rpx;
+}
+
+.third .space_banner .actorName {
+  text-align: left;
+  line-height: 40rpx;
+  position: absolute;
+  bottom: 33rpx;
+}
+
+.third .space_banner .actorDesc {
+  text-align: left;
+  line-height: 30rpx;
+  height: 30rpx;
+  overflow: hidden;
+  color: #7A7E7F;
+  position: absolute;
+  bottom: 2rpx;
+}
+
+/* 第四部分 预告片段/剧照 */
+/* 第四部分 预告片段/剧照 */
+/* 第四部分 预告片段/剧照 */
+/* 第四部分 预告片段/剧照 */
+.detail .fourth {
+  height: 370rpx;
+  width: 100%;
+}
+
+.detail .fourth .newImgVideo {
+  width: 100%;
+  overflow-y: auto;
+}
+
+.detail .fourth .newImgVideo .newVideoFull {
+  white-space: nowrap
+}
+
+.detail .fourth .newImgVideo .newVideoFull image {
+  height: 300rpx;
+}
+
+/* 第五部分 */
+.detail .fifth {
+  width: 102%;
+  margin: 0 -1%;
+  box-shadow: 0rpx 0rpx 15rpx #aaa;
+  border-radius: 5rpx;
+  padding: 1%;
+  box-sizing: border-box;
+}
+
+.detail .fifth .showOneline {
+  border-top: 1px solid #E8EDEF;
+  color: #4A83BE;
+  line-height: 70rpx;
+  text-decoration-line: underline;
+}

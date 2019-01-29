@@ -1,13 +1,44 @@
-<!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
+<!-- my.wxml -->
+<scroll-view scroll-y="true" class="my">
+  <view class="mybg">
+    <image src="../../public/imgs/mybg.jpg"></image>
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+  <!-- 签到 -->
+  <viwe class="sign">
+    <image  src="../../public/imgs/indexsign.png" mode="widthFix" >
+    </image>
+  </viwe>
+  <view class="first">
+    <view class="pic">
+      <open-data type="userAvatarUrl"></open-data>
+    </view>
+    <view class="name">
+      <open-data type="userNickName"></open-data>
+    </view>
+    <view class="points">
+      <view>积分</view>
+      <view>0</view>
+    </view>
+    <view class="recomment">
+      <view>收藏</view>
+      <view>0个</view>
+    </view>
   </view>
-</view>
+  <view class="m_second">
+    <image src="../../public/imgs/index1_1.png" alt="" mode="widthFix" bindtap="redeem" />
+    <image src="../../public/imgs/index1_2.png" alt="" mode="widthFix" bindtap="collect" />
+    <image src="../../public/imgs/index1_3.png" alt="" mode="widthFix" bindtap="goSign" />
+  </view>
+  <view class="m_third">
+    <image src="../../public/imgs/index2_1.png" alt="" mode="widthFix" bindtap="setting" />
+    <image src="../../public/imgs/index2_2.png" alt="" mode="widthFix" bindtap="bindphone" />
+  </view>
+  <view class="signBox" wx:if="{{SignBoxIsShow}}">
+    <view class="signBoxWord">
+      <image src="../../public/imgs/index3.png" alt="" width="100%" />
+      <view class="signBoxBtn" bindtap="colseSignBox">
+        <image src="../../public/imgs/index4.png" alt="" width="100%" />
+      </view>
+    </view>
+  </view>
+</scroll-view>
