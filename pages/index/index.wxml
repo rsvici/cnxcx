@@ -96,7 +96,7 @@
         </swiper-item>
       </block>
     </swiper>
-    <view class="more" bindtap="goTeachList">
+    <view class="more" bindtap="goActiveList">
       <image src="http://www.appsun.com.cn/www/fy/changning/imgs/lehuo/more.png" alt="" mode="widthFix" />
     </view>
   </view>
@@ -109,9 +109,9 @@
         </swiper-item>
       </block>
     </swiper>
-    <view class="more" bindtap="goSportList">
+    <!-- <view class="more" bindtap="goSportList">
       <image src="http://www.appsun.com.cn/www/fy/changning/imgs/lehuo/more.png" alt="" mode="widthFix" />
-    </view>
+    </view> -->
   </view>
   <!-- /* 列表 */
 /* 列表 */

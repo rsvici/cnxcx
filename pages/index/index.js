@@ -145,6 +145,29 @@ Page({
   goTypeList(event) { //去类型列表
     console.log('类型列表:');
     console.log(event.currentTarget.dataset.navindex);
+    let navindex=event.currentTarget.dataset.navindex;
+    switch(navindex){
+      case '8':
+      wx.navigateTo({
+        url: `../movie/movie`
+      })
+      break;
+      case '3':
+      wx.navigateTo({
+        url: `../drama/drama`
+      })
+      break;
+      case '12':
+      wx.navigateTo({
+        url: `../drama/drama`
+      })
+      break;
+      default :
+      wx.navigateTo({
+        url: `../active/active`
+      })
+    }
+
   },
   shoiceNavBol() { //关闭打开nav
     let navBol = this.data.navBol;
@@ -185,12 +208,12 @@ Page({
   // 跳转webview	
   goBusiness() {
     wx.navigateTo({
-      url: `../webview/webview?type=hotbusiness`
+      url: `../webview/webview?url=https://www.appsun.com.cn/www/fy/changning/#/hotbusiness`
     })
   },
   goMap() {
     wx.navigateTo({
-      url: `../webview/webview?type=map`
+      url: `../webview/webview?url=https://www.appsun.com.cn/www/fy/changning/map/index.html`
     })
   },
   // 去详情页面

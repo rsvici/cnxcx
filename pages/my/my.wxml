@@ -4,7 +4,7 @@
     <image src="../../public/imgs/mybg.jpg"></image>
   </view>
   <!-- 签到 -->
-  <viwe class="sign">
+  <viwe class="sign" bindtap="goSign">
     <image  src="../../public/imgs/indexsign.png" mode="widthFix" >
     </image>
   </viwe>
@@ -27,7 +27,7 @@
   <view class="m_second">
     <image src="../../public/imgs/index1_1.png" alt="" mode="widthFix" bindtap="redeem" />
     <image src="../../public/imgs/index1_2.png" alt="" mode="widthFix" bindtap="collect" />
-    <image src="../../public/imgs/index1_3.png" alt="" mode="widthFix" bindtap="goSign" />
+    <image src="../../public/imgs/index1_3.png" alt="" mode="widthFix" bindtap="goNews" />
   </view>
   <view class="m_third">
     <image src="../../public/imgs/index2_1.png" alt="" mode="widthFix" bindtap="setting" />

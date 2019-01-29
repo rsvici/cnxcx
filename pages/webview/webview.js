@@ -11,26 +11,20 @@ Page({
     },
 
     onLoad: function (options) {
+        var that=this;
+        wx.getLocation({
+            type: 'wgs84',
+            success(res) {
+                const south = res.latitude;
+                const west = res.longitude;
+                let url = `${options.url}?south=${south}&west=${west}`
+                console.log(url);
 
-        console.log(options);
-        let url = 'https://www.appsun.com.cn/www/fy/changning'
-        switch (options.type) {
-            case 'map':
-                url = `${url}/map/?v=${Math.random()}`
-                break;
-            case 'hotbusiness':
-                url = `${url}/#/hotbusiness?v=${Math.random()}`
-                break;
-            case 'url':
-                url = options.url
-                break;
-            default:
-                url = `${url}/map/?v=${Math.random()}`
-        }
-
-        this.setData({
-            url
-        });
+                that.setData({
+                    url
+                });
+            }
+        })
 
     }
 });

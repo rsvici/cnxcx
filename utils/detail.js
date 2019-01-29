@@ -394,7 +394,16 @@ var detail = {
           imgurl: 'http://www.appsun.com.cn/www/fy/changning/image/detail/movie/6/0.jpg',
           name: '王巍',
           desc: '导演'
-        }
+        },
+        {
+          
+        },
+        {
+          
+        },
+        {
+          
+        },
       ],
       imgvideo: [{
         imgurl: 'http://www.appsun.com.cn/www/fy/changning/image/detail/movie/6/j0.jpg',
@@ -1312,21 +1321,20 @@ var detail = {
 
 
   ],
-  drama: [{
-      title: '窗前不止明月光',
-      fengmian: 'http://www.appsun.com.cn/www/fy/changning/image/detail/drama/0.jpg',
-      intro: '时间：2019.03.29起',
-      datetime: '上海虹桥艺术中心',
-      secondtitle: '活动详情',
-      seconddetail: [
-        'http://www.appsun.com.cn/www/fy/changning/image/detail/drama/d0_01.png',
-        'http://www.appsun.com.cn/www/fy/changning/image/detail/drama/d0_02.png',
-        'http://www.appsun.com.cn/www/fy/changning/image/detail/drama/d0_03.png',
-        'http://www.appsun.com.cn/www/fy/changning/image/detail/drama/d0_04.png',
-        'http://www.appsun.com.cn/www/fy/changning/image/detail/drama/d0_05.png',
-        'http://www.appsun.com.cn/www/fy/changning/image/detail/drama/d0_06.png',
-      ]
-    }, {
+  drama: [ {
+    title: '致爱丽丝',
+    fengmian: 'http://www.appsun.com.cn/www/fy/changning/image/detail/drama/11.jpg',
+    intro: '时间：2019.03.09',
+    datetime: '上海虹桥艺术中心',
+    secondtitle: '活动详情',
+    seconddetail: [
+      'http://www.appsun.com.cn/www/fy/changning/image/detail/drama/d11_01.png',
+      'http://www.appsun.com.cn/www/fy/changning/image/detail/drama/d11_02.png',
+      'http://www.appsun.com.cn/www/fy/changning/image/detail/drama/d11_03.png',
+      'http://www.appsun.com.cn/www/fy/changning/image/detail/drama/d11_04.png',
+      'http://www.appsun.com.cn/www/fy/changning/image/detail/drama/d11_05.png',
+    ]
+  },{
       title: '大清相国',
       fengmian: 'http://www.appsun.com.cn/www/fy/changning/image/detail/drama/1.jpg',
       intro: '时间：2019.03.23起',
@@ -1484,82 +1492,76 @@ var detail = {
         'http://www.appsun.com.cn/www/fy/changning/image/detail/drama/d10_10.png',
 
       ]
-    }, {
-      title: '致爱丽丝',
-      fengmian: 'http://www.appsun.com.cn/www/fy/changning/image/detail/drama/11.jpg',
-      intro: '时间：2019.03.09',
+    }, 
+    {
+      title: '窗前不止明月光',
+      fengmian: 'http://www.appsun.com.cn/www/fy/changning/image/detail/drama/0.jpg',
+      intro: '时间：2019.03.29起',
       datetime: '上海虹桥艺术中心',
       secondtitle: '活动详情',
       seconddetail: [
-        'http://www.appsun.com.cn/www/fy/changning/image/detail/drama/d11_01.png',
-        'http://www.appsun.com.cn/www/fy/changning/image/detail/drama/d11_02.png',
-        'http://www.appsun.com.cn/www/fy/changning/image/detail/drama/d11_03.png',
-        'http://www.appsun.com.cn/www/fy/changning/image/detail/drama/d11_04.png',
-        'http://www.appsun.com.cn/www/fy/changning/image/detail/drama/d11_05.png',
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/drama/d0_01.png',
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/drama/d0_02.png',
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/drama/d0_03.png',
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/drama/d0_04.png',
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/drama/d0_05.png',
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/drama/d0_06.png',
       ]
     },
-
 
   ],
 
 
   sport: [{
-    title: 'YEJO - 野地骑乘 马背欢愉 - 苏州野骑',
-    fengmian: 'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/0/fengmian.jpg',
-    intro: '时间：03月23日 周六 08:00-16:30',
-    datetime: '上海 长宁区 中山公园地铁站 集合 （报名后将有具体活动通知邮件）',
-    secondtitle: '活动详情',
-    seconddetail: [
-      'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/0_01.png',
-      'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/0_02.png',
-      'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/0_03.png',
-      'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/0_04.png',
-      'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/0_05.png',
-    ]
-  }, {
-    title: '骑行最美林荫道‘百里钱塘’，看大海和沙滩（1天活动）',
-    fengmian: 'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/1/fengmian.jpg',
-    intro: '时间：2019年01月22日 ~ 2019年04月18日 每天 08:00 - 19:30',
-    datetime: '上海 长宁区 虹桥路地铁站',
-    secondtitle: '活动详情',
-    seconddetail: [
-      'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/1_01.png',
-      'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/1_02.png',
-      'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/1_03.png',
-      'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/1_04.png',
-      'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/1_05.png',
-      'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/1_06.png',
-      'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/1_07.png',
-      'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/1_08.png',
-      'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/1_09.png',
-    ]
-  }, {
-    title: '徒步莫干山，赏漫山竹海，走幽深蒋公道（1天活动）',
-    fengmian: 'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/2/fengmian.jpg',
-    intro: '时间：2019年01月16日 ~ 2019年04月15日 每天 07:30 - 20:00',
-    datetime: '上海 长宁区 虹桥路地铁站',
-    secondtitle: '活动详情',
-    seconddetail: [
-      'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/2_01.png',
-      'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/2_02.png',
-      'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/2_03.png',
-      'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/2_04.png',
+      seconddetail: [
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/0/1.jpg',
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/0/2.jpg',
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/0/3.jpg',
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/0/4.jpg',
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/0/5.jpg',
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/0/6.jpg',
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/0/7.jpg',
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/0/8.jpg',
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/0/9.jpg',
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/0/10.jpg',
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/0/11.jpg',
+      ]
+    }, {
+      seconddetail: [
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/1/1.jpg',
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/1/2.jpg',
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/1/3.jpg',
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/1/4.jpg',
+      ]
+    }, {
+      seconddetail: [
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/1/1.jpg',
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/1/2.jpg',
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/1/3.jpg',
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/1/4.jpg',
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/1/5.jpg',
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/1/6.jpg',
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/1/7.jpg',
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/1/8.jpg',
+      ]
+    }, {
+      seconddetail: [
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/3/1.jpg',
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/3/2.jpg',
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/3/3.jpg',
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/3/4.jpg',
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/3/5.jpg',
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/3/6.jpg',
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/3/7.jpg',
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/3/8.jpg',
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/3/9.jpg',
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/3/10.jpg',
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/3/11.jpg',
+      ]
+    }
 
-    ]
-  }, {
-    title: '相约人间仙境神仙居，探访仙人居住的地方（2天）',
-    fengmian: 'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/3/fengmian.jpg',
-    intro: '时间：2019年01月25日 ~ 2019年04月24日 每天 07:30 - 20:30',
-    datetime: '上海 长宁区 虹桥路地铁站',
-    secondtitle: '活动详情',
-    seconddetail: [
-      'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/3_01.png',
-      'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/3_02.png',
-      'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/3_03.png',
-      'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/3_04.png',
-      'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/3_05.png',
-    ]
-  }]
+
+  ]
 
 }
 
