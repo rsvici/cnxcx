@@ -9,6 +9,8 @@ Page({
         entmobileBol: false, //确定按钮的显示颜色
         tel: '手机号', //手机号
         isUpd: false, //是否是修改
+        isNoGetCode: false,
+        isNoPostUserInfo: false,
     },
     telInput: function (e) {
         this.setData({
@@ -31,10 +33,16 @@ Page({
     },
     // 获取验证码
     postMobileNo: function () {
-
+      
         if (this.data.tel.legth < 11 || (!this.data.tel)) {
             return;
         }
+        if (this.data.isNoGetCode) {
+            return;
+        }
+        this.setData({
+            isNoGetCode: true
+        })
         if (this.data.telBtn == '请重新获取' || this.data.telBtn == '获取验证码') {
             var that = this;
             var postUrl = `login/sendCode?phone=${this.data.tel}`;
@@ -74,7 +82,8 @@ Page({
                 clearInterval(interval);
                 that.setData({
                     currentTime: 60,
-                    telBtn: '请重新获取'
+                    telBtn: '请重新获取',
+                    isNoGetCode: true
                 });
             }
         }, 1000);
@@ -84,6 +93,13 @@ Page({
         var that = this;
         var rightMobileNo = this.data.rightMobileNo;
         if (code == rightMobileNo && code.length == 6) {
+            if (this.data.isNoPostUserInfo) {
+                return;
+            }
+            this.setData({
+                isNoPostUserInfo: true
+            })
+
             if (this.data.isUpd) {
                 var postUrl = `login/update`;
                 var postData = {
@@ -133,7 +149,16 @@ Page({
                         console.log(error);
                     });
             }
-        } else {}
+        } else {
+            wx.showToast({
+                title: '请输入正确的验证码',
+                icon:'none',
+                duration: 1500,
+                complete: function () {
+                  
+                }
+            })
+        }
     },
     onLoad: function (option) {
         if (option.type === 'upd') {

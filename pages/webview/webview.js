@@ -11,17 +11,25 @@ Page({
     },
 
     onLoad: function (options) {
-        var that=this;
+        console.log(options);
+        var that = this;
         wx.getLocation({
             type: 'wgs84',
             success(res) {
                 const south = res.latitude;
                 const west = res.longitude;
                 let url = `${options.url}?south=${south}&west=${west}`
+                if (options.endsouth) {
+                    url = `${url}&endsouth=${options.endsouth}&endwest=${options.endwest}`
+                }
                 console.log(url);
-
                 that.setData({
                     url
+                });
+            },
+            fail() {
+                that.setData({
+                    url: options.url
                 });
             }
         })

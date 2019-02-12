@@ -26,3 +26,12 @@ view,text,input,image{
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 1;
 }
+.choice .title,.choicelist .title{
+  display: none!important;
+}
+.active .choice{
+  height: 72rpx;
+}
+.active .Alist{
+  top: 70rpx;
+}

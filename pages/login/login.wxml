@@ -8,9 +8,9 @@
         </view>
     </view>
     <view class="bindphone_tel">
-        <picker class="tel_input bindInput" mode="date" value="{{brith}}" start="1900-01-01" end="2020-09-01" bindchange="bindDateChange">
-            <view class="picker" hidden="{{!brith}}">{{brith}}</view>
-            <view class="picker nopicker" hidden="{{brith}}">生日</view>
+        <picker class="tel_input bindInput" mode="date" value="{{birthday}}" start="1900-01-01" end="2020-09-01" bindchange="bindDateChange">
+            <view class="picker" hidden="{{!birthday}}">{{birthday}}</view>
+            <view class="picker nopicker" hidden="{{birthday}}">生日</view>
         </picker>
     </view>
     <view class="bindphone_tel">

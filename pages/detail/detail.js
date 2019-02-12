@@ -22,16 +22,16 @@ Page({
       collectNum
     })
   },
-  goBusiness(e) {
-    wx.navigateToMiniProgram({
-      appId: 'wxc7a6875e40c89517',
-      path: '',
-      envVersion: 'develop',
-      success(res) {
-        // 打开成功
-      }
-    })
-  },
+  // goBusiness(e) {
+  //   wx.navigateToMiniProgram({
+  //     appId: 'wxc7a6875e40c89517',
+  //     path: '',
+  //     envVersion: 'develop',
+  //     success(res) {
+  //       // 打开成功
+  //     }
+  //   })
+  // },
   imageLoad: function (e) {
     var activeDetail = this.data.activeDetail,
       ImgVideonum = e.currentTarget.dataset.index;
@@ -64,14 +64,20 @@ Page({
     })
       
   },
-
-  onPageScroll: function (e) {
+  gomap(e){
+    var position=e.currentTarget.dataset.position
+    wx.navigateTo({
+      url: `../webview/webview?url=https://www.appsun.com.cn/www/fy/changning/map/index.html&endsouth=${position[1]}&endwest=${position[0]}`
+    })
+  },
+  onPageScroll (e) {
     console.log(e);
   },
   onLoad(option) {
     var type = option.type,
       index = option.index
-
+      // var type = 'movie',
+      // index = 1
     this.setData({
       activeDetail: activeDetail.detail[type][index],
       showWebType: type

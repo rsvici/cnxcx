@@ -26,7 +26,7 @@
 }
 
 .choice .choiceTop .busi image,
-.choice .choiceTop .map image{
+.choice .choiceTop .map image {
   width: 50rpx;
 }
 
@@ -80,7 +80,7 @@
   top: 75rpx;
   width: 750rpx;
   background-color: #f1f1f1;
-  padding-bottom: 4vw;
+  padding-bottom: 1vw;
 }
 
 .lehuo swiper {
@@ -208,7 +208,7 @@
 /* 列表 */
 .choicelistAll {
   position: relative;
-  margin-top: 4vw;
+  /* margin-top: 4vw; */
 }
 
 .choicelist .title {
@@ -267,7 +267,8 @@
 /* 活动列表 */
 .Alist {
   position: absolute;
-  top: 60rpx;
+  /* top: 60rpx; */
+  top: 37rpx;
   width: 100%;
   background-color: #fff;
 }
@@ -295,7 +296,7 @@
 
 .Alist .Aitem .right {
   margin-left: 3%;
-  padding-top:20rpx;
+  padding-top: 20rpx;
   float: left;
   width: 70%;
 }
@@ -351,7 +352,7 @@
 .Alist .Aitem .right .Rright view {
   width: 100%;
   overflow: hidden;
-  height:50rpx;
+  height: 50rpx;
 }
 
 .Alist .Aitem .right .Rright view text {
@@ -361,4 +362,60 @@
 
 .Alist .Aitem .right .Rright .itemword2 {
   height: 60rpx;
+}
+
+
+.lehuo .home image{
+  width: 695rpx;
+}
+.home .swiper-item{
+  border-radius: 6px;
+  width: 695rpx;
+  overflow: hidden;
+}
+.home .le-img {
+  width: 100%;
+  display: block;
+  transform: scale(0.8);
+  transition: all 0.3s ease;
+  border-radius: 6px;
+}
+
+.home .le-img.le-active {
+  transform: scale(1);
+}
+
+/* 为你推荐 */
+.recommend{
+  margin-top: 4vw;
+  height: 180rpx;
+  background-color: #fff;
+ 
+}
+.recommend .firstImg{
+  height: 100rpx;
+  overflow: hidden;
+}
+.recommend .firstImg image{
+  width: 750rpx;
+}
+.recommend .secondUl{
+  width: 100%;
+  overflow-x: auto;
+}
+.recommend .secondUl .secondlist{
+  width: 750rpx;
+  white-space : normal nowrap 
+}
+.recommend .secondUl view{
+  width:25%;
+  float: left;
+  height:80rpx;
+  line-height: 80rpx;
+  font-size: 25rpx;
+  text-align: center;
+}
+.recommend .secondUl view.active{
+  font-size: 28rpx;
+  font-weight: 700;
 }

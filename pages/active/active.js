@@ -8,6 +8,7 @@ Page({
     navTypeBol: true,
     navTypeList: [],
     movieList:[],
+    sportList:[],
   },
   openType() {
     let navTypeBol = !this.data.navTypeBol;
@@ -32,10 +33,18 @@ Page({
 
   onLoad(option){
     console.log(option)
-    this.setData({
-      navTypeList:Detail.detail.drama,
-      movieList:Detail.detail.movie
-    })
+    if(option.type==='sport'){
+      this.setData({
+        sportList:Detail.detail.sport,
+      })
+    }else{
+      this.setData({
+        navTypeList:Detail.detail.drama,
+        movieList:Detail.detail.movie,
+        sportList:Detail.detail.sport,
+      })
+    }
+    
   }
 
 

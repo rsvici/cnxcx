@@ -12,25 +12,26 @@ Page({
 
     onLoad: function (options) {
 
-        console.log(options);
-        let url = 'https://www.appsun.com.cn/www/fy/changning'
-        switch (options.type) {
-            case 'map':
+        var that=this;
+        wx.getLocation({
+            type: 'wgs84',
+            success(res) {
+                let south = res.latitude;
+                let west = res.longitude;
+                let url = 'https://www.appsun.com.cn/www/fy/changning'
+                url = `${url}/map/?south=${south}&west=${west}&v=${Math.random()}`
+                that.setData({
+                    url
+                });
+            },
+            fail(){
+                let url = 'https://www.appsun.com.cn/www/fy/changning'
                 url = `${url}/map/?v=${Math.random()}`
-                break;
-            case 'hotbusiness':
-                url = `${url}/#/hotbusiness?v=${Math.random()}`
-                break;
-            case 'url':
-                url = options.url
-                break;
-            default:
-                url = `${url}/map/?v=${Math.random()}`
-        }
-
-        this.setData({
-            url
-        });
-
+                that.setData({
+                    url
+                });
+            }
+        })
+        
     }
 });

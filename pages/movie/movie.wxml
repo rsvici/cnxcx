@@ -51,7 +51,7 @@
   <view class="Alist">
     <view class="Aitem" wx:for="{{navTypeList}}" bindtap="goActiveInfo" data-index="{{index}}">
       <view class="Aimage">
-        <image src="{{item.fengmian}}" mode="aspectFill"></image>
+        <image src="{{item.fengmian}}" mode="widthFix"></image>
       </view>
       <view class="name showOneline">{{item.title}}</view>
       <view class="time showOneline">{{item.datetime}}</view>

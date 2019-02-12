@@ -1,4 +1,60 @@
 var detail = {
+  active: [{
+      title: '西施',
+      fengmian: 'http://www.appsun.com.cn/www/fy/changning/image/detail/active/0/fengmian.png',
+      intro: '2019.04.03-04.04',
+      datetime: '上海国际舞蹈中心',
+      position: [121.394363, 31.19928],
+      secondtitle: '活动详情',
+      seconddetail: [
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/active/0/1.png',
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/active/0/2.png',
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/active/0/3.png',
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/active/0/4.png',
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/active/0/5.png',
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/active/0/6.png',
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/active/0/7.png'
+      ]
+    },
+    {
+      title: '舌尖上的中国味',
+      fengmian: 'http://www.appsun.com.cn/www/fy/changning/image/detail/active/1/fengmian.png',
+      intro: '2019.01.29-02.04',
+      datetime: '长宁来福士广场',
+      position: [121.41456, 31.216612],
+      secondtitle: '活动详情',
+      seconddetail: [
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/active/1/1.png',
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/active/1/2.png',
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/active/1/3.png',
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/active/1/4.png',
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/active/1/5.png',
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/active/1/6.png',
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/active/1/7.png',
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/active/1/8.png',
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/active/1/9.png',
+      ]
+    },
+    {
+      title: '黄金时代',
+      fengmian: 'http://www.appsun.com.cn/www/fy/changning/image/detail/active/2/fengmian.png',
+      intro: '2019.02.01-02.27',
+      datetime: '刘海粟美术馆',
+      position: [121.419218, 31.209644],
+      secondtitle: '活动详情',
+      seconddetail: [
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/active/2/1.png',
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/active/2/2.png',
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/active/2/3.png',
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/active/2/4.png',
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/active/2/5.png',
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/active/2/6.png',
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/active/2/7.png',
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/active/2/8.png',
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/active/2/9.png',
+      ]
+    },
+  ],
   movie: [
     // “大”人物
     {
@@ -396,13 +452,13 @@ var detail = {
           desc: '导演'
         },
         {
-          
+
         },
         {
-          
+
         },
         {
-          
+
         },
       ],
       imgvideo: [{
@@ -493,7 +549,7 @@ var detail = {
     // 
     {
       title: '奎迪：英雄再起',
-      fengmian: 'http://www.appsun.com.cn/www/fy/changning/image/detail/movie/8/fengmian.jpg',
+      fengmian: 'http://www.appsun.com.cn/www/fy/changning/image/detail/movie/8/fengmian2.jpg',
       intro: '美国 / 剧情 运动 / 片长：130分钟',
       datetitle: '上映日期',
       datetime: '2019.01.04（已上线）',
@@ -827,6 +883,9 @@ var detail = {
           name: '李桂贤',
           desc: '自己'
         },
+        {
+
+        }
       ],
       imgvideo: [{
         imgurl: 'http://www.appsun.com.cn/www/fy/changning/image/detail/movie/13/j0.jpg',
@@ -1321,24 +1380,26 @@ var detail = {
 
 
   ],
-  drama: [ {
-    title: '致爱丽丝',
-    fengmian: 'http://www.appsun.com.cn/www/fy/changning/image/detail/drama/11.jpg',
-    intro: '时间：2019.03.09',
-    datetime: '上海虹桥艺术中心',
-    secondtitle: '活动详情',
-    seconddetail: [
-      'http://www.appsun.com.cn/www/fy/changning/image/detail/drama/d11_01.png',
-      'http://www.appsun.com.cn/www/fy/changning/image/detail/drama/d11_02.png',
-      'http://www.appsun.com.cn/www/fy/changning/image/detail/drama/d11_03.png',
-      'http://www.appsun.com.cn/www/fy/changning/image/detail/drama/d11_04.png',
-      'http://www.appsun.com.cn/www/fy/changning/image/detail/drama/d11_05.png',
-    ]
-  },{
+  drama: [{
+      title: '致爱丽丝',
+      fengmian: 'http://www.appsun.com.cn/www/fy/changning/image/detail/drama/11.jpg',
+      intro: '2019.03.09',
+      datetime: '上海虹桥艺术中心',
+      position: [121.40396, 31.211692],
+      secondtitle: '活动详情',
+      seconddetail: [
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/drama/d11_01.png',
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/drama/d11_02.png',
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/drama/d11_03.png',
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/drama/d11_04.png',
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/drama/d11_05.png',
+      ]
+    }, {
       title: '大清相国',
       fengmian: 'http://www.appsun.com.cn/www/fy/changning/image/detail/drama/1.jpg',
-      intro: '时间：2019.03.23起',
+      intro: '2019.03.23起',
       datetime: '上海虹桥艺术中心',
+      position: [121.40396, 31.211692],
       secondtitle: '活动详情',
       seconddetail: [
         'http://www.appsun.com.cn/www/fy/changning/image/detail/drama/d1_01.png',
@@ -1352,8 +1413,9 @@ var detail = {
     }, {
       title: '集色-出神入画',
       fengmian: 'http://www.appsun.com.cn/www/fy/changning/image/detail/drama/2.jpg',
-      intro: '时间：2019.02.23',
+      intro: '2019.02.23',
       datetime: '上海虹桥艺术中心',
+      position: [121.40396, 31.211692],
       secondtitle: '活动详情',
       seconddetail: [
         'http://www.appsun.com.cn/www/fy/changning/image/detail/drama/d2_01.png',
@@ -1366,8 +1428,9 @@ var detail = {
     }, {
       title: '漫长的告白',
       fengmian: 'http://www.appsun.com.cn/www/fy/changning/image/detail/drama/3.jpg',
-      intro: '时间：2019.05.02起',
+      intro: '2019.05.02起',
       datetime: '上海虹桥艺术中心',
+      position: [121.40396, 31.211692],
       secondtitle: '活动详情',
       seconddetail: [
         'http://www.appsun.com.cn/www/fy/changning/image/detail/drama/d3_01.png',
@@ -1376,8 +1439,9 @@ var detail = {
     }, {
       title: '你是演奏家',
       fengmian: 'http://www.appsun.com.cn/www/fy/changning/image/detail/drama/4.jpg',
-      intro: '时间：2019.01.26',
+      intro: '2019.01.26',
       datetime: '上海虹桥艺术中心',
+      position: [121.40396, 31.211692],
       secondtitle: '活动详情',
       seconddetail: [
         'http://www.appsun.com.cn/www/fy/changning/image/detail/drama/d4_01.png',
@@ -1399,8 +1463,9 @@ var detail = {
     }, {
       title: '三只小猪',
       fengmian: 'http://www.appsun.com.cn/www/fy/changning/image/detail/drama/5.jpg',
-      intro: '时间：2019.02.23起',
+      intro: '2019.02.23起',
       datetime: '上海虹桥艺术中心',
+      position: [121.40396, 31.211692],
       secondtitle: '活动详情',
       seconddetail: [
         'http://www.appsun.com.cn/www/fy/changning/image/detail/drama/d5_01.png',
@@ -1415,8 +1480,9 @@ var detail = {
     }, {
       title: '少年迈克之烦恼',
       fengmian: 'http://www.appsun.com.cn/www/fy/changning/image/detail/drama/6.jpg',
-      intro: '时间：2019.03.15',
+      intro: '2019.03.15',
       datetime: '上海虹桥艺术中心',
+      position: [121.40396, 31.211692],
       secondtitle: '活动详情',
       seconddetail: [
         'http://www.appsun.com.cn/www/fy/changning/image/detail/drama/d6_01.png',
@@ -1432,8 +1498,9 @@ var detail = {
     }, {
       title: '天空之城',
       fengmian: 'http://www.appsun.com.cn/www/fy/changning/image/detail/drama/7.jpg',
-      intro: '时间：2019.03.10',
+      intro: '2019.03.10',
       datetime: '上海虹桥艺术中心',
+      position: [121.40396, 31.211692],
       secondtitle: '活动详情',
       seconddetail: [
         'http://www.appsun.com.cn/www/fy/changning/image/detail/drama/d7_01.png',
@@ -1447,8 +1514,10 @@ var detail = {
     }, {
       title: '我叫白小飞',
       fengmian: 'http://www.appsun.com.cn/www/fy/changning/image/detail/drama/8.jpg',
-      intro: '时间：2019.01.09起',
+
+      intro: '2019.01.09起',
       datetime: '上海虹桥艺术中心',
+      position: [121.40396, 31.211692],
       secondtitle: '活动详情',
       seconddetail: [
         'http://www.appsun.com.cn/www/fy/changning/image/detail/drama/d8_01.png',
@@ -1462,8 +1531,9 @@ var detail = {
     }, {
       title: '旋转卡门',
       fengmian: 'http://www.appsun.com.cn/www/fy/changning/image/detail/drama/9.jpg',
-      intro: '时间：2019.02.21起',
+      intro: '2019.02.21起',
       datetime: '上海虹桥艺术中心',
+      position: [121.40396, 31.211692],
       secondtitle: '活动详情',
       seconddetail: [
         'http://www.appsun.com.cn/www/fy/changning/image/detail/drama/d9_01.png',
@@ -1476,8 +1546,9 @@ var detail = {
     }, {
       title: '原野',
       fengmian: 'http://www.appsun.com.cn/www/fy/changning/image/detail/drama/10.jpg',
-      intro: '时间：2019.01.30',
+      intro: '2019.01.30',
       datetime: '上海虹桥艺术中心',
+      position: [121.40396, 31.211692],
       secondtitle: '活动详情',
       seconddetail: [
         'http://www.appsun.com.cn/www/fy/changning/image/detail/drama/d10_01.png',
@@ -1492,12 +1563,13 @@ var detail = {
         'http://www.appsun.com.cn/www/fy/changning/image/detail/drama/d10_10.png',
 
       ]
-    }, 
+    },
     {
       title: '窗前不止明月光',
       fengmian: 'http://www.appsun.com.cn/www/fy/changning/image/detail/drama/0.jpg',
-      intro: '时间：2019.03.29起',
+      intro: '2019.03.29起',
       datetime: '上海虹桥艺术中心',
+      position: [121.40396, 31.211692],
       secondtitle: '活动详情',
       seconddetail: [
         'http://www.appsun.com.cn/www/fy/changning/image/detail/drama/d0_01.png',
@@ -1510,9 +1582,9 @@ var detail = {
     },
 
   ],
-
-
   sport: [{
+      title: '「魔都之最 」—— 参观“艺术博 物馆” ',
+      fengmian: 'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/0.png',
       seconddetail: [
         'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/0/1.jpg',
         'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/0/2.jpg',
@@ -1527,6 +1599,8 @@ var detail = {
         'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/0/11.jpg',
       ]
     }, {
+      title: '「漫步中山公园」—— 中山公园 大理石亭 ',
+      fengmian: 'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/1.png',
       seconddetail: [
         'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/1/1.jpg',
         'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/1/2.jpg',
@@ -1534,17 +1608,20 @@ var detail = {
         'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/1/4.jpg',
       ]
     }, {
+      title: '「骑游长宁」—— 带你邂逅艺术 生活',
+      fengmian: 'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/2.png',
       seconddetail: [
-        'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/1/1.jpg',
-        'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/1/2.jpg',
-        'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/1/3.jpg',
-        'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/1/4.jpg',
-        'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/1/5.jpg',
-        'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/1/6.jpg',
-        'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/1/7.jpg',
-        'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/1/8.jpg',
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/2/1.jpg',
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/2/2.jpg',
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/2/3.jpg',
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/2/4.jpg',
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/2/5.jpg',
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/2/6.jpg',
+        'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/2/7.jpg',
       ]
     }, {
+      title: '「相约 “郊野公园” 」—— 外环 绿道',
+      fengmian: 'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/3.png',
       seconddetail: [
         'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/3/1.jpg',
         'http://www.appsun.com.cn/www/fy/changning/image/detail/sport/3/2.jpg',
@@ -1562,7 +1639,6 @@ var detail = {
 
 
   ]
-
 }
 
 module.exports = {

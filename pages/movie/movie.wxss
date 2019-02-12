@@ -136,15 +136,18 @@
   float: left;
   margin-right: 20rpx;
   margin-top: 20rpx;
-  height: 400rpx;
+  height: 580rpx;
   border-radius: 8rpx;
   background-color: #fff;
 }
-.Alist .Aitem .Aimage image{
+.Alist .Aitem .Aimage{
+  height: 480rpx;
+  overflow: hidden;
   border-radius: 8rpx;
+}
+.Alist .Aitem .Aimage image{
   width: 100%;
-  margin-top: -100rpx;
-  height: 400rpx;
+  /* margin-top: -100rpx; */
 }
 .Alist .Aitem .name{
   padding:10rpx;
