@@ -1,7 +1,7 @@
 //my.js
 //获取应用实例
 const app = getApp()
-
+var request = require('../../utils/requestService.js');
 Page({
   data: {
 
@@ -82,7 +82,22 @@ Page({
       wx.navigateTo({
         url: '../bindphone/bindphone',
       })
-
+    }
+  },
+  onShow(){
+    if (wx.getStorageSync('phone')) {
+      var getUrl = `login/list`;
+      var getData = {
+        openid: wx.getStorageSync('openId')
+      };
+      request.requestGet(getUrl, getData)
+        .then(function (response) {
+          console.log(response)
+          wx.setStorageSync('phone', response.data.data[0].phone);
+          wx.setStorageSync('userId', response.data.data[0].id);
+        }, function (error) {
+          console.log(error);
+        });
     }
   }
 })

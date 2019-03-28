@@ -23,7 +23,7 @@
     "color": "#575757",
     "backgroundColor": "#fff",
     "selectedColor": "#000",
-    "borderStyle": "#f5f5f5",
+    "borderStyle": "white",
     "list": [{
         "iconPath": "public/imgs/map0.png",
         "selectedIconPath": "public/imgs/map1.png",

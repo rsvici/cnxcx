@@ -31,6 +31,7 @@ App({
                   console.log(response)
                   if(response.data.data.length>0){
                     wx.setStorageSync('phone', response.data.data[0].phone);
+                    wx.setStorageSync('userId', response.data.data[0].id);
                   }else{
                     wx.setStorageSync('phone', '');
                   }

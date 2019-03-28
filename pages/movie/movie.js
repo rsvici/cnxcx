@@ -2,6 +2,7 @@
 //获取应用实例
 const app = getApp()
 var Detail = require('../../utils/detail.js');
+var request = require('../../utils/requestService.js');
 Page({
   data: {
     navTypeBol:true,

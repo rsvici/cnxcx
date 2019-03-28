@@ -15,7 +15,7 @@
         <input class="tel_input bindInput" name="rName" placeholder="验证码" placeholder-class="tel_place" type="number" maxlength="6" bindinput="codeInput"></input>
     </view>
     <view class="submit"  wx:if="{{!entmobileBol}}">确  认</view>
-    <view class="submit" bindtap="bindMobile" wx:if="{{entmobileBol}}" style="background-color: #64BDD9;color:#fff;">
+    <button class="submit" wx:if="{{entmobileBol}}" style="background-color: #64BDD9;color:#fff;" open-type="getUserInfo" bindgetuserinfo="getUserInfoBTN">
         确  认
-    </view>
+    </button>
 </scroll-view>

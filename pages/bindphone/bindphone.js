@@ -33,7 +33,7 @@ Page({
     },
     // 获取验证码
     postMobileNo: function () {
-      
+
         if (this.data.tel.legth < 11 || (!this.data.tel)) {
             return;
         }
@@ -88,7 +88,10 @@ Page({
             }
         }, 1000);
     },
-    bindMobile: function () {
+    getUserInfoBTN(response) {
+        this.bindMobile(response.detail.userInfo.avatarUrl,response.detail.userInfo.nickName)
+    },
+    bindMobile: function (avatarUrl,nickName) {
         var code = this.data.code;
         var that = this;
         var rightMobileNo = this.data.rightMobileNo;
@@ -104,7 +107,7 @@ Page({
                 var postUrl = `login/update`;
                 var postData = {
                     phone: this.data.tel,
-                    openid: wx.getStorageSync('openId')
+                    openid: wx.getStorageSync('openId'),
                 };
                 request.requestPost(postUrl, postData)
                     .then(function (response) {
@@ -128,8 +131,11 @@ Page({
                 var postUrl = `login/registeredUser`;
                 var postData = {
                     phone: this.data.tel,
-                    openid: wx.getStorageSync('openId')
+                    openid: wx.getStorageSync('openId'),
+                    image:avatarUrl,
+                    nickname:nickName
                 };
+               
                 request.requestPost(postUrl, postData)
                     .then(function (response) {
                         wx.setStorageSync('phone', that.data.tel);
@@ -152,10 +158,10 @@ Page({
         } else {
             wx.showToast({
                 title: '请输入正确的验证码',
-                icon:'none',
+                icon: 'none',
                 duration: 1500,
                 complete: function () {
-                  
+
                 }
             })
         }
@@ -168,6 +174,5 @@ Page({
                 isUpd: true
             })
         }
-
     }
 });
