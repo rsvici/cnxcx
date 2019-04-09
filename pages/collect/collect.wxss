@@ -8,5 +8,117 @@
 
 .collect image {
   width: 60%;
+}
 
+/* 活动列表 */
+.Alist {
+  position: absolute;
+  /* top: 60rpx; */
+  top: 37rpx;
+  width: 100%;
+  background-color: #fff;
+}
+
+
+.Alist .Aitem {
+  min-height: 100rpx;
+  width: 94%;
+  margin: 0 auto;
+  padding: 10rpx 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  border-bottom: 1px solid #E6E6E6;
+}
+
+.Alist .Aitem .left {
+  float: left;
+  width: 25%;
+}
+
+.Alist .Aitem .left image {
+  width: 100%;
+  border-radius: 10rpx;
+}
+
+.Alist .Aitem .right {
+  margin-left: 3%;
+  padding-top: 20rpx;
+  float: left;
+  width: 70%;
+}
+
+.itemword text,
+.itemTitle text {
+  line-height: 30rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+.itemword2 text {
+  line-height: 30rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.Alist .right .itemTitle text {
+  font-size: 30rpx;
+  line-height: 40rpx;
+  padding-left: 10rpx;
+  font-weight: 700;
+}
+
+.Alist .Aitem .right .Rleft {
+  width: 20%;
+  float: left;
+  padding-top: 30rpx;
+}
+
+.Alist .Aitem .right .Rleft view {
+  height: 50rpx;
+  font-size: 22rpx;
+  text-align: right;
+  font-weight: 700;
+}
+
+.Alist .Aitem .right .Rright {
+  width: 75%;
+  float: left;
+  padding-top: 30rpx;
+  margin-left: 3%;
+}
+
+.Alist .Aitem .right .Rright view {
+  width: 100%;
+  overflow: hidden;
+  height: 50rpx;
+}
+
+.Alist .Aitem .right .Rright view text {
+  font-size: 21rpx;
+  color: #444;
+}
+
+.Alist .Aitem .right .Rright .itemword2 {
+  height: 60rpx;
+}
+.Alist .Alist_Aitem_item{
+  position: relative;
+  height: 250rpx;
+}
+.Alist .deleteCollect{
+  position: absolute;
+  bottom: 10rpx;
+  right: 30rpx;
+  width: 200rpx;
+}
+.Alist .deleteCollect image{
+  width: 100%;
 }

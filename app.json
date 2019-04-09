@@ -1,13 +1,15 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/movie/movie",
+    "pages/redeem/redeem",
+    "pages/my/my",
+    "pages/collect/collect",
+    "pages/news/news",
     "pages/detail/detail",
+    "pages/movie/movie",
     "pages/login/login",
     "pages/bindphone/bindphone",
-    "pages/collect/collect",
     "pages/active/active",
-    "pages/my/my",
     "pages/drama/drama",
     "pages/webview/webview",
     "pages/map/map",
@@ -21,7 +23,7 @@
   },
   "tabBar": {
     "color": "#575757",
-    "backgroundColor": "#fff",
+    "backgroundColor": "#fff",  
     "selectedColor": "#000",
     "borderStyle": "white",
     "list": [{

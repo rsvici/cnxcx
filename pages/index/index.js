@@ -1,114 +1,13 @@
 //index.js
 var Detail = require('../../utils/detail.js');
+var request = require('../../utils/requestService.js'); //require请求
+var formatTime = require('../../utils/util.js');
 //获取应用实例
 const app = getApp()
 
 Page({
   data: {
-    // 轮播图
-    imgUrlsOne: [{
-      imgurl: 'http://www.appsun.com.cn/www/fy/changning/image/lehuo/b1_5.png',
-      type: 'active',
-      index: '0'
-    }, {
-      imgurl: 'http://www.appsun.com.cn/www/fy/changning/image/lehuo/b1_1.png',
-      type: 'drama',
-      index: '2'
-    }, {
-      imgurl: 'http://www.appsun.com.cn/www/fy/changning/image/lehuo/b1_6.png',
-      type: 'active',
-      index: '1'
-    }, {
-      imgurl: 'http://www.appsun.com.cn/www/fy/changning/image/lehuo/b1_3.png',
-      type: 'movie',
-      index: '19'
-    }, {
-      imgurl: 'http://www.appsun.com.cn/www/fy/changning/image/lehuo/b1_4.png',
-      type: 'movie',
-      index: '20'
-    }, ],
-    imgUrlsTwo: [{
-        imgurl: 'http://www.appsun.com.cn/www/fy/changning/image/lehuo/b2_3.png',
-        type: 'active',
-        index: '2'
-      }, {
-        imgurl: 'http://www.appsun.com.cn/www/fy/changning/image/lehuo/b2_1.png',
-        type: 'drama',
-        index: '3'
-      },
-      {
-        imgurl: 'http://www.appsun.com.cn/www/fy/changning/image/lehuo/b2_2.png',
-        type: 'drama',
-        index: '4'
-      },
-
-
-    ],
-    imgUrlsThree: [{
-        imgurl: 'http://www.appsun.com.cn/www/fy/changning/image/lehuo/b3_2.png',
-        type: 'movie',
-        index: '9'
-      },
-      {
-        imgurl: 'http://www.appsun.com.cn/www/fy/changning/image/lehuo/b3_3.png',
-        type: 'drama',
-        index: '7'
-      },
-      {
-        imgurl: 'http://www.appsun.com.cn/www/fy/changning/image/lehuo/b3_4.png',
-        type: 'movie',
-        index: '14'
-      },
-      {
-        imgurl: 'http://www.appsun.com.cn/www/fy/changning/image/lehuo/b3_1.png',
-        type: 'drama',
-        index: '2'
-      },
-
-    ],
-    imgUrlsfour: [{
-        imgurl: 'http://www.appsun.com.cn/www/fy/changning/image/lehuo/b4_1.png',
-        type: 'sport',
-        index: '0'
-      },
-      {
-        imgurl: 'http://www.appsun.com.cn/www/fy/changning/image/lehuo/b4_2.png',
-        type: 'sport',
-        index: '1'
-      },
-      {
-        imgurl: 'http://www.appsun.com.cn/www/fy/changning/image/lehuo/b4_3.png',
-        type: 'sport',
-        index: '2'
-      },
-      {
-        imgurl: 'http://www.appsun.com.cn/www/fy/changning/image/lehuo/b4_4.png',
-        type: 'sport',
-        index: '3'
-      },
-      {
-        imgurl: 'http://www.appsun.com.cn/www/fy/changning/image/lehuo/b4_1.png',
-        type: 'sport',
-        index: '0'
-      },
-      {
-        imgurl: 'http://www.appsun.com.cn/www/fy/changning/image/lehuo/b4_2.png',
-        type: 'sport',
-        index: '1'
-      },
-      {
-        imgurl: 'http://www.appsun.com.cn/www/fy/changning/image/lehuo/b4_3.png',
-        type: 'sport',
-        index: '2'
-      },
-      {
-        imgurl: 'http://www.appsun.com.cn/www/fy/changning/image/lehuo/b4_4.png',
-        type: 'sport',
-        index: '3'
-      },
-
-
-    ],
+    hotActiveList: {}, //热门活动列表
     indicatorDots: true, //点
     autoplay: true, //循环
     interval: 5000, //等待时间
@@ -123,18 +22,7 @@ Page({
     activeList: [],
     swiperH: '', //swiper高度
     nowIdx: 0, //当前swiper索引
-    choiceListindex:0,
-  },
-  //获取swiper高度
-  getHeight: function (e) {
-    var imgh = e.detail.height; //图片高度
-    var imgw = e.detail.width;
-    
-    var sH = 700 * imgh / imgw + "rpx"
-    console.log(imgh,imgw,sH);
-    this.setData({
-      swiperH: sH //设置高度
-    })
+    choiceListindex: 0,
   },
   //swiper滑动事件
   swiperChange: function (e) {
@@ -162,12 +50,7 @@ Page({
           url: `../active/active?type=sport`
         })
         break;
-        // default :
-        // wx.navigateTo({
-        //   url: `../active/active`
-        // })
     }
-
   },
   shoiceNavBol() { //关闭打开nav
     let navBol = this.data.navBol;
@@ -193,13 +76,13 @@ Page({
       url: `../active/active`
     })
   },
-  openType() {
+  openType() { //显示所有nav
     let navTypeBol = !this.data.navTypeBol;
     this.setData({
       navTypeBol
     })
   },
-  navTypeChoice(event) {
+  navTypeChoice(event) { //选择不同类型
     console.log(event.currentTarget.dataset.typeindex);
     this.setData({
       navTypeBol: true
@@ -218,14 +101,58 @@ Page({
   },
   // 去详情页面
   goActiveInfo(event) {
-    var index = event.currentTarget.dataset.index;
-    var type = event.currentTarget.dataset.type;
+    // var item =  JSON.stringify(event.currentTarget.dataset.item);
+    var id = event.currentTarget.dataset.item.id;
+
     wx.navigateTo({
-      url: `../detail/detail?type=${type}&index=${index}`
+      url: `../detail/detail?id=${id}`
     })
   },
+  getActivityList(info, name) { //获取活动
+    var getUrl = `activity/list`,
+      getData = info,
+      that = this,
+      hotActiveList = this.data.hotActiveList;
+    request.requestGet(getUrl, getData)
+      .then(function (response) {
+        hotActiveList[name] = response.data.data.parameterType
+        hotActiveList[name].forEach(function (value, key) {
+          if (value.activityBeginTime) {
+            var time = value.activityBeginTime;
+            hotActiveList[name][key].activityBeginTime = formatTime.formatTime(time, 'Y/M/D')
+          }
+          if (value.activityEndTime) {
+            var time = value.activityEndTime;
+            hotActiveList[name][key].activityEndTime = formatTime.formatTime(time, 'Y/M/D')
+          }
+        })
+
+        that.setData({
+          hotActiveList: hotActiveList
+        })
+        console.log(that.data.hotActiveList)
+
+      }, function (error) {
+        console.log(error);
+      });
+  },
   onLoad() {
-    // console.log(Detail.detail.drama)
+    this.getActivityList({
+      tradingAreaId: 44
+    }, 'banner0');
+    this.getActivityList({
+      tradingAreaId: 45
+    }, 'banner1');
+    this.getActivityList({
+      tradingAreaId: 47
+    }, 'banner2');
+    this.getActivityList({
+      tradingAreaId: 49
+    }, 'banner3');
+    this.getActivityList({
+      pageSize: 15,
+      pageNo: 1
+    }, 'all');
 
     this.setData({
       activeList: Detail.detail.active,
@@ -233,43 +160,10 @@ Page({
       movieList: Detail.detail.movie
     })
   },
-  choiceList(e){ //选择活动
-    var index=e.currentTarget.dataset.index
+  choiceList(e) { //选择不同活动
+    var index = e.currentTarget.dataset.index
     console.log(index);
-    switch(index){
-      case '0':
-      this.setData({
-        activeList: Detail.detail.active,
-        navTypeList: Detail.detail.drama,
-        movieList: Detail.detail.movie,
-        choiceListindex:0
-      })
-      break;
-      case '1':
-      this.setData({
-        activeList: [],
-        navTypeList: Detail.detail.drama,
-        movieList: [],
-        choiceListindex:1
-      })
-      break;
-      case '2':
-      this.setData({
-        activeList: [],
-        navTypeList: [],
-        movieList: Detail.detail.movie,
-        choiceListindex:2
-      })
-      break;
-      case '3':
-      this.setData({
-        activeList: Detail.detail.active,
-        navTypeList: [],
-        movieList:[],
-        choiceListindex:3
-      })
-      break;
-    }
+
 
   }
 

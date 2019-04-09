@@ -85,7 +85,7 @@
 
 .lehuo swiper {
   width: 100%;
-  height: 260.42rpx;
+  /* height: 260.42rpx; */
 }
 
 .lehuo swiper swiper-item {
@@ -96,6 +96,7 @@
 
 .lehuo swiper swiper-item image {
   width: 100%;
+  border-radius: 10rpx;
 }
 
 /* 按钮 */
@@ -138,11 +139,12 @@
 .lehuo .lehuo_teach .teach_banner {
   margin-top: 10.5vw;
   width: 100%;
-  height: 376.94rpx;
+  min-height: 300rpx;
 }
 
 .lehuo .lehuo_teach swiper-item image {
   width: 515rpx;
+  height: 270rpx;
 }
 
 .lehuo .more {
@@ -176,6 +178,11 @@
 
 .lehuo .lehuo_space swiper-item image {
   width: 200rpx;
+  height: 330rpx;
+}
+
+.lehuo .lehuo_space .more {
+  top: 20px;
 }
 
 /* 运动 */
@@ -196,8 +203,14 @@
   height: 26.574vw;
 }
 
+.lehuo .lehuo_sport swiper-item {
+  padding: 10rpx;
+  box-sizing: border-box;
+}
+
 .lehuo .lehuo_sport swiper-item image {
-  width: 230rpx;
+  width: 280rpx;
+  height: 165rpx;
 }
 
 
@@ -365,14 +378,16 @@
 }
 
 
-.lehuo .home image{
+.lehuo .home image {
   width: 695rpx;
 }
-.home .swiper-item{
+
+.home .swiper-item {
   border-radius: 6px;
   width: 695rpx;
   overflow: hidden;
 }
+
 .home .le-img {
   width: 100%;
   display: block;
@@ -386,36 +401,42 @@
 }
 
 /* 为你推荐 */
-.recommend{
+.recommend {
   margin-top: 4vw;
   height: 180rpx;
   background-color: #fff;
- 
+
 }
-.recommend .firstImg{
+
+.recommend .firstImg {
   height: 100rpx;
   overflow: hidden;
 }
-.recommend .firstImg image{
+
+.recommend .firstImg image {
   width: 750rpx;
 }
-.recommend .secondUl{
+
+.recommend .secondUl {
   width: 100%;
   overflow-x: auto;
 }
-.recommend .secondUl .secondlist{
+
+.recommend .secondUl .secondlist {
   width: 750rpx;
-  white-space : normal nowrap 
+  white-space: normal nowrap
 }
-.recommend .secondUl view{
-  width:25%;
+
+.recommend .secondUl view {
+  width: 25%;
   float: left;
-  height:80rpx;
+  height: 80rpx;
   line-height: 80rpx;
   font-size: 25rpx;
   text-align: center;
 }
-.recommend .secondUl view.active{
+
+.recommend .secondUl view.active {
   font-size: 28rpx;
   font-weight: 700;
 }

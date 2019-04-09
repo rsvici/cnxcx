@@ -1,7 +1,11 @@
 //detail.js
 //获取应用实例
 const app = getApp()
-var activeDetail = require('../../utils/detail.js');
+// var activeDetail = require('../../utils/detail.js');
+var request = require('../../utils/requestService.js'); //require请求
+var WxParse = require('../../wxParse/wxParse.js');
+var formatTime = require('../../utils/util.js');
+
 Page({
   data: {
     indicatorDots: true, //点
@@ -12,26 +16,46 @@ Page({
     collectNum: false, //收藏
     activeDetail: {}, //活动详情
     showWebType: '', //显示的页面
+    activeContent: '', //内容
+    newComment: '', //新的评论
+    comments: [], //评论列表
+    showComment: false, //是否显示评论
   },
-  onLoad() {
-
+  //打开评论弹出层
+  toggleDialogHandle() {
+    this.showDialog = !this.showDialog;
+    this.setData({
+      showDialog: this.showDialog
+    })
+  },
+  //打开输入弹框
+  toggleEditCoomentBox() {
+    this.showEditCooment = !this.showEditCooment;
+    this.setData({
+      showEditCooment: this.showEditCooment
+    })
   },
   choiceCollectFun() {
     let collectNum = !this.data.collectNum;
+    if (collectNum) {
+      var postUrl = `collect/add`,
+        postData = {
+          userId: wx.getStorageSync('userId'),
+          activityId: this.data.activeContent.id,
+        },
+        that = this;
+      request.requestPost(postUrl, postData)
+        .then(function (response) {
+          console.log(response);
+          
+        }, function (error) {
+          console.log(error);
+        });
+    }
     this.setData({
       collectNum
     })
   },
-  // goBusiness(e) {
-  //   wx.navigateToMiniProgram({
-  //     appId: 'wxc7a6875e40c89517',
-  //     path: '',
-  //     envVersion: 'develop',
-  //     success(res) {
-  //       // 打开成功
-  //     }
-  //   })
-  // },
   imageLoad: function (e) {
     var activeDetail = this.data.activeDetail,
       ImgVideonum = e.currentTarget.dataset.index;
@@ -53,35 +77,113 @@ Page({
   imgYu(event) {
     var current = event.currentTarget.dataset.src; //获取data-src
     var imgList = this.data.activeDetail.imgvideo; //获取data-list
-    var urls=[];
+    var urls = [];
     for (var index in imgList) {
       urls.push(imgList[index].imgurl)
-   }
+    }
     // //图片预览
     wx.previewImage({
       current, // 当前显示图片的http链接
-      urls// 需要预览的图片http链接列表
+      urls // 需要预览的图片http链接列表
     })
-      
+
   },
-  gomap(e){
-    var position=e.currentTarget.dataset.position
-    wx.navigateTo({
-      url: `../webview/webview?url=https://www.appsun.com.cn/www/fy/changning/map/index.html&endsouth=${position[1]}&endwest=${position[0]}`
-    })
+  // gomap(e) {
+  //   var position = e.currentTarget.dataset.position
+  //   wx.navigateTo({
+  //     url: `../webview/webview?url=https://www.appsun.com.cn/www/fy/changning/map/index.html&endsouth=${position[1]}&endwest=${position[0]}`
+  //   })
+  // },
+  getActivityList(activeid) { //获取活动
+    var getUrl = `activity/list`,
+      getData = {
+        id: activeid
+      },
+      that = this;
+    request.requestGet(getUrl, getData)
+      .then(function (response) {
+        console.log(response.data.data.parameterType[0]);
+
+        var activeContent = response.data.data.parameterType[0]
+        if (activeContent.activityBeginTime) {
+          var time = activeContent.activityBeginTime;
+          console.log(time);
+          activeContent.activityBeginTime = formatTime.formatTime(time, 'Y/M/D')
+        }
+        if (activeContent.activityEndTime) {
+          activeContent.activityEndTime = formatTime.formatTime(activeContent.activityEndTime, 'Y/M/D')
+        }
+
+        that.setData({
+          activeContent,
+          showComment: true
+        })
+
+        // 绑定html
+        var article = that.data.activeContent.activityDec
+        WxParse.wxParse('article', 'html', article, that, 0);
+        that.getComment();
+        console.log(that.data.activeContent);
+      }, function (error) {
+        console.log(error);
+      });
   },
-  onPageScroll (e) {
-    console.log(e);
+  // 把用户输入的评论保存到变量里
+  bindNewComment: function (e) {
+    this.data.newComment = e.detail.value;
+  },
+  // 添加评论
+  submitComment() {
+    var that = this
+    // 如果评论输入为空，则提示用户输入，不进行提交
+    if (!this.data.newComment) {
+      wx.showToast({
+        title: '请输入评论'
+      });
+    } else {
+      that.addComment();
+    }
+  },
+  addComment() {
+    var postUrl = `collect/andComment`,
+      postData = {
+        userId: wx.getStorageSync('userId'),
+        activityId: this.data.activeContent.id,
+        commentDes: this.data.newComment,
+      },
+      that = this;
+    request.requestPost(postUrl, postData)
+      .then(function (response) {
+        console.log(response);
+        that.getComment();
+        that.toggleEditCoomentBox();
+      }, function (error) {
+        console.log(error);
+      });
+  },
+  // 查询评论
+  getComment() {
+    var getUrl = `collect/listComment`,
+      getData = {
+        activityId: this.data.activeContent.id,
+      },
+      that = this;
+    request.requestGet(getUrl, getData)
+      .then(function (response) {
+        console.log(response.data.data.parameterType);
+        that.setData({
+          comments: response.data.data.parameterType
+        })
+      }, function (error) {
+        console.log(error);
+      });
   },
   onLoad(option) {
-    var type = option.type,
-      index = option.index
-      // var type = 'movie',
-      // index = 1
-    this.setData({
-      activeDetail: activeDetail.detail[type][index],
-      showWebType: type
-    })
+    console.log(option.id)
+    this.getActivityList(option.id)
+    // this.getActivityList('90')
   }
+
+
 
 })

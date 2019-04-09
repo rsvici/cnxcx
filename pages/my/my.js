@@ -36,7 +36,7 @@ Page({
       })
     } else {
       wx.navigateTo({
-        url: `../collect/collect`
+        url: `../redeem/redeem`
       })
     }
 
@@ -60,7 +60,7 @@ Page({
       })
     } else {
       wx.navigateTo({
-        url: `../collect/collect`
+        url: `../collect/news`
       })
     }
   },

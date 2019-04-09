@@ -628,7 +628,7 @@ var detail = {
         }, {
           imgurl: 'http://www.appsun.com.cn/www/fy/changning/image/detail/movie/9/1.jpg',
           name: '黛博拉·安沃尔',
-          desc: '阿曼达 Amanda香'
+          desc: '阿曼达 Amanda'
         }, {
           imgurl: 'http://www.appsun.com.cn/www/fy/changning/image/detail/movie/9/2.jpg',
           name: '杰·埃利斯',
@@ -1509,7 +1509,6 @@ var detail = {
         'http://www.appsun.com.cn/www/fy/changning/image/detail/drama/d7_04.png',
         'http://www.appsun.com.cn/www/fy/changning/image/detail/drama/d7_05.png',
         'http://www.appsun.com.cn/www/fy/changning/image/detail/drama/d7_06.png',
-
       ]
     }, {
       title: '我叫白小飞',

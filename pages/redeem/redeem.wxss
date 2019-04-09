@@ -1,0 +1,73 @@
+.collect {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #F1F1F1;
+  line-height: 100vh;
+  text-align: center;
+}
+
+.collect image {
+  width: 60%;
+}
+
+.collectlist {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  background-color: #F1F1F1;
+  overflow: hidden;
+}
+
+.collectlist .first {
+  margin-top: 2vw;
+  height: 9vw;
+  line-height: 9vw;
+  background-color: #fff;
+  padding: 0 2vw;
+  font-size: 25rpx;
+}
+
+.collectlist .second {
+  overflow: hidden;
+  padding:0 1vw;
+}
+
+.collectlist .second .item {
+  width: 45vw;
+  height: 61vw;
+  float: left;
+  margin: 0 2vw;
+  margin-top: 4vw;
+  background-color: #fff;
+  border-radius: 5vw;
+}
+.collectlist .second .item .img{
+  margin: 5vw auto 0;
+  width:30vw;
+  height: 36vw;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+.collectlist .second .item image {
+  width: 100%;
+  vertical-align: middle;
+  height: 36vw;
+}
+.collectlist .second .item  .price{
+  margin-top: 1vw;
+  text-align: center;
+  font-size: 25rpx;
+  color: #79C6DF;
+}
+.collectlist .second .item  .btn{
+  width: 66%;
+  height: 8vw;
+  line-height: 8vw;
+  color: #fff;
+  background-color: #ACACAC;
+  margin: 20rpx auto 0;
+  text-align: center;
+  font-size: 24rpx;
+  border-radius: 10rpx;
+  letter-spacing: 3rpx;
+}

@@ -1,0 +1,20 @@
+<view class="collect" wx:if="{{integralList.length<1}}">
+  <image src="../../public/imgs/nomore.png" mode="widthFix" lazy-load="false" binderror="" bindload=""></image>
+</view>
+<view class="collectlist" wx:else>
+  <view class="first">积分 : 0</view>
+  <view class="second">
+    <view class="item" wx:for="{{integralList}}">
+      <view class="img" >
+        <image src="{{item.integralUrl}}" mode="aspectFit"  bindload="loadimg" data-index="{{index}}">
+        </image>
+      </view>
+      <view class="price">
+        {{item.integralPrice}}积分 
+      </view>
+      <view class="btn">
+        积分兑换
+      </view>
+    </view>
+  </view>
+</view>

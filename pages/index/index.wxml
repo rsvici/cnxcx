@@ -16,16 +16,9 @@
 </view>
 <!-- 乐活 -->
 <view class="lehuo">
-  <!-- <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}">
-    <block>
-      <swiper-item wx:for="{{imgUrlsOne}}" bindtap="goActiveInfo" data-type="{{item.type}}" data-index="{{item.index}}">
-        <image src="{{item.imgurl}}" mode="widthFix" width="750rpx" />
-      </swiper-item>
-    </block>
-  </swiper> -->
-  <swiper class="home" previous-margin='15px' next-margin='15px' indicator-dots="{{indicatorDots}}" bindchange="swiperChange" style='height:{{swiperH}};' autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}">
-    <swiper-item wx:for='{{imgUrlsOne}}' wx:key='' bindtap="goActiveInfo" data-type="{{item.type}}" data-index="{{item.index}}">
-      <image class='le-img {{nowIdx==index?"le-active":""}}' bindload='getHeight' src="{{item.imgurl}}" style='height:{{swiperH}};'></image>
+  <swiper class="home" previous-margin='15px' next-margin='15px' indicator-dots="{{indicatorDots}}" bindchange="swiperChange" style='height:390.23rpx' autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}">
+    <swiper-item wx:for='{{hotActiveList.banner0}}' wx:key='' bindtap="goActiveInfo" data-item="{{item}}">
+      <image class='le-img {{nowIdx==index?"le-active":""}}' src="{{item.activityUrl}}" style='height:390.23rpx'></image>
     </swiper-item>
   </swiper>
   <!-- nav -->
@@ -82,9 +75,9 @@
   <!-- 精彩 -->
   <view class="lehuo_teach">
     <swiper class="teach_banner" interval="{{interval}}" duration="{{duration}}" circular="{{!circular}}" display-multiple-items="1.4">
-      <block wx:for="{{imgUrlsTwo}}" wx:key="item">
-        <swiper-item bindtap="goActiveInfo" data-type="{{item.type}}" data-index="{{item.index}}">
-          <image src="{{item.imgurl}}" mode="widthFix" />
+      <block wx:for="{{hotActiveList.banner1}}" wx:key="">
+        <swiper-item bindtap="goActiveInfo" data-item="{{item}}">
+          <image src="{{item.activityUrl}}" mode="scaleToFill" />
         </swiper-item>
       </block>
     </swiper>
@@ -95,9 +88,9 @@
   <!-- 热门 -->
   <view class="lehuo_space">
     <swiper class="space_banner" interval="{{interval}}" duration="{{duration}}" circular="{{!circular}}" display-multiple-items="3.4">
-      <block wx:for="{{imgUrlsThree}}" wx:key="item">
-        <swiper-item bindtap="goActiveInfo" data-type="{{item.type}}" data-index="{{item.index}}">
-          <image src="{{item.imgurl}}" mode="widthFix" />
+      <block wx:for="{{hotActiveList.banner2}}" wx:key="item">
+        <swiper-item bindtap="goActiveInfo" data-item="{{item}}">
+          <image src="{{item.activityUrl}}" mode="scaleToFill" />
         </swiper-item>
       </block>
     </swiper>
@@ -107,16 +100,13 @@
   </view>
   <!-- 运动 -->
   <view class="lehuo_sport">
-    <swiper class="sport_banner" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}" display-multiple-items="3.2">
-      <block wx:for="{{imgUrlsfour}}" wx:key="item">
-        <swiper-item bindtap="goActiveInfo" data-type="{{item.type}}" data-index="{{item.index}}">
-          <image src="{{item.imgurl}}" mode="widthFix" />
+    <swiper class="sport_banner" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}" display-multiple-items="2.5">
+      <block wx:for="{{hotActiveList.banner3}}" wx:key="item">
+        <swiper-item bindtap="goActiveInfo" data-item="{{item}}">
+          <image src="{{item.activityUrl}}" mode="scaleToFill" />
         </swiper-item>
       </block>
     </swiper>
-    <!-- <view class="more" bindtap="goSportList">
-      <image src="http://www.appsun.com.cn/www/fy/changning/imgs/lehuo/more.png" alt="" mode="widthFix" />
-    </view> -->
   </view>
   <view class="recommend">
     <view class="firstImg">
@@ -124,10 +114,18 @@
     </view>
     <view class="secondUl">
       <view class="secondlist">
-        <view bindtap="choiceList" data-index="0" class='{{0==choiceListindex?"active":""}}'>商圈活动</view>
-        <view bindtap="choiceList" data-index="1" class='{{1==choiceListindex?"active":""}}'>热门演出</view>
-        <view bindtap="choiceList" data-index="2" class='{{2==choiceListindex?"active":""}}'>最新电影</view>
-        <view bindtap="choiceList" data-index="3" class='{{3==choiceListindex?"active":""}}'>休闲活动</view>
+        <view bindtap="choiceList" data-index="0" class='{{0==choiceListindex?"active":""}}'>
+          商圈活动
+        </view>
+        <view bindtap="choiceList" data-index="1" class='{{1==choiceListindex?"active":""}}'>
+          热门演出
+        </view>
+        <view bindtap="choiceList" data-index="2" class='{{2==choiceListindex?"active":""}}'>
+          最新电影
+        </view>
+        <view bindtap="choiceList" data-index="3" class='{{3==choiceListindex?"active":""}}'>
+          休闲活动
+        </view>
       </view>
     </view>
   </view>
@@ -178,83 +176,59 @@
     <!-- 活动列表 -->
     <view class="Alist">
       <!-- 活动 -->
-      <view class="Aitem" wx:for="{{activeList}}" bindtap="goActiveInfo" data-index="{{index}}" data-type="active">
-        <view class="left">
-          <image src="{{item.fengmian}}" mode="widthFix"></image>
-        </view>
-        <view class="right">
-          <view class="itemTitle">
-            <text>{{item.title}}</text>
+      <view class="Aitem" wx:for="{{hotActiveList.all}}" bindtap="goActiveInfo" data-item="{{item}}" wx:if="{{item.activityType<3 }}">
+        <view class="Alist_Aitem_item" wx:if="{{item.activityType==0 || item.activityType==2}}">
+          <view class="left">
+            <image src="{{item.coverUrl}}" mode="widthFix"></image>
           </view>
-          <view class="Rleft">
-            <view>活动时间</view>
-            <view>活动地点</view>
-            <!-- <view>
+          <view class="right">
+            <view class="itemTitle">
+              <text>{{item.name}}</text>
+            </view>
+            <view class="Rleft">
+              <view>活动时间</view>
+              <view>活动地点</view>
+              <!-- <view>
               简介
             </view> -->
-          </view>
-          <view class="Rright">
-            <view class="itemword">
-              <text>{{item.intro}}</text>
             </view>
-            <view class="itemword">
-              <text>{{item.datetime}}</text>
+            <view class="Rright">
+              <view class="itemword">
+                <text>{{item.activityBeginTime}}</text>
+              </view>
+              <view class="itemword">
+                <text>{{item.place}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="Alist_Aitem_item"  wx:if="{{item.activityType=='1'}}">
+          <view class="left">
+            <image src="{{item.coverUrl}}" mode="widthFix"></image>
+          </view>
+          <view class="right">
+            <view class="itemTitle">
+              <text>{{item.name}}</text>
+            </view>
+            <view class="Rleft">
+              <view>上映日期</view>
+              <view>简介</view>
+              <!-- <view>
+              简介
+            </view> -->
+            </view>
+            <view class="Rright">
+              <view class="itemword">
+                <text>{{item.activityBeginTime}}</text>
+              </view>
+              <view class="itemword">
+                <text>{{item.introduction}}</text>
+              </view>
             </view>
           </view>
         </view>
       </view>
-      <!-- 剧场 -->
-      <view class="Aitem" wx:for="{{navTypeList}}" bindtap="goActiveInfo" data-index="{{index}}" data-type="drama">
-        <view class="left">
-          <image src="{{item.fengmian}}" mode="widthFix"></image>
-        </view>
-        <view class="right">
-          <view class="itemTitle">
-            <text>{{item.title}}</text>
-          </view>
-          <view class="Rleft">
-            <view>活动时间</view>
-            <view>活动地点</view>
-            <!-- <view>
-              简介
-            </view> -->
-          </view>
-          <view class="Rright">
-            <view class="itemword">
-              <text>{{item.intro}}</text>
-            </view>
-            <view class="itemword">
-              <text>{{item.datetime}}</text>
-            </view>
-          </view>
-        </view>
-      </view>
-      <!-- 电影 -->
-      <view class="Aitem" wx:for="{{movieList}}" bindtap="goActiveInfo" data-index="{{index}}" data-type="movie">
-        <view class="left">
-          <image src="{{item.fengmian}}" mode="widthFix"></image>
-        </view>
-        <view class="right">
-          <view class="itemTitle">
-            <text>{{item.title}}</text>
-          </view>
-          <view class="Rleft">
-            <view>上映日期</view>
-            <view>简介</view>
-            <!-- <view>
-              简介
-            </view> -->
-          </view>
-          <view class="Rright">
-            <view class="itemword">
-              <text>{{item.datetime}}</text>
-            </view>
-            <view class="itemword">
-              <text>{{item.seconddetail}}</text>
-            </view>
-          </view>
-        </view>
-      </view>
+     
     </view>
   </view>
 </view>

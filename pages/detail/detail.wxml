@@ -1,6 +1,6 @@
 <!-- detail.wxml -->
 <!-- 电影 -->
-<view class="detail" wx:if="{{showWebType==='movie'}}">
+<view class="detail" wx:if="{{activeContent.activityType=='1'}}">
   <!-- 收藏 -->
   <view class="shoucang">
     <view class="nochecked" hidden="{{collectNum}}" bindtap="choiceCollectFun">
@@ -15,14 +15,14 @@
     <view class="first_item">
       <!-- 封面 -->
       <view class="left">
-        <image src="{{activeDetail.fengmian}}" alt="" mode="widthFix" />
+        <image src="{{activeContent.coverUrl}}" alt="" mode="widthFix" />
       </view>
       <!-- title,date -->
       <view class="right">
-        <view class="title showOneline">{{activeDetail.title}}</view>
-        <view class="intro">{{activeDetail.intro}}</view>
-        <view class="datetitle">{{activeDetail.datetitle}}</view>
-        <view class="datetime">{{activeDetail.datetime}}</view>
+        <view class="title showOneline">{{activeContent.name}}</view>
+        <view class="intro">{{activeContent.intro}}</view>
+        <view class="datetitle">上映时间</view>
+        <view class="datetime">{{activeContent.activityBeginTime}}</view>
       </view>
     </view>
     <!-- 购票 -->
@@ -35,18 +35,18 @@
   </view>
   <!-- 第二部分简介 -->
   <view class="second">
-    <view class="twotitle">{{activeDetail.secondtitle}}</view>
-    <view class="seconddetail">{{activeDetail.seconddetail}}</view>
+    <view class="twotitle">简介</view>
+    <view class="seconddetail">{{activeContent.introduction}}</view>
   </view>
   <!-- 第三部分演职人员 -->
   <view class="third">
-    <view class="twotitle">{{activeDetail.thirdtitle}}</view>
+    <view class="twotitle">演职人员</view>
     <swiper class="space_banner" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}" display-multiple-items="4">
-      <block wx:for="{{activeDetail.thirddetail}}" wx:key="item">
+      <block wx:for="{{activeContent.activityDetail}}" wx:key="item">
         <swiper-item>
-          <image src="{{item.imgurl}}" mode="widthFix" />
+          <image src="{{item.url}}" mode="widthFix" />
           <view class="actorName showOneline">{{item.name}}</view>
-          <view class="actorDesc showOneline">{{item.desc}}</view>
+          <view class="actorDesc showOneline">{{item.role}}</view>
         </swiper-item>
       </block>
     </swiper>
@@ -58,7 +58,7 @@
       <view class="newVideoFull">
         <!-- <image src="{{item.imgurl}}" bindload="imageLoad" wx:for="{{activeDetail.imgvideo}}" style="width:{{item.imgwidth}}rpx; height:{{item.imgheight}}rpx;" data-index="{{index}}" data-src="{{item.imgurl}}" bindtap="imgYu" /> -->
         <view class="newVideoFullimg" wx:for="{{activeDetail.imgvideo}}" data-index="{{index}}" data-src="{{item.imgurl}}" bindtap="imgYu">
-          <image src="{{item.imgurl}}"  mode="aspectFill" />
+          <image src="{{item.imgurl}}" mode="aspectFill" />
         </view>
       </view>
     </view>
@@ -79,8 +79,8 @@
     </view>
   </view> -->
 </view>
-<!-- 戏剧 -->
-<view class="detail" wx:if="{{showWebType==='drama' || showWebType==='active'}}">
+<!-- 戏剧，活动 -->
+<view class="detail" wx:if="{{activeContent.activityType==0 || activeContent.activityType==2}}">
   <!-- 收藏 -->
   <view class="shoucang">
     <view class="nochecked" hidden="{{collectNum}}" bindtap="choiceCollectFun">
@@ -95,18 +95,16 @@
     <view class="first_item">
       <!-- 封面 -->
       <view class="left">
-        <image src="{{activeDetail.fengmian}}" alt="" mode="widthFix" />
+        <image src="{{activeContent.coverUrl}}" alt="" mode="widthFix" />
       </view>
       <!-- title,date -->
       <view class="right">
-        <view class="title showOneline">{{activeDetail.title}}</view>
+        <view class="title showOneline">{{activeContent.name}}</view>
         <view class="intro">
-          <text>时间 : </text>
-          {{activeDetail.intro}}
+          <text>时间 : </text> {{activeContent.activityBeginTime}}
         </view>
         <view class="address">
-          <text>地点 : </text>
-          <text class="gomap" bindtap="gomap" data-position="{{activeDetail.position}}">{{activeDetail.datetime}}
+          <text>地点 : </text><text class="gomap" bindtap="gomap" data-position="{{activeDetail.position}}"> {{activeContent.place}}
           </text>
         </view>
       </view>
@@ -121,14 +119,16 @@
   </view>
   <!-- 第二部分简介 -->
   <view class="second">
-    <view class="twotitle">{{activeDetail.secondtitle}}</view>
+    <view class="twotitle">活动详情</view>
     <view class="seconddetail">
-      <image class="" src="{{item}}" mode="widthFix" lazy-load="false" binderror="" bindload="" wx:for="{{activeDetail.seconddetail}}"></image>
+      <import src="/wxParse/wxParse.wxml" />
+      <!-- //这里data中article为bindName -->
+      <template is="wxParse" data="{{wxParseData:article.nodes}}" />
     </view>
   </view>
 </view>
 <!-- 运动 -->
-<view class="detail" wx:if="{{showWebType==='sport'}}" style="padding:0rpx;">
+<view class="detail" wx:if="{{activeContent.activityType==3}}" style="padding:0rpx;">
   <!-- 收藏 -->
   <!-- <view class="shoucang">
     <view class="nochecked" hidden="{{collectNum}}" bindtap="choiceCollectFun">
@@ -141,7 +141,76 @@
   <!-- 第二部分简介 -->
   <view class="second">
     <view class="seconddetail">
-      <image class="" src="{{item}}" mode="widthFix" lazy-load="false" binderror="" bindload="" wx:for="{{activeDetail.seconddetail}}"></image>
+      <import src="/wxParse/wxParse.wxml" />
+      <!-- //这里data中article为bindName -->
+      <template is="wxParse" data="{{wxParseData:article.nodes}}" />
     </view>
   </view>
 </view>
+
+
+
+<!-- 评论 -->
+<!-- 图文信息 -->
+<view class="photo_info_box" wx:if="{{showComment}}" > 
+  <!-- 图文评论列表 -->
+  <view class="photo_comment_box">
+    <text class="photo_comment_title">讨论区</text>
+    <view class="photo_comment_logo" bindtap="toggleEditCoomentBox" >
+      <image class="photo_comment_logo_image" src="../../public/imgs/comment.png" mode="widthFix" >
+      </image>
+    </view>
+    <view wx:for="{{comments}}" wx:for-item="comment" wx:key="index" class="commment_list">
+      <!-- index < 3 在视频下面只显示三条记录 -->
+      <view wx:if="{{index < 3}}">
+        <view class="comment_info">
+          <view class="c_info_view">
+            <image src="{{comment.image}}"></image>
+            <text>{{comment.nickname}}</text>
+          </view>
+          <text class="c_date_txt">{{comment.commentTime}}</text>
+        </view>
+        <view class="comment_content">{{comment.commentDes}}</view>
+      </view>
+    </view>
+    <!-- 查看更多评论 -->
+    <view bindtap="toggleDialogHandle" wx:if="{{comments.length>3}}" >
+      <view class="load_more_box">更多精彩</view>
+    </view>
+    <view wx:if="{{comments.length<=0}}" class="no_comment">
+      <text class="load_more_box">暂时没有评论！</text>
+    </view>
+  </view>
+</view>
+
+
+ <!-- 更多评论 -->
+<view class="cover_box" wx:if="{{showDialog}}" bindtap="toggleDialogHandle"></view>
+<view class="overlay_box" wx:if="{{showDialog}}">
+  <view class="overlay_title">
+    <text>评论</text>
+    <image class="close_btn" src="/images/icon_cancel.png" mode="aspectFill" bindtap="toggleDialogHandle"></image>
+  </view>
+  <view wx:for="{{comments}}" wx:for-item="comment" class="overlay_box_list">
+    <view class="comment_info">
+      <view class="c_info_view">
+        <image src="{{comment.image}}"></image>
+        <text>{{comment.nickname}}</text>
+      </view>
+      <text class="c_date_txt">{{comment.commentTime}}</text>
+    </view>
+    <view class="comment_content">{{comment.commentDes}}</view>
+  </view>
+</view>
+
+<!-- 输入评论 -->
+<view class="editcooment" wx:if="{{showEditCooment}}" bindtap="toggleEditCoomentBox"></view>
+<view class="editcooment_box" wx:if="{{showEditCooment}}" >
+  <view class="textarea_box">
+    <textarea value="{{newComment}}" bindinput="bindNewComment" placeholder="写下您的评论" name="textarea" />
+  </view>
+  <view class="input-box">
+    <button bindtap="submitComment" type="default" plain="{{true}}" class="send_btn">发送</button>
+  </view>
+</view>
+
