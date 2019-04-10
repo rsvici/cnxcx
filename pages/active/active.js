@@ -1,14 +1,15 @@
 //index.js
 //获取应用实例
 var Detail = require('../../utils/detail.js');
+var request = require('../../utils/requestService.js'); //require请求
+var formatTime = require('../../utils/util.js');
 const app = getApp()
 
 Page({
   data: {
     navTypeBol: true,
     navTypeList: [],
-    movieList:[],
-    sportList:[],
+    ActiveList: [],
   },
   openType() {
     let navTypeBol = !this.data.navTypeBol;
@@ -22,29 +23,51 @@ Page({
       navTypeBol: true
     })
   },
-  
+
   goActiveInfo(event) {
-    var index = event.currentTarget.dataset.index;
-    var type = event.currentTarget.dataset.type;
+    // var item =  JSON.stringify(event.currentTarget.dataset.item);
+    var id = event.currentTarget.dataset.item.id;
+
     wx.navigateTo({
-      url: `../detail/detail?type=${type}&index=${index}`
+      url: `../detail/detail?id=${id}`
     })
   },
+  getActivityList(info) { //获取活动
+    var getUrl = `activity/list`,
+      getData =info,
+      that = this,
+      ActiveList=[];
+    request.requestGet(getUrl, getData)
+      .then(function (response) {
+         ActiveList = response.data.data.parameterType
+        ActiveList.forEach(function (value, key) {
+          if (value.activityBeginTime) {
+            var time = value.activityBeginTime;
+            ActiveList[key].activityBeginTime = formatTime.formatTime(time, 'Y/M/D')
+          }
+          if (value.activityEndTime) {
+            var time = value.activityEndTime;
+            ActiveList[key].activityEndTime = formatTime.formatTime(time, 'Y/M/D')
+          }
+        })
 
-  onLoad(option){
-    console.log(option)
-    if(option.type==='sport'){
-      this.setData({
-        sportList:Detail.detail.sport,
-      })
+        that.setData({
+          ActiveList: ActiveList
+        })
+        console.log(that.data.ActiveList)
+
+      }, function (error) {
+        console.log(error);
+      });
+  },
+  onLoad(option) {
+    if(option.activityType){
+      this.getActivityList({activityType:option.activityType});
     }else{
-      this.setData({
-        navTypeList:Detail.detail.drama,
-        movieList:Detail.detail.movie,
-        sportList:Detail.detail.sport,
-      })
+      this.getActivityList({});
     }
-    
+   
+
   }
 
 

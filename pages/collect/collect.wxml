@@ -1,7 +1,5 @@
-<view class="collect" wx:if="{{collectList.length<1}}">
-  <image src="../../public/imgs/nomore.png" mode="widthFix" lazy-load="false" binderror="" bindload=""></image>
-</view>
-<view  ng-if="{{collectList.length>0}}">
+
+<view  wx:if="{{collectList.length>0}}">
   <view class="Alist">
     <!-- 活动 -->
     <view class="Aitem" wx:for="{{collectList}}" bindtap="goActiveInfo" data-item="{{item}}" wx:if="{{item.activityType<3 }}">
@@ -67,4 +65,7 @@
       </view>
     </view>
   </view>
+</view>
+<view class="collect" wx:else>
+  <image src="../../public/imgs/nomore.png" mode="widthFix" lazy-load="false" binderror="" bindload=""></image>
 </view>

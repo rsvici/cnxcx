@@ -42,12 +42,12 @@ Page({
         break;
       case '12':
         wx.navigateTo({
-          url: `../drama/drama`
+          url: `../active/active?activityType=0`
         })
         break;
       case '13':
         wx.navigateTo({
-          url: `../active/active?type=sport`
+          url: `../active/active?activityType=3`
         })
         break;
     }
@@ -161,9 +161,45 @@ Page({
     })
   },
   choiceList(e) { //选择不同活动
-    var index = e.currentTarget.dataset.index
+    var index = e.currentTarget.dataset.index;
+    var activityType = e.currentTarget.dataset.activitytype;
     console.log(index);
+    this.setData({
+      choiceListindex:index
+    })
+    if (!activityType) {
+      var getData = {
+      }
+    }else{
+      var getData = {
+        activityType
+      }
+    }
+    var getUrl = `activity/list`,
+      that = this,
+      hotActiveList = this.data.hotActiveList;
+    request.requestGet(getUrl, getData)
+      .then(function (response) {
+        hotActiveList.all = response.data.data.parameterType
+        hotActiveList.all.forEach(function (value, key) {
+          if (value.activityBeginTime) {
+            var time = value.activityBeginTime;
+            hotActiveList.all[key].activityBeginTime = formatTime.formatTime(time, 'Y/M/D')
+          }
+          if (value.activityEndTime) {
+            var time = value.activityEndTime;
+            hotActiveList.all[key].activityEndTime = formatTime.formatTime(time, 'Y/M/D')
+          }
+        })
 
+        that.setData({
+          hotActiveList: hotActiveList
+        })
+        console.log(that.data.hotActiveList)
+
+      }, function (error) {
+        console.log(error);
+      });
 
   }
 

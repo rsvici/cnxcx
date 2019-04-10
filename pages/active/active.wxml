@@ -48,67 +48,70 @@
     </view>
   </view>
   <!-- 活动列表 -->
+  <!-- 活动列表 -->
   <view class="Alist">
-    <!-- 歌剧 -->
-    <view class="Aitem" wx:for="{{navTypeList}}" bindtap="goActiveInfo" data-index="{{index}}" data-type="drama">
-      <view class="left">
-        <image src="{{item.fengmian}}" mode="widthFix"></image>
-      </view>
-      <view class="right">
-        <view class="itemTitle">
-          <text>{{item.title}}</text>
+    <!-- 活动 -->
+    <view class="Aitem" wx:for="{{ActiveList}}" bindtap="goActiveInfo" data-item="{{item}}" wx:if="{{item.activityType<4 }}">
+      <view class="Alist_Aitem_item" wx:if="{{item.activityType==0 || item.activityType==2}}">
+        <view class="left">
+          <image src="{{item.coverUrl}}" mode="widthFix"></image>
         </view>
-        <view class="Rleft">
-          <view>活动时间</view>
-          <view>活动地点</view>
-          <!-- <view>
-              简介
-            </view> -->
-        </view>
-        <view class="Rright">
-          <view class="itemword">
-            <text>{{item.intro}}</text>
+        <view class="right">
+          <view class="itemTitle">
+            <text>{{item.name}}</text>
           </view>
-          <view class="itemword">
-            <text>{{item.datetime}}</text>
+          <view class="Rleft">
+            <view>活动时间</view>
+            <view>活动地点</view>
+            <!-- <view>
+            简介
+          </view> -->
           </view>
-        </view>
-      </view>
-    </view>
-    <!-- 电影 -->
-    <view class="Aitem" wx:for="{{movieList}}" bindtap="goActiveInfo" data-index="{{index}}" data-type="movie">
-      <view class="left">
-        <image src="{{item.fengmian}}" mode="widthFix"></image>
-      </view>
-      <view class="right">
-        <view class="itemTitle">
-          <text>{{item.title}}</text>
-        </view>
-        <view class="Rleft">
-          <view>上映日期</view>
-          <view>简介</view>
-          <!-- <view>
-              简介
-            </view> -->
-        </view>
-        <view class="Rright">
-          <view class="itemword">
-            <text>{{item.datetime}}</text>
-          </view>
-          <view class="itemword">
-            <text>{{item.seconddetail}}</text>
+          <view class="Rright">
+            <view class="itemword">
+              <text>{{item.activityBeginTime}}</text>
+            </view>
+            <view class="itemword">
+              <text>{{item.place}}</text>
+            </view>
           </view>
         </view>
       </view>
-    </view>
-    <!-- 3sport -->
-    <view class="Aitem sportAitem" wx:for="{{sportList}}" bindtap="goActiveInfo" data-index="{{index}}" data-type="sport">
-      <view class="left">
-        <image src="{{item.fengmian}}" mode="widthFix"></image>
+      <view class="Alist_Aitem_item"  wx:if="{{item.activityType=='1'}}">
+        <view class="left">
+          <image src="{{item.coverUrl}}" mode="widthFix"></image>
+        </view>
+        <view class="right">
+          <view class="itemTitle">
+            <text>{{item.name}}</text>
+          </view>
+          <view class="Rleft">
+            <view>上映日期</view>
+            <view>简介</view>
+            <!-- <view>
+            简介
+          </view> -->
+          </view>
+          <view class="Rright">
+            <view class="itemword">
+              <text>{{item.activityBeginTime}}</text>
+            </view>
+            <view class="itemword">
+              <text>{{item.introduction}}</text>
+            </view>
+          </view>
+        </view>
       </view>
-      <view class="right">
-        <view class="itemword2">
-          <text>{{item.title}}</text>
+
+       <!-- 3sport -->
+      <view class="sportAitem" wx:if="{{item.activityType=='3'}}">
+        <view class="left">
+          <image src="{{item.activityUrl}}" mode="widthFix"></image>
+        </view>
+        <view class="right">
+          <view class="itemword2">
+            <text>{{item.name}}</text>
+          </view>
         </view>
       </view>
     </view>

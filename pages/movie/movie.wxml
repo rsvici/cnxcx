@@ -49,12 +49,12 @@
   </view>
   <!-- 活动列表 -->
   <view class="Alist">
-    <view class="Aitem" wx:for="{{navTypeList}}" bindtap="goActiveInfo" data-index="{{index}}">
+    <view class="Aitem" wx:for="{{ActiveList}}" bindtap="goActiveInfo" data-item="{{item}}">
       <view class="Aimage">
-        <image src="{{item.fengmian}}" mode="widthFix"></image>
+        <image src="{{item.coverUrl}}" mode="aspectFill"></image>
       </view>
-      <view class="name showOneline">{{item.title}}</view>
-      <view class="time showOneline">{{item.datetime}}</view>
+      <view class="name showOneline">{{item.name}}</view>
+      <view class="time showOneline">{{item.activityBeginTime}}</view>
     </view>
   </view>
 </view>

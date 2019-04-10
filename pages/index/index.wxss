@@ -440,3 +440,17 @@
   font-size: 28rpx;
   font-weight: 700;
 }
+
+
+/* 运动 */
+.Alist .sportAitem .left{
+  width: 40%;
+}
+
+.Alist .sportAitem .right{
+  width: 50%;
+}
+.Alist .sportAitem .right .itemword2 text{
+  font-size: 25rpx;
+  line-height: 50rpx;
+}

@@ -144,6 +144,7 @@ Page({
       that.addComment();
     }
   },
+  //添加评论
   addComment() {
     var postUrl = `collect/andComment`,
       postData = {
@@ -157,6 +158,23 @@ Page({
         console.log(response);
         that.getComment();
         that.toggleEditCoomentBox();
+        that.addSaveIntegralDetaDetail();
+      }, function (error) {
+        console.log(error);
+      });
+  },
+  //新增评论积分
+  addSaveIntegralDetaDetail() {
+    var postUrl = `integral/saveIntegralDetaDetail`,
+      postData = {
+        userId: wx.getStorageSync('userId'),
+        integralType: 3,
+        integralPrice:1,
+      },
+      that = this;
+    request.requestPost(postUrl, postData)
+      .then(function (response) {
+        console.log(response);
       }, function (error) {
         console.log(error);
       });

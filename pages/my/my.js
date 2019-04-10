@@ -60,7 +60,7 @@ Page({
       })
     } else {
       wx.navigateTo({
-        url: `../collect/news`
+        url: `../news/news`
       })
     }
   },

@@ -147,6 +147,7 @@
 }
 .Alist .Aitem .Aimage image{
   width: 100%;
+  height:480rpx ;
   /* margin-top: -100rpx; */
 }
 .Alist .Aitem .name{

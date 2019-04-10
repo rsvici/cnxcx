@@ -114,16 +114,16 @@
     </view>
     <view class="secondUl">
       <view class="secondlist">
-        <view bindtap="choiceList" data-index="0" class='{{0==choiceListindex?"active":""}}'>
+        <view bindtap="choiceList" data-activitytype="" class='{{0==choiceListindex?"active":""}}' data-index="0">
           商圈活动
         </view>
-        <view bindtap="choiceList" data-index="1" class='{{1==choiceListindex?"active":""}}'>
+        <view bindtap="choiceList" data-activitytype="0" class='{{1==choiceListindex?"active":""}}' data-index="1">
           热门演出
         </view>
-        <view bindtap="choiceList" data-index="2" class='{{2==choiceListindex?"active":""}}'>
+        <view bindtap="choiceList" data-activitytype="1" class='{{2==choiceListindex?"active":""}}' data-index="2">
           最新电影
         </view>
-        <view bindtap="choiceList" data-index="3" class='{{3==choiceListindex?"active":""}}'>
+        <view bindtap="choiceList" data-activitytype="3" class='{{3==choiceListindex?"active":""}}' data-index="3">
           休闲活动
         </view>
       </view>
@@ -176,7 +176,7 @@
     <!-- 活动列表 -->
     <view class="Alist">
       <!-- 活动 -->
-      <view class="Aitem" wx:for="{{hotActiveList.all}}" bindtap="goActiveInfo" data-item="{{item}}" wx:if="{{item.activityType<3 }}">
+      <view class="Aitem" wx:for="{{hotActiveList.all}}" bindtap="goActiveInfo" data-item="{{item}}" wx:if="{{item.activityType<4 }}">
         <view class="Alist_Aitem_item" wx:if="{{item.activityType==0 || item.activityType==2}}">
           <view class="left">
             <image src="{{item.coverUrl}}" mode="widthFix"></image>
@@ -227,8 +227,19 @@
             </view>
           </view>
         </view>
+
+         <!-- 3sport -->
+        <view class="sportAitem" wx:if="{{item.activityType=='3'}}">
+          <view class="left">
+            <image src="{{item.activityUrl}}" mode="widthFix"></image>
+          </view>
+          <view class="right">
+            <view class="itemword2">
+              <text>{{item.name}}</text>
+            </view>
+          </view>
+        </view>
       </view>
-     
     </view>
   </view>
 </view>
