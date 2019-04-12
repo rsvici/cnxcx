@@ -4,7 +4,8 @@ const app = getApp()
 var request = require('../../utils/requestService.js');
 Page({
   data: {
-
+    signShow:false, //签到显示
+    signImgShow:false, //今天是否签到
   },
   //事件处理函数
   setting() {
@@ -70,9 +71,11 @@ Page({
         url: '../bindphone/bindphone',
       })
     } else {
-      wx.navigateTo({
-        url: `../collect/collect`
+      var signShow=!this.data.signShow;
+      this.setData({
+        signShow
       })
+
     }
 
   },

@@ -9,14 +9,17 @@
   height: 400rpx;
   background-color: #fff;
 }
-.my .sign{
+
+.my .sign {
   position: absolute;
   right: 0;
   top: 90rpx;
 }
-.my .sign image{
+
+.my .sign image {
   width: 140rpx;
 }
+
 .my .mybg image {
   height: 239.59rpx;
   width: 750rpx;
@@ -70,11 +73,30 @@
 
 .my .m_second,
 .my .m_third {
-    margin-top: 5vw;
+  margin-top: 5vw;
 }
 
 .my .m_second image,
 .my .m_third image {
   width: 100%;
   display: block;
+}
+
+/* 签到 */
+.signin {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.signin_img {
+  width: 50vw;
+  margin: 25vh auto;
+}
+
+.signin_img image {
+  width: 100%;
 }
