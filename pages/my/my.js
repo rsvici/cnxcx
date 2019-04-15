@@ -4,8 +4,9 @@ const app = getApp()
 var request = require('../../utils/requestService.js');
 Page({
   data: {
-    signShow:false, //签到显示
-    signImgShow:false, //今天是否签到
+    signShow: false, //签到显示
+    signImgShow: false, //今天是否签到
+    userInfo: '', //用户信息
   },
   //事件处理函数
   setting() {
@@ -71,36 +72,62 @@ Page({
         url: '../bindphone/bindphone',
       })
     } else {
-      var signShow=!this.data.signShow;
-      this.setData({
-        signShow
-      })
+      var signShow, signImgShow;
+      var postUrl = `sign/add`,
+        postData = {
+          userId: wx.getStorageSync('userId')
+        },
+        that = this;
+      request.requestPost(postUrl, postData)
+        .then(function (response) {
+          signShow = !that.data.signShow;
+          if (response.data.message == "成功") {
+            signImgShow = true
+          } else {
+            signImgShow = false
+          }
+
+          that.setData({
+            signShow,
+            signImgShow
+          })
+        }, function (error) {
+          console.log(error);
+        });
+
+
+
 
     }
 
   },
   onLoad: function () {
-    console.log(wx.getStorageSync('phone'));
     if (!wx.getStorageSync('phone')) {
       wx.navigateTo({
         url: '../bindphone/bindphone',
       })
     }
   },
-  onShow(){
+  getUserInfo() { //获取用户信息
     if (wx.getStorageSync('phone')) {
       var getUrl = `login/list`;
       var getData = {
-        openid: wx.getStorageSync('openId')
-      };
+          openid: wx.getStorageSync('openId')
+        },
+        that = this;
       request.requestGet(getUrl, getData)
         .then(function (response) {
-          console.log(response)
+          that.setData({
+            userInfo: response.data.data[0]
+          })
           wx.setStorageSync('phone', response.data.data[0].phone);
           wx.setStorageSync('userId', response.data.data[0].id);
         }, function (error) {
           console.log(error);
         });
     }
+  },
+  onShow() {
+    this.getUserInfo();
   }
 })

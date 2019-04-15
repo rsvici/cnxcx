@@ -2,7 +2,7 @@
   <image src="../../public/imgs/nomore.png" mode="widthFix" lazy-load="false" binderror="" bindload=""></image>
 </view>
 <view class="collectlist" wx:else>
-  <view class="first">积分 : 0</view>
+  <view class="first">积分 : {{userInfo.integralPrice}}</view>
   <view class="second">
     <view class="item" wx:for="{{integralList}}">
       <view class="img" >

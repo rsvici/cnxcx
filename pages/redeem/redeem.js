@@ -3,7 +3,8 @@ const app = getApp()
 Page({
     data: {
         integralList: [], //积分列表
-        scale:'',  //图片高度
+        scale: '', //图片高度
+        userInfo:'' ,//用户信息
     },
     getIntegralList() { //获取积分
         var getUrl = `integral/list`,
@@ -19,7 +20,7 @@ Page({
                 console.log(error);
             });
     },
-    loadimg(event){
+    loadimg(event) {
         console.log(event)
         // var  height=event.detail.height,
         //     width=event.detail.width,
@@ -32,8 +33,25 @@ Page({
         // })
         // console.log(scale)
     },
+    getUserInfo() { //获取用户信息
+        if (wx.getStorageSync('phone')) {
+            var getUrl = `login/list`;
+            var getData = {
+                    openid: wx.getStorageSync('openId')
+                },
+                that = this;
+            request.requestGet(getUrl, getData)
+                .then(function (response) {
+                    that.setData({
+                        userInfo: response.data.data[0]
+                    })
+                }, function (error) {
+                    console.log(error);
+                });
+        }
+    },
     onLoad: function (options) {
         this.getIntegralList();
-
+        this.getUserInfo();
     }
 });

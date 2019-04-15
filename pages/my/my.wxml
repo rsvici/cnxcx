@@ -17,7 +17,7 @@
     </view>
     <view class="points">
       <view>积分</view>
-      <view>0</view>
+      <view>{{userInfo.integralPrice}}</view>
     </view>
     <view class="recomment">
       <view>收藏</view>
