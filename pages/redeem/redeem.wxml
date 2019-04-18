@@ -12,7 +12,7 @@
       <view class="price">
         {{item.integralPrice}}积分 
       </view>
-      <view class="btn">
+      <view class="btn" >
         积分兑换
       </view>
     </view>

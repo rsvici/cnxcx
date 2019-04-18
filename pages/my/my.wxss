@@ -53,9 +53,9 @@
 
 .my .first .points {
   position: absolute;
-  left: 190rpx;
+  right: 500rpx;
   top: 100rpx;
-  text-align: center;
+  text-align: right;
 }
 
 .my .first .points view,
@@ -66,9 +66,9 @@
 
 .my .first .recomment {
   position: absolute;
-  right: 190rpx;
+  left:500rpx;
   top: 100rpx;
-  text-align: center;
+  text-align: left;
 }
 
 .my .m_second,
