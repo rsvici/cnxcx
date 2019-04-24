@@ -1,15 +1,15 @@
 {
   "pages": [
-    "pages/my/my",
     "pages/index/index",
     "pages/redeem/redeem",
+    "pages/active/active",
+    "pages/my/my",
     "pages/collect/collect",
     "pages/news/news",
     "pages/detail/detail",
     "pages/movie/movie",
     "pages/login/login",
     "pages/bindphone/bindphone",
-    "pages/active/active",
     "pages/drama/drama",
     "pages/webview/webview",
     "pages/map/map",

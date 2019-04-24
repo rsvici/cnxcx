@@ -62,7 +62,7 @@ Page({
   },
   onLoad(option) {
     if(option.activityType){
-      this.getActivityList({activityType:option.activityType});
+      this.getActivityList({parameterType:option.activityType});
     }else{
       this.getActivityList({});
     }

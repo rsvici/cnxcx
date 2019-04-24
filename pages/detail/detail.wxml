@@ -53,12 +53,12 @@
   </view>
   <!-- 第四部分 预告片段/剧照 -->
   <view class="fourth">
-    <view class="twotitle">{{activeDetail.fourthtitle}}</view>
+    <view class="twotitle">剧照</view>
     <view class="newImgVideo">
       <view class="newVideoFull">
         <!-- <image src="{{item.imgurl}}" bindload="imageLoad" wx:for="{{activeDetail.imgvideo}}" style="width:{{item.imgwidth}}rpx; height:{{item.imgheight}}rpx;" data-index="{{index}}" data-src="{{item.imgurl}}" bindtap="imgYu" /> -->
-        <view class="newVideoFullimg" wx:for="{{activeDetail.imgvideo}}" data-index="{{index}}" data-src="{{item.imgurl}}" bindtap="imgYu">
-          <image src="{{item.imgurl}}" mode="aspectFill" />
+        <view class="newVideoFullimg" wx:for="{{imgvideostill}}" data-index="{{index}}" data-src="{{item}}" bindtap="imgYu">
+          <image src="{{item}}" mode="aspectFill" />
         </view>
       </view>
     </view>

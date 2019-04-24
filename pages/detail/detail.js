@@ -8,6 +8,7 @@ var formatTime = require('../../utils/util.js');
 
 Page({
   data: {
+    imgvideostill:[],
     indicatorDots: true, //点
     autoplay: false, //循环
     interval: 5000, //等待时间
@@ -113,10 +114,14 @@ Page({
         if (activeContent.activityEndTime) {
           activeContent.activityEndTime = formatTime.formatTime(activeContent.activityEndTime, 'Y/M/D')
         }
+        if(activeContent.still){
+          var imgvideostill=activeContent.still.split(",")
+        }
 
         that.setData({
           activeContent,
-          showComment: true
+          showComment: true,
+          imgvideostill
         })
 
         // 绑定html
