@@ -18,14 +18,14 @@ Page({
             success(res) {
                 let south = res.latitude;
                 let west = res.longitude;
-                let url = 'https://www.appsun.com.cn/www/fy/changning'
+                let url = 'https://www.appsun.com.cn/www/changning'
                 url = `${url}/map/?south=${south}&west=${west}&v=${Math.random()}`
                 that.setData({
                     url
                 });
             },
             fail(){
-                let url = 'https://www.appsun.com.cn/www/fy/changning'
+                let url = 'https://www.appsun.com.cn/www/changning'
                 url = `${url}/map/?v=${Math.random()}`
                 that.setData({
                     url

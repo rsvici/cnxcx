@@ -91,12 +91,12 @@ Page({
   // 跳转webview	
   goBusiness() {
     wx.navigateTo({
-      url: `../webview/webview?url=https://www.appsun.com.cn/www/fy/changning/#/hotbusiness`
+      url: `../webview/webview?url=https://www.appsun.com.cn/www/changning/#/hotbusiness`
     })
   },
   goMap() {
     wx.navigateTo({
-      url: `../webview/webview?url=https://www.appsun.com.cn/www/fy/changning/map/index.html`
+      url: `../webview/webview?url=https://www.appsun.com.cn/www/changning/map/index.html`
     })
   },
   // 去详情页面

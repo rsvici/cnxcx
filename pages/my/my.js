@@ -82,7 +82,8 @@ Page({
         .then(function (response) {
           signShow = !that.data.signShow;
           if (response.data.message == "成功") {
-            signImgShow = true
+            signImgShow = true;
+            that.addSaveIntegralDetaDetail();
           } else {
             signImgShow = false
           }
@@ -94,12 +95,24 @@ Page({
         }, function (error) {
           console.log(error);
         });
-
-
-
-
     }
-
+  },
+  //新增评论积分
+  addSaveIntegralDetaDetail() {
+    var postUrl = `integral/saveIntegralDetaDetail`,
+      postData = {
+        userId: wx.getStorageSync('userId'),
+        integralType: 2,
+        integralPrice:1,
+      },
+      that = this;
+    request.requestPost(postUrl, postData)
+      .then(function (response) {
+        console.log(response);
+        that.getUserInfo();
+      }, function (error) {
+        console.log(error);
+      });
   },
   onLoad: function () {
     if (!wx.getStorageSync('phone')) {

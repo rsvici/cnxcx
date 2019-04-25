@@ -8,7 +8,7 @@ var formatTime = require('../../utils/util.js');
 
 Page({
   data: {
-    imgvideostill:[],
+    imgvideostill: [],
     indicatorDots: true, //点
     autoplay: false, //循环
     interval: 5000, //等待时间
@@ -48,7 +48,7 @@ Page({
       request.requestPost(postUrl, postData)
         .then(function (response) {
           console.log(response);
-          
+
         }, function (error) {
           console.log(error);
         });
@@ -114,8 +114,8 @@ Page({
         if (activeContent.activityEndTime) {
           activeContent.activityEndTime = formatTime.formatTime(activeContent.activityEndTime, 'Y/M/D')
         }
-        if(activeContent.still){
-          var imgvideostill=activeContent.still.split(",")
+        if (activeContent.still) {
+          var imgvideostill = activeContent.still.split(",")
         }
 
         that.setData({
@@ -174,7 +174,7 @@ Page({
       postData = {
         userId: wx.getStorageSync('userId'),
         integralType: 3,
-        integralPrice:1,
+        integralPrice: 1,
       },
       that = this;
     request.requestPost(postUrl, postData)
@@ -193,13 +193,17 @@ Page({
       that = this;
     request.requestGet(getUrl, getData)
       .then(function (response) {
-        console.log(response.data.data.parameterType);
-        that.setData({
-          comments: response.data.data.parameterType
-        })
-      }, function (error) {
-        console.log(error);
-      });
+          var listComment=response.data.data.parameterType
+          listComment.forEach(function (value, key) {
+            listComment[key].commentTime=value.commentTime.slice(0,19)
+          })
+          that.setData({
+            comments: listComment
+          })
+        },
+        function (error) {
+          console.log(error);
+        });
   },
   onLoad(option) {
     console.log(option.id)
