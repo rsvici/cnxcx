@@ -61,10 +61,10 @@ Page({
       });
   },
   onLoad(option) {
-    if(option.activityType){
-      this.getActivityList({parameterType:option.activityType});
+    if(option.shopId){
+      this.getActivityList({tradingAreaId:option.shopId});
     }else{
-      this.getActivityList({});
+      this.getActivityList(option);
     }
    
 

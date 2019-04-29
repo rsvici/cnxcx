@@ -104,6 +104,9 @@
       <block wx:for="{{hotActiveList.banner3}}" wx:key="item">
         <swiper-item bindtap="goActiveInfo" data-item="{{item}}">
           <image src="{{item.activityUrl}}" mode="scaleToFill" />
+          <view class="sportText">
+            {{item.name}}
+          </view>
         </swiper-item>
       </block>
     </swiper>
