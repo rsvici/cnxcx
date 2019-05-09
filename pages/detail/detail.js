@@ -89,12 +89,12 @@ Page({
     })
 
   },
-  // gomap(e) {
-  //   var position = e.currentTarget.dataset.position
-  //   wx.navigateTo({
-  //     url: `../webview/webview?url=https://www.appsun.com.cn/www/fy/changning/map/index.html&endsouth=${position[1]}&endwest=${position[0]}`
-  //   })
-  // },
+  gomap(e) {
+    var position = e.currentTarget.dataset.position
+    // wx.navigateTo({
+    //   url: `../webview/webview?url=https://www.appsun.com.cn/www/changning/map/index.html&endsouth=${position[1]}&endwest=${position[0]}`
+    // })
+  },
   getActivityList(activeid) { //获取活动
     var getUrl = `activity/list`,
       getData = {

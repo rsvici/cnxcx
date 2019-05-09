@@ -20,7 +20,7 @@
       <!-- title,date -->
       <view class="right">
         <view class="title showOneline">{{activeContent.name}}</view>
-        <view class="intro">{{activeContent.intro}}</view>
+        <view class="intro">{{activeContent.labelThree}}</view>
         <view class="datetitle">上映时间</view>
         <view class="datetime">{{activeContent.activityBeginTime}}</view>
       </view>
@@ -104,7 +104,7 @@
           <text>时间 : </text> {{activeContent.activityBeginTime}}
         </view>
         <view class="address">
-          <text>地点 : </text><text class="gomap" bindtap="gomap" data-position="{{activeDetail.position}}"> {{activeContent.place}}
+          <text>地点 : </text><text class="gomap" bindtap="gomap" data-position="{{activeDetail.longitude}}"> {{activeContent.place}}
           </text>
         </view>
       </view>
