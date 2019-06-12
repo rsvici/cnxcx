@@ -10,6 +10,8 @@ Page({
     navTypeBol: true,
     navTypeList: [],
     ActiveList: [],
+    getData: {},
+    pageNo:1,
   },
   openType() {
     let navTypeBol = !this.data.navTypeBol;
@@ -32,25 +34,25 @@ Page({
       url: `../detail/detail?id=${id}`
     })
   },
-  getActivityList(info) { //获取活动
+  getActivityList(getData) { //获取活动
     var getUrl = `activity/list`,
-      getData =info,
+      getData,
       that = this,
-      ActiveList=[];
+      ActiveList =this.data.ActiveList;
     request.requestGet(getUrl, getData)
       .then(function (response) {
-         ActiveList = response.data.data.parameterType
-        ActiveList.forEach(function (value, key) {
+        var newActiveList = response.data.data.parameterType
+        newActiveList.forEach(function (value, key) {
           if (value.activityBeginTime) {
             var time = value.activityBeginTime;
-            ActiveList[key].activityBeginTime = formatTime.formatTime(time, 'Y/M/D')
+            newActiveList[key].activityBeginTime = formatTime.formatTime(time, 'Y/M/D')
           }
           if (value.activityEndTime) {
             var time = value.activityEndTime;
-            ActiveList[key].activityEndTime = formatTime.formatTime(time, 'Y/M/D')
+            newActiveList[key].activityEndTime = formatTime.formatTime(time, 'Y/M/D')
           }
         })
-
+        ActiveList=ActiveList.concat(newActiveList)
         that.setData({
           ActiveList: ActiveList
         })
@@ -61,14 +63,52 @@ Page({
       });
   },
   onLoad(option) {
-    if(option.shopId){
-      this.getActivityList({tradingAreaId:option.shopId});
-    }else{
-      this.getActivityList(option);
-    }
-   
+    var getData;
+    // if (option.activityType) {
+    //   getData = {
+    //     activityType: option.activityType,
+    //     pageNo: 1,
+    //   }
+    // }else {
+    //   getData = {
+    //     pageNo: 1,
+    //   }
+    // }
+    getData=option;
+    getData.pageNo=1;
+    this.setData({
+      getData
+    })
+    this.getActivityList(getData);
+  },
 
+  onPullDownRefresh() {
+    var getData=this.data.getData;
+    getData.pageNo=1
+    this.setData({
+      pageNo: 1,
+      ActiveList: [],
+      dontUpLoading: false,
+      getData
+    })
+    this.getActivityList(
+      getData
+    );
+    setTimeout(function () {
+      wx.stopPullDownRefresh();
+    }, 500)
+  },
+  onReachBottom() {
+    var pageNo = this.data.pageNo;
+    var getData=this.data.getData;
+    pageNo += 1;
+    getData.pageNo=pageNo
+    this.setData({
+      pageNo,
+      getData
+    })
+
+    this.getActivityList(getData)
   }
-
 
 })

@@ -37,25 +37,42 @@ Page({
     })
   },
   choiceCollectFun() {
-    let collectNum = !this.data.collectNum;
-    if (collectNum) {
-      var postUrl = `collect/add`,
-        postData = {
-          userId: wx.getStorageSync('userId'),
-          activityId: this.data.activeContent.id,
-        },
-        that = this;
-      request.requestPost(postUrl, postData)
-        .then(function (response) {
-          console.log(response);
+    if (!wx.getStorageSync('userId')) {
+      wx.showToast({
+        title: '请您先去注册',
+        icon: 'none',
+        duration: 1500,
+        complete: function () {
+          setTimeout(function () {
+            wx.navigateTo({
+              url: `../bindphone/bindphone`
+            })
 
-        }, function (error) {
-          console.log(error);
-        });
+          }, 1500)
+        }
+      })
+
+    } else {
+      let collectNum = !this.data.collectNum;
+      if (collectNum) {
+        var postUrl = `collect/add`,
+          postData = {
+            userId: wx.getStorageSync('userId'),
+            activityId: this.data.activeContent.id,
+          },
+          that = this;
+        request.requestPost(postUrl, postData)
+          .then(function (response) {
+            console.log(response);
+
+          }, function (error) {
+            console.log(error);
+          });
+      }
+      this.setData({
+        collectNum
+      })
     }
-    this.setData({
-      collectNum
-    })
   },
   imageLoad: function (e) {
     var activeDetail = this.data.activeDetail,
@@ -139,14 +156,31 @@ Page({
   },
   // 添加评论
   submitComment() {
-    var that = this
-    // 如果评论输入为空，则提示用户输入，不进行提交
-    if (!this.data.newComment) {
+    if (!wx.getStorageSync('userId')) {
       wx.showToast({
-        title: '请输入评论'
-      });
+        title: '请您先去注册',
+        icon: 'none',
+        duration: 1500,
+        complete: function () {
+          setTimeout(function () {
+            wx.navigateTo({
+              url: `../bindphone/bindphone`
+            })
+
+          }, 1500)
+        }
+      })
+
     } else {
-      that.addComment();
+      var that = this
+      // 如果评论输入为空，则提示用户输入，不进行提交
+      if (!this.data.newComment) {
+        wx.showToast({
+          title: '请输入评论'
+        });
+      } else {
+        that.addComment();
+      }
     }
   },
   //添加评论
@@ -193,9 +227,9 @@ Page({
       that = this;
     request.requestGet(getUrl, getData)
       .then(function (response) {
-          var listComment=response.data.data.parameterType
+          var listComment = response.data.data.parameterType
           listComment.forEach(function (value, key) {
-            listComment[key].commentTime=value.commentTime.slice(0,19)
+            listComment[key].commentTime = value.commentTime.slice(0, 19)
           })
           that.setData({
             comments: listComment
@@ -205,9 +239,60 @@ Page({
           console.log(error);
         });
   },
+  // 获取阅读数
+  getReadActivity(activeid) {
+    var getUrl = `readActivity/count`,
+      getData = {
+        activityId: activeid
+      },
+      that = this;
+    request.requestGet(getUrl, getData)
+      .then(function (response) {
+        console.log(response.data.court);
+
+
+      }, function (error) {
+        console.log(error);
+      });
+  },
+  // 获取阅读数
+  getReadActivity(activeid) {
+    var getUrl = `readActivity/count`,
+      getData = {
+        activityId: activeid
+      },
+      that = this;
+    request.requestGet(getUrl, getData)
+      .then(function (response) {
+        console.log(response.data.court);
+
+
+      }, function (error) {
+        console.log(error);
+      });
+  },
+  // 添加阅读数
+  postReadActivity(activeid) {
+    var getUrl = `readActivity/add`,
+      getData = {
+        activityId: activeid,
+        openId: wx.getStorageSync('openId')
+      },
+      that = this;
+    request.requestPost(getUrl, getData)
+      .then(function (response) {
+        console.log(response.data);
+        that.getReadActivity(activeid)
+
+
+      }, function (error) {
+        console.log(error);
+      });
+  },
   onLoad(option) {
     console.log(option.id)
     this.getActivityList(option.id)
+    // this.postReadActivity(option.id)
     // this.getActivityList('90')
   }
 

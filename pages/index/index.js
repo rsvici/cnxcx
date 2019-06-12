@@ -9,7 +9,7 @@ Page({
   data: {
     hotActiveList: {}, //热门活动列表
     indicatorDots: true, //点
-    autoplay: true, //循环
+    autoplay: false, //循环
     interval: 5000, //等待时间
     duration: 1000, //切换时间
     circular: true, //无缝连接
@@ -23,6 +23,8 @@ Page({
     swiperH: '', //swiper高度
     nowIdx: 0, //当前swiper索引
     choiceListindex: 0,
+    pageNo: 1, //上拉加载
+    activityType: '', // 类型
   },
   //swiper滑动事件
   swiperChange: function (e) {
@@ -126,6 +128,9 @@ Page({
             hotActiveList[name][key].activityEndTime = formatTime.formatTime(time, 'Y/M/D')
           }
         })
+        // if(hotActiveList[name].length<4){
+        //   hotActiveList[name].length=4;
+        // }
 
         that.setData({
           hotActiveList: hotActiveList
@@ -137,21 +142,30 @@ Page({
       });
   },
   onLoad() {
+    var pageNo = 1;
     this.getActivityList({
-      tradingAreaId: 44
+      tradingAreaId: 44,
+      pageSize: 15,
+      pageNo: pageNo
     }, 'banner0');
     this.getActivityList({
-      tradingAreaId: 45
+      tradingAreaId: 45,
+      pageSize: 15,
+      pageNo: pageNo
     }, 'banner1');
     this.getActivityList({
-      tradingAreaId: 47
+      tradingAreaId: 47,
+      pageSize: 15,
+      pageNo: pageNo
     }, 'banner2');
     this.getActivityList({
-      tradingAreaId: 49
+      tradingAreaId: 49,
+      pageSize: 15,
+      pageNo: pageNo
     }, 'banner3');
     this.getActivityList({
       pageSize: 15,
-      pageNo: 1
+      pageNo: pageNo
     }, 'all');
 
     this.setData({
@@ -163,35 +177,45 @@ Page({
   choiceList(e) { //选择不同活动
     var index = e.currentTarget.dataset.index;
     var activityType = e.currentTarget.dataset.activitytype;
+    var hotActiveList=this.data.hotActiveList;
+    hotActiveList.all=[];
     console.log(index);
     this.setData({
-      choiceListindex:index
+      choiceListindex: index,
+      activityType,
+      pageNo:1,
+      hotActiveList
     })
     if (!activityType) {
-      var getData = {
-      }
-    }else{
+      var getData = {}
+    } else {
       var getData = {
         activityType
       }
     }
+    this.getNewAcitiveList(getData)
+
+  },
+  getNewAcitiveList(getData) {
     var getUrl = `activity/list`,
       that = this,
       hotActiveList = this.data.hotActiveList;
+      console.log(getData);
     request.requestGet(getUrl, getData)
       .then(function (response) {
-        hotActiveList.all = response.data.data.parameterType
-        hotActiveList.all.forEach(function (value, key) {
+        var newhotActiveList = response.data.data.parameterType
+        newhotActiveList.forEach(function (value, key) {
           if (value.activityBeginTime) {
             var time = value.activityBeginTime;
-            hotActiveList.all[key].activityBeginTime = formatTime.formatTime(time, 'Y/M/D')
+            newhotActiveList[key].activityBeginTime = formatTime.formatTime(time, 'Y/M/D')
           }
           if (value.activityEndTime) {
             var time = value.activityEndTime;
-            hotActiveList.all[key].activityEndTime = formatTime.formatTime(time, 'Y/M/D')
+            newhotActiveList[key].activityEndTime = formatTime.formatTime(time, 'Y/M/D')
           }
         })
-
+        
+        hotActiveList.all=hotActiveList.all.concat(newhotActiveList);
         that.setData({
           hotActiveList: hotActiveList
         })
@@ -200,10 +224,25 @@ Page({
       }, function (error) {
         console.log(error);
       });
-
+  },
+  onReachBottom() {
+    var pageNo = this.data.pageNo;
+    pageNo += 1
+    this.setData({
+      pageNo
+    })
+    var activityType = this.data.activityType;
+    if (!activityType) {
+      var getData = {
+        pageNo
+      }
+    } else {
+      var getData = {
+        activityType,
+        pageNo
+      }
+    }
+    this.getNewAcitiveList(getData)
   }
-
-
-
 
 })

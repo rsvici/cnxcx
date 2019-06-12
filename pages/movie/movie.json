@@ -1,3 +1,4 @@
 {
-  "navigationBarTitleText": "乐影"
+  "navigationBarTitleText": "乐影",
+  "enablePullDownRefresh": true
 }

@@ -9,6 +9,7 @@ Page({
     navTypeBol:true,
     navTypeList:[], 
     ActiveList:[],
+    pageNo:1,
   },
   openType(){
     let navTypeBol=!this.data.navTypeBol;
@@ -32,26 +33,26 @@ Page({
   getActivityList(info) { //获取活动
     var getUrl = `activity/list`,
       getData =info,
-      that = this,
-      ActiveList=[];
+      that = this;
+      var ActiveList=this.data.ActiveList;
     request.requestGet(getUrl, getData)
       .then(function (response) {
-         ActiveList = response.data.data.parameterType
-        ActiveList.forEach(function (value, key) {
+        var newActiveList = response.data.data.parameterType
+        newActiveList.forEach(function (value, key) {
           if (value.activityBeginTime) {
             var time = value.activityBeginTime;
-            ActiveList[key].activityBeginTime = formatTime.formatTime(time, 'Y/M/D')
+            newActiveList[key].activityBeginTime = formatTime.formatTime(time, 'Y/M/D')
           }
           if (value.activityEndTime) {
             var time = value.activityEndTime;
-            ActiveList[key].activityEndTime = formatTime.formatTime(time, 'Y/M/D')
+            newActiveList[key].activityEndTime = formatTime.formatTime(time, 'Y/M/D')
           }
         })
 
+        ActiveList=ActiveList.concat(newActiveList)
         that.setData({
-          ActiveList: ActiveList
+          ActiveList
         })
-        console.log(that.data.ActiveList)
 
       }, function (error) {
         console.log(error);
@@ -59,5 +60,29 @@ Page({
   },
   onLoad(){
     this.getActivityList({activityType:1});
+  },
+  onPullDownRefresh() {
+    this.setData({
+      pageNo: 1,
+      ActiveList: [],
+      dontUpLoading: false,
+    })
+    this.getActivityList({activityType:1});
+
+    setTimeout(function () {
+      wx.stopPullDownRefresh();
+    }, 500)
+  },
+  onReachBottom() {
+    var pageNo = this.data.pageNo;
+    pageNo += 1
+    this.setData({
+      pageNo
+    })
+    
+    this.getActivityList({
+      activityType:1,
+      pageNo
+    })
   }
 })

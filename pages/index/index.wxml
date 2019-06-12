@@ -16,9 +16,11 @@
 </view>
 <!-- 乐活 -->
 <view class="lehuo">
-  <swiper class="home" previous-margin='15px' next-margin='15px' indicator-dots="{{indicatorDots}}" bindchange="swiperChange" style='height:390.23rpx' autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}">
+  <swiper class="home" previous-margin='15px' next-margin='15px' indicator-dots="{{indicatorDots}}" bindchange="swiperChange" style='height:390rpx' autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}">
     <swiper-item wx:for='{{hotActiveList.banner0}}' wx:key='' bindtap="goActiveInfo" data-item="{{item}}">
-      <image class='le-img {{nowIdx==index?"le-active":""}}' src="{{item.activityUrl}}" style='height:390.23rpx'></image>
+      <view class='le-img {{nowIdx==index?"le-active":""}}'>
+          <image src="{{item.activityUrl}}" mode="aspectFit" ></image>
+      </view>
     </swiper-item>
   </swiper>
   <!-- nav -->
@@ -77,7 +79,7 @@
     <swiper class="teach_banner" interval="{{interval}}" duration="{{duration}}" circular="{{!circular}}" display-multiple-items="1.4">
       <block wx:for="{{hotActiveList.banner1}}" wx:key="">
         <swiper-item bindtap="goActiveInfo" data-item="{{item}}">
-          <image src="{{item.activityUrl}}" mode="scaleToFill" />
+          <image src="{{item.activityUrl}}" mode="aspectFill" />
         </swiper-item>
       </block>
     </swiper>
@@ -90,7 +92,7 @@
     <swiper class="space_banner" interval="{{interval}}" duration="{{duration}}" circular="{{!circular}}" display-multiple-items="3.4">
       <block wx:for="{{hotActiveList.banner2}}" wx:key="item">
         <swiper-item bindtap="goActiveInfo" data-item="{{item}}">
-          <image src="{{item.activityUrl}}" mode="scaleToFill" />
+          <image src="{{item.activityUrl}}" mode="aspectFill" />
         </swiper-item>
       </block>
     </swiper>
@@ -103,7 +105,7 @@
     <swiper class="sport_banner" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}" display-multiple-items="2.5">
       <block wx:for="{{hotActiveList.banner3}}" wx:key="item">
         <swiper-item bindtap="goActiveInfo" data-item="{{item}}">
-          <image src="{{item.activityUrl}}" mode="scaleToFill" />
+          <image src="{{item.activityUrl}}" mode="aspectFill" />
           <view class="sportText">
             {{item.name}}
           </view>
@@ -137,8 +139,7 @@
 /* 列表 */
 /* 列表 */ -->
   <view class="choicelistAll">
-    <view class="choicelist">
-      <!-- nav 标签 -->
+    <!-- <view class="choicelist">
       <view class="title">
         <view class="ul">
           <view class="li">热门</view>
@@ -154,9 +155,9 @@
           </view>
         </view>
       </view>
-    </view>
+    </view> -->
     <!-- 类型 -->
-    <view class="fixtype" hidden="{{navTypeBol}}">
+    <!-- <view class="fixtype" hidden="{{navTypeBol}}">
       <view class="f_li">
         <text bindtap="navTypeChoice" data-typeindex="0">电影</text>
       </view>
@@ -175,7 +176,7 @@
       <view class="f_li">
         <text>休闲娱乐</text>
       </view>
-    </view>
+    </view> -->
     <!-- 活动列表 -->
     <view class="Alist">
       <!-- 活动 -->

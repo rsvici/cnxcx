@@ -23,15 +23,17 @@
   },
   "tabBar": {
     "color": "#575757",
-    "backgroundColor": "#fff",  
+    "backgroundColor": "#fff",
     "selectedColor": "#000",
     "borderStyle": "white",
-    "list": [{
+    "list": [
+      {
         "iconPath": "public/imgs/map0.png",
         "selectedIconPath": "public/imgs/map1.png",
         "pagePath": "pages/map/map",
         "text": "地图"
-      }, {
+      },
+      {
         "iconPath": "public/imgs/lehuo.png",
         "selectedIconPath": "public/imgs/lehuo1.png",
         "pagePath": "pages/index/index",
@@ -45,10 +47,13 @@
       }
     ]
   },
-  "navigateToMiniProgramAppIdList": ["wxc7a6875e40c89517"],
+  "navigateToMiniProgramAppIdList": [
+    "wxc7a6875e40c89517"
+  ],
   "permission": {
     "scope.userLocation": {
       "desc": "你的位置信息将用于长宁时尚活点地图导航"
     }
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }

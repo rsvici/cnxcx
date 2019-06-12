@@ -21,8 +21,7 @@
       <view class="right">
         <view class="title showOneline">{{activeContent.name}}</view>
         <view class="intro">{{activeContent.labelThree}}</view>
-        <view class="datetitle">上映时间</view>
-        <view class="datetime">{{activeContent.activityBeginTime}}</view>
+        <view class="datetitle">上映时间</view><view class="datetime">{{activeContent.activityBeginTime}}</view>
       </view>
     </view>
     <!-- 购票 -->
