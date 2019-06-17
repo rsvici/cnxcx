@@ -207,11 +207,14 @@
 
 .detail .fourth .newImgVideo .newVideoFull .newVideoFullimg {
   height: 240rpx;
-  width: 326rpx;
+  width: 325rpx;
   margin: 0 20rpx 20rpx 0;
   border-radius: 15rpx;
   overflow: hidden;
   float: left;
+}
+.detail .fourth .newImgVideo .newVideoFull .newVideoFullimg:nth-of-type(2n){
+  margin-right: 0;
 }
 
 .detail .fourth .newImgVideo .newVideoFull .newVideoFullimg image {

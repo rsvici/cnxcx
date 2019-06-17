@@ -19,7 +19,7 @@
   <swiper class="home" previous-margin='15px' next-margin='15px' indicator-dots="{{indicatorDots}}" bindchange="swiperChange" style='height:390rpx' autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}">
     <swiper-item wx:for='{{hotActiveList.banner0}}' wx:key='' bindtap="goActiveInfo" data-item="{{item}}">
       <view class='le-img {{nowIdx==index?"le-active":""}}'>
-          <image src="{{item.activityUrl}}" mode="aspectFit" ></image>
+          <image src="{{item.activityUrl}}" mode="aspectFill" ></image>
       </view>
     </swiper-item>
   </swiper>
