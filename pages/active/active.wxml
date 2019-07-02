@@ -51,7 +51,7 @@
   <!-- 活动列表 -->
   <view class="Alist">
     <!-- 活动 -->
-    <view class="Aitem" wx:for="{{ActiveList}}" bindtap="goActiveInfo" data-item="{{item}}" wx:if="{{item.activityType<4 }}">
+    <view class="Aitem" wx:for="{{ActiveList}}" bindtap="goActiveInfo" data-item="{{item}}" wx:if="{{item.activityType<3  || (3==choiceListindex &&item.activityType==3  ) }}">
       <view class="Alist_Aitem_item" wx:if="{{item.activityType==0 || item.activityType==2}}">
         <view class="left">
           <image src="{{item.coverUrl}}" mode="widthFix"></image>

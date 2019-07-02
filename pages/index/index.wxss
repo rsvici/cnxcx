@@ -110,7 +110,7 @@
   padding-bottom: 3vw;
 }
 
-.lehuo .lh_nav view {
+.lehuo .lh_nav>view {
   width: 20%;
   float: left;
   height: 18vw;
@@ -121,7 +121,10 @@
 .lehuo .lh_nav view image {
   width: 100%;
 }
-
+.lehuo .lh_nav .typeName{
+  width: 100%;
+  text-align: center;
+}
 
 /* 精彩 */
 

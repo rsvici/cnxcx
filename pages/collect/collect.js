@@ -1,4 +1,5 @@
 var request = require('../../utils/requestService.js'); //require请求
+var formatTime = require('../../utils/util.js');
 Page({
     data: {
         collectList:[]
@@ -12,6 +13,16 @@ Page({
       request.requestGet(getUrl, getData)
         .then(function (response) {
           var collectList=response.data.data;
+          collectList.forEach(function (value, key) {
+            if (value.activityBeginTime) {
+              var time = value.activityBeginTime;
+              collectList[key].activityBeginTime = formatTime.formatTime(time, 'Y/M/D')
+            }
+            if (value.activityEndTime) {
+              var time = value.activityEndTime;
+              collectList[key].activityEndTime = formatTime.formatTime(time, 'Y/M/D')
+            }
+          })
           console.log(collectList);
 
             that.setData({

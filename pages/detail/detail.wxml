@@ -103,7 +103,7 @@
           <text>时间 : </text> {{activeContent.activityBeginTime}}
         </view>
         <view class="address">
-          <text>地点 : </text><text class="gomap" bindtap="gomap" data-position="{{activeDetail.longitude}}"> {{activeContent.place}}
+          <text>地点 : </text><text class="gomap" bindtap="gomap" data-position="{{activeContent.longitude}}"> {{activeContent.place}}
           </text>
         </view>
       </view>

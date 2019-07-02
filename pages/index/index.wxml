@@ -16,16 +16,22 @@
 </view>
 <!-- 乐活 -->
 <view class="lehuo">
-  <swiper class="home" previous-margin='15px' next-margin='15px' indicator-dots="{{indicatorDots}}" bindchange="swiperChange" style='height:390rpx' autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}">
+  <swiper class="home" previous-margin='15px' next-margin='15px' indicator-dots="{{indicatorDots}}"
+    bindchange="swiperChange" style='height:390rpx' autoplay="{{autoplay}}" interval="{{interval}}"
+    duration="{{duration}}" circular="{{circular}}">
     <swiper-item wx:for='{{hotActiveList.banner0}}' wx:key='' bindtap="goActiveInfo" data-item="{{item}}">
       <view class='le-img {{nowIdx==index?"le-active":""}}'>
-          <image src="{{item.activityUrl}}" mode="aspectFill" ></image>
+        <image src="{{item.activityUrl}}" mode="aspectFill"></image>
       </view>
     </swiper-item>
   </swiper>
   <!-- nav -->
   <view class="lh_nav">
-    <view bindtap="goTypeList" data-navindex='1'>
+    <view bindtap="goTypeList" data-navindex='{{item.id}}' wx:for="{{activityTypeList}}">
+      <image src="{{item.typeIcon}}" alt="" mode="widthFix" />
+      <view class="typeName">{{item.typeName}}</view>
+    </view>
+    <!-- <view bindtap="goTypeList" data-navindex='1'>
       <image src="http://www.appsun.com.cn/www/fy/changning/image/lehuo/1.png" alt="" mode="widthFix" />
     </view>
     <view bindtap="goTypeList" data-navindex='2'>
@@ -66,7 +72,7 @@
     </view>
     <view hidden="{{navBol}}" bindtap="goTypeList" data-navindex='14'>
       <image src="http://www.appsun.com.cn/www/fy/changning/image/lehuo/14.png" alt="" mode="widthFix" />
-    </view>
+    </view> -->
     <view bindtap="shoiceNavBol" hidden="{{!navBol}}">
       <image src="http://www.appsun.com.cn/www/fy/changning/image/lehuo/15.png" alt="" mode="widthFix" />
     </view>
@@ -76,7 +82,8 @@
   </view>
   <!-- 精彩 -->
   <view class="lehuo_teach">
-    <swiper class="teach_banner" interval="{{interval}}" duration="{{duration}}" circular="{{!circular}}" display-multiple-items="1.4">
+    <swiper class="teach_banner" interval="{{interval}}" duration="{{duration}}" circular="{{!circular}}"
+      display-multiple-items="1.4">
       <block wx:for="{{hotActiveList.banner1}}" wx:key="">
         <swiper-item bindtap="goActiveInfo" data-item="{{item}}">
           <image src="{{item.activityUrl}}" mode="aspectFill" />
@@ -89,7 +96,8 @@
   </view>
   <!-- 热门 -->
   <view class="lehuo_space">
-    <swiper class="space_banner" interval="{{interval}}" duration="{{duration}}" circular="{{!circular}}" display-multiple-items="3.4">
+    <swiper class="space_banner" interval="{{interval}}" duration="{{duration}}" circular="{{!circular}}"
+      display-multiple-items="3.4">
       <block wx:for="{{hotActiveList.banner2}}" wx:key="item">
         <swiper-item bindtap="goActiveInfo" data-item="{{item}}">
           <image src="{{item.activityUrl}}" mode="aspectFill" />
@@ -102,7 +110,8 @@
   </view>
   <!-- 运动 -->
   <view class="lehuo_sport">
-    <swiper class="sport_banner" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}" display-multiple-items="2.5">
+    <swiper class="sport_banner" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}"
+      display-multiple-items="2.5">
       <block wx:for="{{hotActiveList.banner3}}" wx:key="item">
         <swiper-item bindtap="goActiveInfo" data-item="{{item}}">
           <image src="{{item.activityUrl}}" mode="aspectFill" />
@@ -180,7 +189,8 @@
     <!-- 活动列表 -->
     <view class="Alist">
       <!-- 活动 -->
-      <view class="Aitem" wx:for="{{hotActiveList.all}}" bindtap="goActiveInfo" data-item="{{item}}" wx:if="{{item.activityType<4 }}">
+      <view class="Aitem" wx:for="{{hotActiveList.all}}" bindtap="goActiveInfo" data-item="{{item}}"
+        wx:if="{{item.activityType<3  || (3==choiceListindex &&item.activityType==3  ) }}">
         <view class="Alist_Aitem_item" wx:if="{{item.activityType==0 || item.activityType==2}}">
           <view class="left">
             <image src="{{item.coverUrl}}" mode="widthFix"></image>
@@ -206,7 +216,7 @@
             </view>
           </view>
         </view>
-        <view class="Alist_Aitem_item"  wx:if="{{item.activityType=='1'}}">
+        <view class="Alist_Aitem_item" wx:if="{{item.activityType=='1'}}">
           <view class="left">
             <image src="{{item.coverUrl}}" mode="widthFix"></image>
           </view>
@@ -232,7 +242,7 @@
           </view>
         </view>
 
-         <!-- 3sport -->
+        <!-- 3sport -->
         <view class="sportAitem" wx:if="{{item.activityType=='3'}}">
           <view class="left">
             <image src="{{item.activityUrl}}" mode="widthFix"></image>

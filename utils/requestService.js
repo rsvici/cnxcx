@@ -54,7 +54,7 @@ var requestPost = function (newUrl, newData) {
                 "Content-Type": "application/x-www-form-urlencoded"
             },
             success(e) {
-                if (e.data.code == '000') {
+                if (e.data.code == '000' ||e.data.code == '001' ) {
                     setTimeout(function () {
                         wx.hideLoading();
                         resolve(e)

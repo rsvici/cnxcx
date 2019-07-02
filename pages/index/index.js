@@ -141,6 +141,21 @@ Page({
         console.log(error);
       });
   },
+  getActivityTypeList(){
+    var getUrl = `activityType/list`,
+    getData = {},
+    that = this;
+  request.requestGet(getUrl, getData)
+    .then(function (response) {
+      var activityTypeList= response.data.data.parameterType
+      console.log(activityTypeList)
+      that.setData({
+        activityTypeList
+      })
+    }, function (error) {
+      console.log(error);
+    });
+  },
   onLoad() {
     var pageNo = 1;
     this.getActivityList({
@@ -167,7 +182,7 @@ Page({
       pageSize: 15,
       pageNo: pageNo
     }, 'all');
-
+    this.getActivityTypeList();
     this.setData({
       activeList: Detail.detail.active,
       navTypeList: Detail.detail.drama,

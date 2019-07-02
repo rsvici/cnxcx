@@ -44,7 +44,7 @@
 </scroll-view>
 
 <!-- 签到 -->
-<view class="signin" wx:if="{{signShow}}" bindtap="goSign">
+<view class="signin" wx:if="{{signShow}}" bindtap="closeSignIn">
   <view class="signin_img">
     <view class="signin_img_show" wx:if="{{signImgShow}}">
       <image class="" src="http://www.appsun.com.cn/www/fy/changning/imgs/my/signinT.png" mode="widthFix">

@@ -97,6 +97,11 @@ Page({
         });
     }
   },
+  closeSignIn(){
+    this.setData({
+      signShow:false
+    })
+  },
   //新增评论积分
   addSaveIntegralDetaDetail() {
     var postUrl = `integral/saveIntegralDetaDetail`,
