@@ -25,6 +25,8 @@ Page({
     choiceListindex: 0,
     pageNo: 1, //上拉加载
     activityType: '', // 类型
+    activityTypeList: [], //
+    activityTypeIndexNum: 9, //
   },
   //swiper滑动事件
   swiperChange: function (e) {
@@ -37,27 +39,41 @@ Page({
     console.log(event.currentTarget.dataset.navindex);
     let navindex = event.currentTarget.dataset.navindex;
     switch (navindex) {
-      case '8':
+      case 8:
         wx.navigateTo({
           url: `../movie/movie`
         })
         break;
-      case '12':
+      default:
         wx.navigateTo({
-          url: `../active/active?activityType=0`
+          url: `../active/active?activityType=${navindex}`
         })
         break;
-      case '13':
-        wx.navigateTo({
-          url: `../active/active?activityType=3`
-        })
-        break;
+      // case '12':
+      //   wx.navigateTo({
+      //     url: `../active/active?activityType=0`
+      //   })
+      //   break;
+      // case '13':
+      //   wx.navigateTo({
+      //     url: `../active/active?activityType=3`
+      //   })
+      //   break;
     }
   },
   shoiceNavBol() { //关闭打开nav
-    let navBol = this.data.navBol;
+    if (this.data.activityTypeIndexNum > 9) {
+      var activityTypeIndexNum = 9;
+    } else {
+      var activityTypeIndexNum = 1000;
+    }
     this.setData({
-      navBol: !navBol
+      activityTypeIndexNum
+    })
+  },
+  goActiveListSeacrh(e){
+    wx.navigateTo({
+      url: `../active/active?name=${e.detail.value}`
     })
   },
   goActiveList() { //去精彩
@@ -115,6 +131,7 @@ Page({
       getData = info,
       that = this,
       hotActiveList = this.data.hotActiveList;
+      getData.auditStatus=1;
     request.requestGet(getUrl, getData)
       .then(function (response) {
         hotActiveList[name] = response.data.data.parameterType
@@ -141,40 +158,40 @@ Page({
         console.log(error);
       });
   },
-  getActivityTypeList(){
+  getActivityTypeList() {
     var getUrl = `activityType/list`,
-    getData = {},
-    that = this;
-  request.requestGet(getUrl, getData)
-    .then(function (response) {
-      var activityTypeList= response.data.data.parameterType
-      console.log(activityTypeList)
-      that.setData({
-        activityTypeList
-      })
-    }, function (error) {
-      console.log(error);
-    });
+      getData = {},
+      that = this;
+    request.requestGet(getUrl, getData)
+      .then(function (response) {
+        var activityTypeList = response.data.data.parameterType
+        console.log(activityTypeList)
+        that.setData({
+          activityTypeList
+        })
+      }, function (error) {
+        console.log(error);
+      });
   },
   onLoad() {
     var pageNo = 1;
     this.getActivityList({
-      tradingAreaId: 44,
+      type: 1,
       pageSize: 15,
       pageNo: pageNo
     }, 'banner0');
     this.getActivityList({
-      tradingAreaId: 45,
+      type: 2,
       pageSize: 15,
       pageNo: pageNo
     }, 'banner1');
     this.getActivityList({
-      tradingAreaId: 47,
+      type: 3,
       pageSize: 15,
       pageNo: pageNo
     }, 'banner2');
     this.getActivityList({
-      tradingAreaId: 49,
+      type: 4,
       pageSize: 15,
       pageNo: pageNo
     }, 'banner3');
@@ -192,13 +209,13 @@ Page({
   choiceList(e) { //选择不同活动
     var index = e.currentTarget.dataset.index;
     var activityType = e.currentTarget.dataset.activitytype;
-    var hotActiveList=this.data.hotActiveList;
-    hotActiveList.all=[];
+    var hotActiveList = this.data.hotActiveList;
+    hotActiveList.all = [];
     console.log(index);
     this.setData({
       choiceListindex: index,
       activityType,
-      pageNo:1,
+      pageNo: 1,
       hotActiveList
     })
     if (!activityType) {
@@ -215,7 +232,8 @@ Page({
     var getUrl = `activity/list`,
       that = this,
       hotActiveList = this.data.hotActiveList;
-      console.log(getData);
+      getData.auditStatus=1;
+    console.log(getData);
     request.requestGet(getUrl, getData)
       .then(function (response) {
         var newhotActiveList = response.data.data.parameterType
@@ -229,8 +247,8 @@ Page({
             newhotActiveList[key].activityEndTime = formatTime.formatTime(time, 'Y/M/D')
           }
         })
-        
-        hotActiveList.all=hotActiveList.all.concat(newhotActiveList);
+
+        hotActiveList.all = hotActiveList.all.concat(newhotActiveList);
         that.setData({
           hotActiveList: hotActiveList
         })

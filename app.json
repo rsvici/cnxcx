@@ -1,8 +1,8 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/redeem/redeem",
     "pages/active/active",
+    "pages/redeem/redeem",
     "pages/my/my",
     "pages/collect/collect",
     "pages/news/news",

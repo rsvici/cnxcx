@@ -7,7 +7,7 @@
     </view>
     <form>
       <image src="../../public/imgs/fdj.png" mode="widthFix"></image>
-      <input type="search" placeholder="点击搜索" id="keyword" bindblur="searchGoods" />
+      <input type="search" placeholder="点击搜索" id="keyword" bindconfirm="goActiveListSeacrh" />
     </form>
     <view class="map" bindtap='goMap'>
       <image src="../../public/imgs/map.png" mode="widthFix" />
@@ -27,10 +27,19 @@
   </swiper>
   <!-- nav -->
   <view class="lh_nav">
-    <view bindtap="goTypeList" data-navindex='{{item.id}}' wx:for="{{activityTypeList}}">
+    <view bindtap="goTypeList" data-navindex='{{item.id}}' wx:for="{{activityTypeList}}"
+      wx:if="{{index<activityTypeIndexNum}}">
       <image src="{{item.typeIcon}}" alt="" mode="widthFix" />
       <view class="typeName">{{item.typeName}}</view>
     </view>
+    <view bindtap="shoiceNavBol" hidden="{{activityTypeIndexNum!=9||(activityTypeList.length<1)}}">
+      <image src="http://180.166.115.122:8111/2019072131045.png" alt="" mode="widthFix" />
+      <view class="typeName">更多</view>
+    </view>
+    <view bindtap="shoiceNavBol" hidden="{{activityTypeIndexNum==9||(activityTypeList.length<1)}}">
+      <image src="http://180.166.115.122:8111/2019072131159.png" alt="" mode="widthFix" />
+    </view>
+    
     <!-- <view bindtap="goTypeList" data-navindex='1'>
       <image src="http://www.appsun.com.cn/www/fy/changning/image/lehuo/1.png" alt="" mode="widthFix" />
     </view>
@@ -73,12 +82,6 @@
     <view hidden="{{navBol}}" bindtap="goTypeList" data-navindex='14'>
       <image src="http://www.appsun.com.cn/www/fy/changning/image/lehuo/14.png" alt="" mode="widthFix" />
     </view> -->
-    <view bindtap="shoiceNavBol" hidden="{{!navBol}}">
-      <image src="http://www.appsun.com.cn/www/fy/changning/image/lehuo/15.png" alt="" mode="widthFix" />
-    </view>
-    <view bindtap="shoiceNavBol" hidden="{{navBol}}">
-      <image src="http://www.appsun.com.cn/www/fy/changning/image/lehuo/16.png" alt="" mode="widthFix" />
-    </view>
   </view>
   <!-- 精彩 -->
   <view class="lehuo_teach">
@@ -131,13 +134,13 @@
         <view bindtap="choiceList" data-activitytype="" class='{{0==choiceListindex?"active":""}}' data-index="0">
           商圈活动
         </view>
-        <view bindtap="choiceList" data-activitytype="0" class='{{1==choiceListindex?"active":""}}' data-index="1">
+        <view bindtap="choiceList" data-activitytype="7" class='{{1==choiceListindex?"active":""}}' data-index="1">
           热门演出
         </view>
-        <view bindtap="choiceList" data-activitytype="1" class='{{2==choiceListindex?"active":""}}' data-index="2">
+        <view bindtap="choiceList" data-activitytype="8" class='{{2==choiceListindex?"active":""}}' data-index="2">
           最新电影
         </view>
-        <view bindtap="choiceList" data-activitytype="3" class='{{3==choiceListindex?"active":""}}' data-index="3">
+        <view bindtap="choiceList" data-activitytype="17" class='{{3==choiceListindex?"active":""}}' data-index="3">
           休闲活动
         </view>
       </view>
@@ -148,50 +151,10 @@
 /* 列表 */
 /* 列表 */ -->
   <view class="choicelistAll">
-    <!-- <view class="choicelist">
-      <view class="title">
-        <view class="ul">
-          <view class="li">热门</view>
-          <view class="li altype" bindtap="openType">
-            类型
-            <image src="../../public/imgs/down.png" alt="" mode="widthFix" />
-          </view>
-          <view class="li">
-            <picker class="tel_input bindInput" mode="date" value="{{brith}}" start="2019-01-01" end="2020-09-01" bindchange="bindDateChange">
-              时间
-              <image src="../../public/imgs/down.png" alt="" mode="widthFix" />
-            </picker>
-          </view>
-        </view>
-      </view>
-    </view> -->
-    <!-- 类型 -->
-    <!-- <view class="fixtype" hidden="{{navTypeBol}}">
-      <view class="f_li">
-        <text bindtap="navTypeChoice" data-typeindex="0">电影</text>
-      </view>
-      <view class="f_li">
-        <text bindtap="navTypeChoice" data-typeindex="1">演唱会</text>
-      </view>
-      <view class="f_li">
-        <text bindtap="navTypeChoice" data-typeindex="2">话剧</text>
-      </view>
-      <view class="f_li">
-        <text>电影</text>
-      </view>
-      <view class="f_li">
-        <text>演唱会</text>
-      </view>
-      <view class="f_li">
-        <text>休闲娱乐</text>
-      </view>
-    </view> -->
-    <!-- 活动列表 -->
     <view class="Alist">
       <!-- 活动 -->
-      <view class="Aitem" wx:for="{{hotActiveList.all}}" bindtap="goActiveInfo" data-item="{{item}}"
-        wx:if="{{item.activityType<3  || (3==choiceListindex &&item.activityType==3  ) }}">
-        <view class="Alist_Aitem_item" wx:if="{{item.activityType==0 || item.activityType==2}}">
+      <view class="Aitem" wx:for="{{hotActiveList.all}}" bindtap="goActiveInfo" data-item="{{item}}" wx:if="{{item.activityType!='17'||(item.activityType=='17' && choiceListindex==3)}}">
+        <view class="Alist_Aitem_item" wx:if="{{(item.activityType!=17) && (item.activityType!=8) }}">
           <view class="left">
             <image src="{{item.coverUrl}}" mode="widthFix"></image>
           </view>
@@ -216,7 +179,7 @@
             </view>
           </view>
         </view>
-        <view class="Alist_Aitem_item" wx:if="{{item.activityType=='1'}}">
+        <view class="Alist_Aitem_item" wx:if="{{item.activityType==8}}">
           <view class="left">
             <image src="{{item.coverUrl}}" mode="widthFix"></image>
           </view>
@@ -243,7 +206,7 @@
         </view>
 
         <!-- 3sport -->
-        <view class="sportAitem" wx:if="{{item.activityType=='3'}}">
+        <view class="sportAitem" wx:if="{{item.activityType=='17'}}">
           <view class="left">
             <image src="{{item.activityUrl}}" mode="widthFix"></image>
           </view>

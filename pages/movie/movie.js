@@ -59,7 +59,7 @@ Page({
       });
   },
   onLoad(){
-    this.getActivityList({activityType:1});
+    this.getActivityList({activityType:8});
   },
   onPullDownRefresh() {
     this.setData({
@@ -67,7 +67,7 @@ Page({
       ActiveList: [],
       dontUpLoading: false,
     })
-    this.getActivityList({activityType:1});
+    this.getActivityList({activityType:8});
 
     setTimeout(function () {
       wx.stopPullDownRefresh();
@@ -81,7 +81,7 @@ Page({
     })
     
     this.getActivityList({
-      activityType:1,
+      activityType:8,
       pageNo
     })
   }

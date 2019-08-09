@@ -7,38 +7,46 @@ const app = getApp()
 
 Page({
   data: {
-    navTypeBol: true,
-    navTypeList: [],
-    ActiveList: [],
-    getData: {},
-    pageNo:1,
+    getData: {},  //传输数据
+    ActiveList: [],//活动列表
+    choiceListindex:0, //tab按钮
   },
-  openType() {
-    let navTypeBol = !this.data.navTypeBol;
+  choiceList(e) { //选择不同活动
+    var activityType = e.currentTarget.dataset.activitytype;
     this.setData({
-      navTypeBol
+      ActiveList:[],
+      choiceListindex: e.currentTarget.dataset.index,
     })
+    if(activityType){
+      this.data.getData.activityType=activityType;
+    }else{
+      delete this.data.getData.activityType
+    }
+    this.data.getData.pageNo=1;
+    this.getActivityList(this.data.getData)
   },
-  navTypeChoice(event) {
-    console.log(event.currentTarget.dataset.typeindex);
+  searchGoods(e){
+    var getData=this.data.getData;
+    getData.name = e.detail.value;
     this.setData({
-      navTypeBol: true
+      ActiveList: [],
+      getData
     })
+    this.getActivityList(getData)
   },
-
   goActiveInfo(event) {
-    // var item =  JSON.stringify(event.currentTarget.dataset.item);
     var id = event.currentTarget.dataset.item.id;
-
     wx.navigateTo({
       url: `../detail/detail?id=${id}`
     })
   },
+
   getActivityList(getData) { //获取活动
     var getUrl = `activity/list`,
       getData,
       that = this,
       ActiveList =this.data.ActiveList;
+      getData.auditStatus=1;
     request.requestGet(getUrl, getData)
       .then(function (response) {
         var newActiveList = response.data.data.parameterType
@@ -56,25 +64,12 @@ Page({
         that.setData({
           ActiveList: ActiveList
         })
-        console.log(that.data.ActiveList)
-
       }, function (error) {
         console.log(error);
       });
   },
   onLoad(option) {
-    var getData;
-    // if (option.activityType) {
-    //   getData = {
-    //     activityType: option.activityType,
-    //     pageNo: 1,
-    //   }
-    // }else {
-    //   getData = {
-    //     pageNo: 1,
-    //   }
-    // }
-    getData=option;
+    var getData=option;
     getData.pageNo=1;
     this.setData({
       getData
@@ -84,30 +79,26 @@ Page({
 
   onPullDownRefresh() {
     var getData=this.data.getData;
-    getData.pageNo=1
+    getData.pageNo=1;
+    getData.name='';
     this.setData({
-      pageNo: 1,
       ActiveList: [],
       dontUpLoading: false,
       getData
     })
-    this.getActivityList(
-      getData
-    );
+    this.getActivityList(getData);
     setTimeout(function () {
       wx.stopPullDownRefresh();
     }, 500)
   },
+
+
   onReachBottom() {
-    var pageNo = this.data.pageNo;
     var getData=this.data.getData;
-    pageNo += 1;
-    getData.pageNo=pageNo
+    getData.pageNo += 1;
     this.setData({
-      pageNo,
       getData
     })
-
     this.getActivityList(getData)
   }
 

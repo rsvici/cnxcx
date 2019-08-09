@@ -1,6 +1,6 @@
 <!-- detail.wxml -->
 <!-- 电影 -->
-<view class="detail" wx:if="{{activeContent.activityType=='1'}}">
+<view class="detail" wx:if="{{activeContent.activityType=='8'}}">
   <!-- 收藏 -->
   <view class="shoucang">
     <view class="nochecked" hidden="{{collectNum}}" bindtap="choiceCollectFun">
@@ -79,7 +79,7 @@
   </view> -->
 </view>
 <!-- 戏剧，活动 -->
-<view class="detail" wx:if="{{activeContent.activityType==0 || activeContent.activityType==2}}">
+<view class="detail" wx:if="{{(activeContent.activityType!=8) && (activeContent.activityType!=17)&&activeContent.activityType}}">
   <!-- 收藏 -->
   <view class="shoucang">
     <view class="nochecked" hidden="{{collectNum}}" bindtap="choiceCollectFun">
@@ -127,7 +127,7 @@
   </view>
 </view>
 <!-- 运动 -->
-<view class="detail" wx:if="{{activeContent.activityType==3}}" style="padding:0rpx;">
+<view class="detail" wx:if="{{activeContent.activityType==17}}" style="padding:0rpx;">
   <!-- 收藏 -->
   <!-- <view class="shoucang">
     <view class="nochecked" hidden="{{collectNum}}" bindtap="choiceCollectFun">

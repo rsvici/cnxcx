@@ -2,8 +2,8 @@
 <view  wx:if="{{collectList.length>0}}">
   <view class="Alist">
     <!-- 活动 -->
-    <view class="Aitem" wx:for="{{collectList}}" bindtap="goActiveInfo" data-item="{{item}}" wx:if="{{item.activityType<3 }}">
-      <view class="Alist_Aitem_item" wx:if="{{item.activityType==0 || item.activityType==2}}">
+    <view class="Aitem" wx:for="{{collectList}}" bindtap="goActiveInfo" data-item="{{item}}">
+      <view class="Alist_Aitem_item" wx:if="{{item.activityType!=8}}">
         <view class="left">
           <image src="{{item.coverUrl}}" mode="widthFix"></image>
         </view>
@@ -33,7 +33,7 @@
           </view>
         </view>
       </view>
-      <view class="Alist_Aitem_item" wx:if="{{item.activityType=='1'}}">
+      <view class="Alist_Aitem_item" wx:if="{{item.activityType=='8'}}">
         <view class="left">
           <image src="{{item.coverUrl}}" mode="widthFix"></image>
         </view>

@@ -119,7 +119,9 @@
 }
 
 .lehuo .lh_nav view image {
-  width: 100%;
+  width: 80%;
+  display: block;
+  margin: 0 auto 10rpx;
 }
 .lehuo .lh_nav .typeName{
   width: 100%;
