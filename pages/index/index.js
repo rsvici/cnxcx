@@ -1,3 +1,11 @@
+/*
+ * @Descripttion: 
+ * @version: 
+ * @Author: rsvici
+ * @Date: 2019-01-17 16:37:58
+ * @LastEditors: rsvici
+ * @LastEditTime: 2019-08-12 19:11:36
+ */
 //index.js
 var Detail = require('../../utils/detail.js');
 var request = require('../../utils/requestService.js'); //require请求
@@ -132,6 +140,8 @@ Page({
       that = this,
       hotActiveList = this.data.hotActiveList;
       getData.auditStatus=1;
+      getData.pageSize=8;
+      
     request.requestGet(getUrl, getData)
       .then(function (response) {
         hotActiveList[name] = response.data.data.parameterType
@@ -233,6 +243,7 @@ Page({
       that = this,
       hotActiveList = this.data.hotActiveList;
       getData.auditStatus=1;
+      getData.pageSize=8;
     console.log(getData);
     request.requestGet(getUrl, getData)
       .then(function (response) {
