@@ -1,10 +1,16 @@
+/*
+ * @Descripttion: 
+ * @Version: 
+ * @Author: rsvici
+ * @Date: 2019-04-02 17:38:25
+ */
 var request = require('../../utils/requestService.js'); //require请求
 const app = getApp()
 Page({
     data: {
         integralList: [], //积分列表
         scale: '', //图片高度
-        userInfo:'' ,//用户信息
+        userInfo: '', //用户信息
     },
     getIntegralList() { //获取积分
         var getUrl = `integral/list`,
@@ -16,6 +22,17 @@ Page({
                 that.setData({
                     integralList: response.data.data.parameterType
                 })
+            }, function (error) {
+                console.log(error);
+            });
+    },
+    getIntegralDetail() { //获取积分明细
+        var getUrl = `integral/detail`,
+            getData = {userId:wx.getStorageSync('userId')},
+            that = this;
+        request.requestGet(getUrl, getData)
+            .then(function (response) {
+                console.log(response)
             }, function (error) {
                 console.log(error);
             });
@@ -52,6 +69,7 @@ Page({
     },
     onLoad: function (options) {
         this.getIntegralList();
+        this.getIntegralDetail();
         this.getUserInfo();
     }
 });
